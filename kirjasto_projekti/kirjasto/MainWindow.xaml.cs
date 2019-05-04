@@ -23,6 +23,17 @@ namespace kirjasto
         public MainWindow()
         {
             InitializeComponent();
+            List<string> myList = new List<string>
+            {
+                "Berry",
+                "Nalle",
+                "Busse",
+                "Pista",
+                "Uhli",
+                "Arttu"
+            };
+            myListBox.ItemsSource = myList;
+
         }
     }
 }
