@@ -31,6 +31,7 @@ namespace kirjasto
                 "Pista",
                 "Uhli",
                 "Arttu"
+                "Kissa"
             };
             myListBox.ItemsSource = myList;
 
