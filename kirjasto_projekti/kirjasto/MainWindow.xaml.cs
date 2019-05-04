@@ -30,6 +30,7 @@ namespace kirjasto
                 "Busse",
                 "Pista",
                 "Uhli",
+                "Kissa",
                 "Arttu",
                 "Marketa"
             };
