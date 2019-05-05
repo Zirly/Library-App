@@ -57,6 +57,7 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Snapshots" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="genre_table.sql" />
@@ -64,5 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="libraryDB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Snapshots\libraryDB_20190505_18-58-38.dacpac" />
   </ItemGroup>
 </Project>
