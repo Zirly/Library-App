@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.5, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
 -- Host: localhost    Database: library
 -- ------------------------------------------------------
@@ -16,19 +16,10 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `library`
---
-
-/*!40000 DROP DATABASE IF EXISTS `library`*/;
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `library` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_czech_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-
-USE `library`;
-
---
 -- Table structure for table `author`
 --
 
+DROP TABLE IF EXISTS `author`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `author` (
@@ -44,14 +35,17 @@ CREATE TABLE `author` (
 -- Dumping data for table `author`
 --
 
+LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
 INSERT INTO `author` VALUES (1,'Stephen','King','1947'),(2,NULL,'Plato',NULL),(3,'Edward','Lavieri',NULL),(4,'Peter','Verhas',NULL),(5,'Agatha','Christie','1890');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `book`
 --
 
+DROP TABLE IF EXISTS `book`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `book` (
@@ -71,14 +65,17 @@ CREATE TABLE `book` (
 -- Dumping data for table `book`
 --
 
+LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
 INSERT INTO `book` VALUES (1,'Christine','A story of a 1958 Plymouth Fury apparently possessed by supernatural forces',1983,'9780670220267',1),(2,'The Green Mile','A story of death row supervisor Paul Edgecombe\'s encounter with John Coffey, an unusual inmate who displays inexplicable healing and empathetic abilities',1996,'9780743210898',1),(3,'Laws','The conversation depicted in the work\'s twelve books begins with the question of who is given the credit for establishing a civilization\'s laws. Its musings on the ethics of government and law have established it as a classic of political philosophy.',NULL,NULL,4),(4,'Mastering Java 9',NULL,2017,'9781786468735',4),(5,'Sleeping Murder','The story is set in the 1930s, though written during the Second World War. Miss Marple aids a young couple who choose to uncover events in the wife\'s past life, and not let sleeping murder lie.',1976,'000231785',2),(6,'Murder on the Orient Express','The elegant train of the 1930s, the Orient Express, is stopped by heavy snowfall, with many passengers. A murder is discovered, and Poirot\'s trip home to London from the Middle East is interrupted to solve the murder.',1934,'0708901883',2);
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `book_author`
 --
 
+DROP TABLE IF EXISTS `book_author`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `book_author` (
@@ -97,14 +94,17 @@ CREATE TABLE `book_author` (
 -- Dumping data for table `book_author`
 --
 
+LOCK TABLES `book_author` WRITE;
 /*!40000 ALTER TABLE `book_author` DISABLE KEYS */;
 INSERT INTO `book_author` VALUES (1,1,'1'),(2,1,'2'),(3,2,'3'),(4,3,'4'),(4,4,'5'),(5,5,'6'),(6,5,'7');
 /*!40000 ALTER TABLE `book_author` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `genre`
 --
 
+DROP TABLE IF EXISTS `genre`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `genre` (
@@ -118,9 +118,11 @@ CREATE TABLE `genre` (
 -- Dumping data for table `genre`
 --
 
+LOCK TABLES `genre` WRITE;
 /*!40000 ALTER TABLE `genre` DISABLE KEYS */;
 INSERT INTO `genre` VALUES (1,'horror'),(2,'crime'),(3,'drama'),(4,'other');
 /*!40000 ALTER TABLE `genre` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -131,4 +133,4 @@ INSERT INTO `genre` VALUES (1,'horror'),(2,'crime'),(3,'drama'),(4,'other');
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-04 22:36:02
+-- Dump completed on 2019-05-04 21:59:06
