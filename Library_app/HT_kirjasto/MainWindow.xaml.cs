@@ -48,16 +48,35 @@ namespace HT_kirjasto
                 myListBox.ItemsSource = myList;
             }
 
+            List<Bookx> lista = new List<Bookx>();
+            lista.Add(new Bookx() {Book = "dsf", Year = "fds", Author = "fds", Genre = "sfdf", ISBN = "fsdf" });
+            lista.Add(new Bookx() {Book = "aaa", Year = "bbb", Author = "ccc", Genre = "ddd", ISBN = "eee" });
+            lista.Add(new Bookx() {Book = "fff", Year = "ggg", Author = "hhh", Genre = "iii", ISBN = "jjj" });
+            dataGrid.ItemsSource = lista;
+
+
+            /*
             DataTable dg = Database_class.Get_DataTable(sql);
             if (dg.Rows.Count >= 0)
             {
                 List<string> myList = new List<string>();
                 foreach (DataRow row in dg.Rows)
                 {
-                    dataGrid.Columns.Add(row["book_id"].ToString());
+                  
+                   dataGrid.Items.Add(Book = "fsd", )
+    
+                   // dataGrid.Rows.Add(row["book_id"].ToString());
                 }
-            }
+            } */
 
         }
+    }
+    public class Bookx
+    {
+        public string Book { get; set; }
+        public string Year { get; set; }
+        public string Author { get; set; }
+        public string Genre { get; set; }
+        public string ISBN { get; set; }
     }
 }
