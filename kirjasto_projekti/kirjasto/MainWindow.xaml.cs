@@ -19,7 +19,7 @@ using System.Windows.Shapes;
  * TODO
  * 1) Toimiiko toisellakin koneella? kirjasto > properties > settings > connection_String - sen polku viittaa paikalliseen koneeseen
  * 2) Pitäisikö seuraavastai parsata tietokannan dataa omiksi luokiksi? - onko tämä oikea tapa hoitaa tietokannan dataa?
-
+ */
 namespace kirjasto
 {
     /// <summary>
