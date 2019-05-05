@@ -78,7 +78,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\Author.cs" />
+    <Compile Include="classes\Authors.cs" />
+    <Compile Include="classes\Book.cs" />
+    <Compile Include="classes\Books.cs" />
     <Compile Include="Database_class.cs" />
+    <Compile Include="classes\Genre.cs" />
+    <Compile Include="classes\Genres.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
