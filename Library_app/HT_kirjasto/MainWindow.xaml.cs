@@ -24,18 +24,8 @@ namespace HT_kirjasto
         public MainWindow()
         {
             InitializeComponent();
-            /*
-            string name = "horror";
-            int id = 7;
-
-            string sSQL = "INSERT INTO genre_table (genre_id, name) VALUES('" + id + "', '" + name + "');";
-            Database_class.Execute_SQL(sSQL);
-            name = "drama";
-            id = 8;
-            sSQL = "INSERT INTO genre_table ([genre_id],[name]) VALUES('" + id + "', '" + name + "');";
-            Database_class.Execute_SQL(sSQL);
-            */
-            string sql = "SELECT * FROM genre_table";
+         
+            string sql = "SELECT * FROM book_table";
             DataTable tbl = Database_class.Get_DataTable(sql);
 
             if (tbl.Rows.Count >= 0)
@@ -43,7 +33,7 @@ namespace HT_kirjasto
                 List<string> myList = new List<string>();
                 foreach (DataRow row in tbl.Rows)
                 {
-                    myList.Add(row["name"].ToString());
+                    myList.Add(row["title"].ToString());
                 }
                 myListBox.ItemsSource = myList;
             }
