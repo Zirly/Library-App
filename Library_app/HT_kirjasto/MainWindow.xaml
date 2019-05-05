@@ -8,6 +8,15 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <ListBox x:Name="myListBox" HorizontalAlignment="Left" Height="328" Margin="52,57,0,0" VerticalAlignment="Top" Width="235"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="378,122,0,0" VerticalAlignment="Top" Height="220">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn x:Name="Book" CanUserResize="False" Header="Book"/>
+                <DataGridTemplateColumn x:Name="Year" CanUserResize="False" Header="Year"/>
+                <DataGridTemplateColumn x:Name="Author" CanUserResize="False" Header="Author"/>
+                <DataGridTemplateColumn x:Name="Genre" CanUserResize="False" Header="Genre"/>
+                <DataGridTemplateColumn x:Name="ISBN" CanUserResize="False" Header="ISBN"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>
