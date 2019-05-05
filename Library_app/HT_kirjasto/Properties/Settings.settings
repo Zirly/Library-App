@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HT_kirjasto.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="connection_String" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\JAMK\Käyttöliitymät\HT_kirjasto\HT_kirjasto\kirjasto_servicebased_db.mdf;Integrated Security=True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
