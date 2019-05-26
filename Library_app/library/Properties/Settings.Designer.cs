@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace library.Properties
+namespace Library.Properties
 {
 
 
