@@ -7,6 +7,31 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition> <!-- MENU -->
+            <RowDefinition Height="*"></RowDefinition> <!-- VIEW -->
+            <RowDefinition Height="Auto"></RowDefinition> <!-- BUTTONS -->
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            File
+            Options
+        </Menu>
+        <Grid Grid.Row="1" Margin="10,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ListBox Grid.Column="0" Margin="0">
+                COLLECTION
+            </ListBox>
+            <ListBox Grid.Column="1" Margin="0">
+                DETAILS
+            </ListBox>
+        </Grid>
+        <StatusBar Grid.Row="2" Height="40" >
+            <Button Width="55" Margin="20,0,0,0" >Add Item</Button>
+            <Button HorizontalAlignment="Right" Margin="580,0,0,0" Width="30">Save</Button>
+            <Button Height="20" Width="40" Margin="20,0">Cancel</Button>
+        </StatusBar>
     </Grid>
 </Window>
