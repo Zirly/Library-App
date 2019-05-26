@@ -6,20 +6,39 @@
         xmlns:local="clr-namespace:Library"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Library.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Library Application" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <!-- MENU -->
             <RowDefinition Height="*"/>
+            <!-- SEARCH -->
+            <RowDefinition Height="4*"/>
             <!-- VIEW -->
             <RowDefinition Height="Auto"/>
             <!-- BUTTONS -->
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
-            <System:String>File Options</System:String>
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open"/>              
+                <MenuItem Header="_Save"/>
+                <Separator/>
+                <MenuItem Header="_Exit"/>
+            </MenuItem>
+            <MenuItem Header="_Options"/>
         </Menu>
-        <Grid Grid.Row="1" Margin="10,0" >
+        <Grid Grid.Row="1" Margin="10,0">
+            <TextBlock Width="Auto" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">Show</TextBlock>
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,10,0,0" Width="70">
+                <ComboBoxItem>Books</ComboBoxItem>
+                <ComboBoxItem>Authors</ComboBoxItem>
+                <ComboBoxItem>Genre</ComboBoxItem>
+            </ComboBox>
+            <TextBlock Width="Auto" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,10,0,0">Search</TextBlock>
+            
+
+        </Grid>
+        <Grid Grid.Row="2" Margin="10,0" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -33,11 +52,11 @@
                 <System:String>DETAILS</System:String>
             </ListBox>
         </Grid>
-        <StatusBar Grid.Row="2" Height="40" >
+        <StatusBar Grid.Row="3" Height="40" >
             <Button Width="55" Margin="20,0,0,0" Content="Add Item" />
             <Button Width="55" Margin="20,0,0,0" Click="TestDB_Click" Content="Test"/>
-            <Button HorizontalAlignment="Right" Margin="580,0,0,0" Width="30" Content="Save"/>
-            <Button Height="20" Width="40" Margin="20,0" Content="Cancel"/>
+            <Button HorizontalAlignment="Right" Margin="460,0,0,0" Width="55" Content="Save"/>
+            <Button Height="20" Width="55" Margin="20,0" Content="Cancel"/>
         </StatusBar>
     </Grid>
 </Window>
