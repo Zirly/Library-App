@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,22 @@ namespace Library
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void TestDB_Click(object sender, RoutedEventArgs e)
+        {
+            string sql = "SELECT * FROM book_table";
+            DataTable tbl = ViewModel.DatabaseConnection.Get_DataTable(sql);
+
+            if (tbl.Rows.Count >= 0)
+            {
+                List<string> bookTitles = new List<string>();
+                foreach (DataRow row in tbl.Rows)
+                {
+                    bookTitles.Add(row["title"].ToString());
+                }
+                lstTest.ItemsSource = bookTitles;
+            }
         }
     }
 }
