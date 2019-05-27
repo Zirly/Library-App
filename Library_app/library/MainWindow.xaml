@@ -45,8 +45,38 @@
             </Grid.ColumnDefinitions>
             <ListBox Grid.Column="0" Margin="0">
                 <System:String>COLLECTION</System:String>
-                <ListBox x:Name="lstTest" Height="100" Width="100"/>
-
+                <ListBox ItemsSource="{Binding}" x:Name="lstBooks" Height="100" Width="100">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Title}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <ListBox ItemsSource="{Binding}" x:Name="lstAuthors" Height="100" Width="100">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding FullName}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <ListBox ItemsSource="{Binding}" x:Name="lstGenres" Height="100" Width="100">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <ListBox ItemsSource="{Binding}" x:Name="lstRelations" Height="100" Width="100">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <TextBlock Text="{Binding RelationId}"/>
+                                <TextBlock Text="{Binding BookId}"/>
+                                <TextBlock Text="{Binding AuthorId}"/>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </ListBox>
             <ListBox Grid.Column="1" Margin="0">
                 <System:String>DETAILS</System:String>

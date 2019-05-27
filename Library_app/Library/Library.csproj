@@ -70,7 +70,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Author.cs" />
+    <Compile Include="Model\Authors.cs" />
     <Compile Include="Model\Books.cs" />
+    <Compile Include="Model\Genre.cs" />
+    <Compile Include="Model\Genres.cs" />
+    <Compile Include="Model\Relation.cs" />
+    <Compile Include="Model\Relations.cs" />
     <Compile Include="ViewModel\DatabaseConnection.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
