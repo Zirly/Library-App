@@ -118,11 +118,11 @@ namespace Library.ViewModel
                     {
                         while (reader.Read())
                         {
-                            Author author = new Author();
-                            author.AuthorId = reader.GetInt32(0);
-                            author.FirstName = reader[1] as string;
-                            author.LastName = reader.GetString(2);
-                            author.YearBirth = reader[3] as int? ?? default(int);
+                            int authorId = reader.GetInt32(0);
+                            string fName = reader[1] as string;
+                            string lName = reader.GetString(2);
+                            int year = reader[3] as int? ?? default(int);
+                            Author author = new Author(authorId, fName, lName, year);
                             Authors.AddAuthor(author);
                         }
                     }
