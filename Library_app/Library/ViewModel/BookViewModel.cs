@@ -22,6 +22,7 @@ namespace Library.ViewModel
                             if (relation.AuthorId == author.AuthorId)
                             {
                                 book.AddAuthor(author);
+                                author.AddBook(book);
                             }
                         }
                     }

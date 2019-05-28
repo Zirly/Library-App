@@ -32,6 +32,7 @@ namespace Library
             lstBooks.ItemsSource = Books.BooksList;
             
             lstBooks.SelectedIndex = 0;
+            List<Author> lista = Authors.AuthorsList;
         }
 
         private void LstBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)

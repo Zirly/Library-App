@@ -12,6 +12,7 @@ namespace Library.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int? YearBirth { get; set; }
+        public List<Book> BooksList { get; set; }
         public string FullName
         {
             get
@@ -19,6 +20,24 @@ namespace Library.Model
                 if (FirstName == null) return LastName;
                 return LastName + ", " + FirstName;
             }
+        }
+        //constructors
+        public Author()
+        {
+
+        }
+        public Author(int id, string fname, string lname, int year)
+        {
+            AuthorId = id;
+            FirstName = fname;
+            LastName = lname;
+            YearBirth = year;
+            BooksList = new List<Book>();
+        }
+        //methods
+        public void AddBook(Book book)
+        {
+            BooksList.Add(book);
         }
     }
 }
