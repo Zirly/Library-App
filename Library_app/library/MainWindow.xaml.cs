@@ -30,6 +30,7 @@ namespace Library
             DatabaseConnection.ReadDataFromDB();
             
             lstBooks.ItemsSource = Books.BooksList;
+            
             lstBooks.SelectedIndex = 0;
         }
 

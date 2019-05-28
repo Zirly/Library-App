@@ -28,6 +28,10 @@ namespace Library.Model
             AttachGenre(genreId);
             AuthorsList = new List<Author>();
         }
+        public void AddAuthor(Author author)
+        {
+            AuthorsList.Add(author);
+        }
 
         public void AttachGenre(int id)
         {

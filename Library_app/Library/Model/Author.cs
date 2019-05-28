@@ -16,7 +16,8 @@ namespace Library.Model
         {
             get
             {
-                return LastName + " " + FirstName;
+                if (FirstName == null) return LastName;
+                return LastName + ", " + FirstName;
             }
         }
     }
