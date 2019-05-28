@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Library.View.BooksListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library.View"
+        mc:Ignorable="d"
+        d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <DataTemplate x:Key="myTemplate" >
+            <Grid x:Name="GridItem">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Title}" HorizontalAlignment="Left" TextAlignment="Left"/>
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding YearPublish}" HorizontalAlignment="Right" TextAlignment="Right"/>
+                <ListBox Grid.Column="0" Grid.Row="1" BorderThickness="0" FontSize="10" ItemsSource="{Binding AuthorsList}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding FullName}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Genre_AtBook.Name}" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right"/>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <ListBox  Name="lstBooks" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource myTemplate}" SelectionChanged="LstBooks_SelectionChanged"/>
+    </Grid>
+</UserControl>

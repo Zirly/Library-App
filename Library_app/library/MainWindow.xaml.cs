@@ -28,10 +28,10 @@ namespace Library
         {
             InitializeComponent();
             DatabaseConnection.ReadDataFromDB();
-            
-            lstBooks.ItemsSource = Books.BooksList;
-            
-            lstBooks.SelectedIndex = 0;
+
+            BooksListControl.lstBooks.ItemsSource = Books.BooksList;
+
+            BooksListControl.lstBooks.SelectedIndex = 0;
 
 
             Author authorTest = Authors.GetAuthor(1);
@@ -39,16 +39,11 @@ namespace Library
 
         }
 
-        private void LstBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Book selected = (Book)lstBooks.SelectedItem;
-            BookDetailControl.detailData.DataContext = selected;
-        }
         private void Window_Activated(object sender, EventArgs e)
         {
-            lstBooks.ItemsSource = Books.BooksList;
-            lstBooks.Items.Refresh();
-            lstBooks.SelectedIndex = 0;
+            BooksListControl.lstBooks.ItemsSource = Books.BooksList;
+            BooksListControl.lstBooks.Items.Refresh();
+            BooksListControl.lstBooks.SelectedIndex = 0;
         }
     }
 }
