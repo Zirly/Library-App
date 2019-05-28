@@ -37,6 +37,7 @@ namespace Library.ViewModel
             ReadAuthorsFromDatabase();
             ReadRelationsFromDatabase();
             ReadBooksFromDatabase();
+            BookViewModel.GetAuthors();
         }
 
         internal static void ReadRelationsFromDatabase()

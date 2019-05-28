@@ -22,8 +22,15 @@
 
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Title}" HorizontalAlignment="Left" TextAlignment="Left"/>
                 <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding YearPublish}" HorizontalAlignment="Right" TextAlignment="Right"/>
-                <TextBlock Grid.Column="0" Grid.Row="1" Text="Author" HorizontalAlignment="Left" TextAlignment="Left"/>
-                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Genre_AtBook.Name}" HorizontalAlignment="Right" TextAlignment="Right"/>
+                <ListBox Grid.Column="0" Grid.Row="1" BorderThickness="0" FontSize="10" ItemsSource="{Binding AuthorsList}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding FullName}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Genre_AtBook.Name}" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right"/>
                
             </Grid>
         </DataTemplate>
@@ -74,10 +81,20 @@
             </ListBox>
         </Grid>
         <StatusBar Grid.Row="3" Height="40" >
-            <Button Width="55" Margin="20,0,0,0" Content="Add Item" />
-            <Button Width="55" Margin="20,0,0,0" Click="TestDB_Click" Content="Show all"/>
-            <Button HorizontalAlignment="Right" Margin="460,0,0,0" Width="55" Content="Save"/>
-            <Button Height="20" Width="55" Margin="20,0" Content="Cancel"/>
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel LastChildFill="False" />
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem DockPanel.Dock="Left" Margin="10,0">
+                <Button Width="55"  Content="Add Item" />
+            </StatusBarItem>
+            <StatusBarItem  DockPanel.Dock="Right" Margin="10,0">
+                <Button Width="55" Content="Cancel"/>
+            </StatusBarItem>
+            <StatusBarItem DockPanel.Dock="Right" >
+                <Button Width="55"  Content="Save"/>
+            </StatusBarItem>
         </StatusBar>
     </Grid>
 </Window>

@@ -30,13 +30,8 @@ namespace Library
             DatabaseConnection.ReadDataFromDB();
             
             lstBooks.ItemsSource = Books.BooksList;
-            lstBooks.SelectedIndex = 0;
-        }
-
-        private void TestDB_Click(object sender, RoutedEventArgs e)
-        {
             
-            //lstBooks.ItemsSource = Books.BooksList;     
+            lstBooks.SelectedIndex = 0;
         }
 
         private void LstBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
