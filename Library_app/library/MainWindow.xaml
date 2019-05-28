@@ -69,7 +69,8 @@
             </ListBox>
             <ListBox Grid.Column="1" Margin="0">
                 <System:String>DETAILS</System:String>
-                <view:BookDetail x:Name="BookDetailControl"/>
+                <view:BookDetail x:Name="BookDetailControl" d:IsHidden="True"/>
+                <view:AuthorDetail x:Name="AuthorDetailControl"/>
             </ListBox>
         </Grid>
         <StatusBar Grid.Row="3" Height="40" >
