@@ -34,12 +34,6 @@ namespace Library
             lstBooks.SelectedIndex = 0;
         }
 
-        private void TestDB_Click(object sender, RoutedEventArgs e)
-        {
-            
-            //lstBooks.ItemsSource = Books.BooksList;     
-        }
-
         private void LstBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Book selected = (Book)lstBooks.SelectedItem;
