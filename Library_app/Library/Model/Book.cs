@@ -13,6 +13,30 @@ namespace Library.Model
         public object Description { get; set; }
         public int? YearPublish { get; set; }
         public string Isbn { get; set; }
-        public int GenreId { get; set; }
+        public Genre Genre_AtBook { get; set; }
+        public Author Author_AtBook { get; set; }
+
+        public Book() { }
+
+        public Book(int id, string title, string description, int year, string isbn, int genreId)
+        {
+            BookId = id;
+            Title = title;
+            Description = description;
+            YearPublish = year;
+            Isbn = isbn;
+            AttachGenre(genreId);
+        }
+
+        public void AttachGenre(int id)
+        {
+            foreach (var item in Genres.GenresList)
+            {
+                if (item.GenreId == id)
+                {
+                    Genre_AtBook = item;
+                }
+            }
+        }
     }
 }

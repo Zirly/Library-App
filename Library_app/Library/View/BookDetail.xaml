@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Library.View.BookDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library.View"
+        mc:Ignorable="d"
+        d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <StackPanel x:Name="detailData" Orientation="Horizontal">
+            <StackPanel>
+                <TextBox Text="{Binding Title}" />
+                <TextBox Text="{Binding Isbn}" />
+                <TextBox Text="{Binding YearPublish}" />
+                <TextBox Text="{Binding Genre_AtBook.Name}" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

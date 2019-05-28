@@ -142,15 +142,15 @@ namespace Library.ViewModel
                     {
                         while (reader.Read())
                         {
-                            Book book = new Book();
-                            book.BookId = reader.GetInt32(0);
-                            book.Title = reader.GetString(1);
-                            book.Description = reader[2] as string;
-                            book.YearPublish = reader[3] as int? ?? default(int);
-                            book.Isbn = reader[4] as string;
-                            book.GenreId = reader.GetInt32(5);
-                            Books.AddBook(book);
+                            int bookId = reader.GetInt32(0);
+                            string bookTitle = reader.GetString(1);
+                            string description = reader[2] as string;
+                            int year = reader[3] as int? ?? default(int);
+                            string isbn = reader[4] as string;
+                            int genreId = reader.GetInt32(5);
 
+                            Book book = new Book(bookId, bookTitle, description, year, isbn, genreId);
+                            Books.AddBook(book);
                         }
                     }
                     reader.Close();

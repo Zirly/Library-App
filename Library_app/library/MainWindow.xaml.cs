@@ -27,19 +27,30 @@ namespace Library
         public MainWindow()
         {
             InitializeComponent();
-            DatabaseConnection.ReadBooksFromDatabase();
-            DatabaseConnection.ReadAuthorsFromDatabase();
             DatabaseConnection.ReadGenresFromDatabase();
+            DatabaseConnection.ReadAuthorsFromDatabase();
             DatabaseConnection.ReadRelationsFromDatabase();
-
+            DatabaseConnection.ReadBooksFromDatabase();
+            lstBooks.ItemsSource = Books.BooksList;
+            lstBooks.SelectedIndex = 0;
         }
 
         private void TestDB_Click(object sender, RoutedEventArgs e)
         {
+            
+            //lstBooks.ItemsSource = Books.BooksList;     
+        }
+
+        private void LstBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Book selected = (Book)lstBooks.SelectedItem;
+            BookDetailControl.detailData.DataContext = selected;
+        }
+        private void Window_Activated(object sender, EventArgs e)
+        {
             lstBooks.ItemsSource = Books.BooksList;
-            lstAuthors.ItemsSource = Authors.AuthorsList;
-            lstGenres.ItemsSource = Genres.GenresList;
-            lstRelations.ItemsSource = Relations.RelationsList;
+            lstBooks.Items.Refresh();
+            lstBooks.SelectedIndex = 0;
         }
     }
 }
