@@ -7,13 +7,40 @@
         mc:Ignorable="d"
         d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <StackPanel x:Name="detailData" Orientation="Horizontal">
-            <StackPanel>
-                <TextBox Text="{Binding Title}" />
-                <TextBox Text="{Binding Isbn}" />
-                <TextBox Text="{Binding YearPublish}" />
-                <TextBox Text="{Binding Genre_AtBook.Name}" />
-            </StackPanel>
+        <StackPanel x:Name="detailData" Orientation="Vertical">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Title:" />
+                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Title}"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:" />
+                <TextBox Grid.Column="1" Grid.Row="1"  Text="Author"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Year of publishing:" />
+                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding YearPublish}"/>
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Genre:" />
+                <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Genre_AtBook.Name}"/>
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="Isbn:" />
+                <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding Isbn}"/>
+            </Grid>
+            
+            <TextBlock Text="Description:" />
+            <TextBox Text="{Binding Description}" Margin="5,10,10,0" 
+                     Width="350" Height="Auto"
+                     HorizontalScrollBarVisibility="Visible"
+                     TextWrapping="Wrap"
+                     TextAlignment="Left"
+                     MaxLength="500"
+                     IsReadOnly="False"
+                     AcceptsReturn="True" />
         </StackPanel>
     </Grid>
 </UserControl>

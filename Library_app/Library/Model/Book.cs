@@ -14,7 +14,7 @@ namespace Library.Model
         public int? YearPublish { get; set; }
         public string Isbn { get; set; }
         public Genre Genre_AtBook { get; set; }
-        public Author Author_AtBook { get; set; }
+        public List<Author> AuthorsList { get; set; }
 
         public Book() { }
 
@@ -26,6 +26,7 @@ namespace Library.Model
             YearPublish = year;
             Isbn = isbn;
             AttachGenre(genreId);
+            AuthorsList = new List<Author>();
         }
 
         public void AttachGenre(int id)

@@ -31,6 +31,14 @@ namespace Library.ViewModel
 
         }
 
+        internal static void ReadDataFromDB()
+        {
+            ReadGenresFromDatabase();
+            ReadAuthorsFromDatabase();
+            ReadRelationsFromDatabase();
+            ReadBooksFromDatabase();
+        }
+
         internal static void ReadRelationsFromDatabase()
         {
             try

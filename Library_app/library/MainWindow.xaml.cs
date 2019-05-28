@@ -27,10 +27,8 @@ namespace Library
         public MainWindow()
         {
             InitializeComponent();
-            DatabaseConnection.ReadGenresFromDatabase();
-            DatabaseConnection.ReadAuthorsFromDatabase();
-            DatabaseConnection.ReadRelationsFromDatabase();
-            DatabaseConnection.ReadBooksFromDatabase();
+            DatabaseConnection.ReadDataFromDB();
+            
             lstBooks.ItemsSource = Books.BooksList;
             lstBooks.SelectedIndex = 0;
         }
