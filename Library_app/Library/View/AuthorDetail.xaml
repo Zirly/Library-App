@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <StackPanel x:Name="detailData" Orientation="Vertical">
+        <StackPanel x:Name="authorDetailData" Orientation="Vertical">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

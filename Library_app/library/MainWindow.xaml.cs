@@ -32,6 +32,11 @@ namespace Library
             lstBooks.ItemsSource = Books.BooksList;
             
             lstBooks.SelectedIndex = 0;
+
+
+            Author authorTest = Authors.GetAuthor(1);
+            AuthorDetailControl.authorDetailData.DataContext = authorTest;
+
         }
 
         private void LstBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
