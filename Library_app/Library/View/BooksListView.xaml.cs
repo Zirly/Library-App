@@ -23,6 +23,7 @@ namespace Library.View
         public BooksListView()
         {
             InitializeComponent();
+            lstBooks.ItemsSource = Books.BooksList;
         }
 
         private void LstBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -31,7 +32,7 @@ namespace Library.View
             var mw = Application.Current.Windows
                 .Cast<Window>()
                 .FirstOrDefault(window => window is MainWindow) as MainWindow;
-            mw.BookDetailControl.detailData.DataContext = selected;   
+            //mw.BookDetailControl.detailData.DataContext = selected;   
         }
     }
 }

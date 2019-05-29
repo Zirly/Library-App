@@ -10,23 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Library.Model;
 
 namespace Library.View
 {
     /// <summary>
-    /// Interaction logic for AuthorsListView.xaml
+    /// Interaction logic for GenresListView.xaml
     /// </summary>
-    public partial class AuthorsListView : UserControl
+    public partial class GenresListView : UserControl
     {
-        public AuthorsListView()
+        public GenresListView()
         {
             InitializeComponent();
-            lstAuthors.ItemsSource = Authors.AuthorsList;
+            lstGenres.ItemsSource = Genres.GenresList;
         }
 
-        private void LstAuthors_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void LstGenres_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

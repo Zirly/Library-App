@@ -18,6 +18,7 @@ namespace Library.Model
             Genres.Count = 0;
 
         }
+
         //TODO id
         public static void AddGenre(Genre genre)
         {

@@ -29,21 +29,47 @@ namespace Library
             InitializeComponent();
             DatabaseConnection.ReadDataFromDB();
 
-            BooksListControl.lstBooks.ItemsSource = Books.BooksList;
+            //BooksListControl.lstBooks.ItemsSource = Books.BooksList;
 
-            BooksListControl.lstBooks.SelectedIndex = 0;
+            //BooksListControl.lstBooks.SelectedIndex = 0;
 
-
-            Author authorTest = Authors.GetAuthor(1);
-            AuthorDetailControl.authorDetailData.DataContext = authorTest;
 
         }
 
-        private void Window_Activated(object sender, EventArgs e)
+        private void BooksSelection_Selected(object sender, RoutedEventArgs e)
         {
-            BooksListControl.lstBooks.ItemsSource = Books.BooksList;
-            BooksListControl.lstBooks.Items.Refresh();
-            BooksListControl.lstBooks.SelectedIndex = 0;
+            
+           
+            DataContext = new
+            {
+                collection = new BooksListViewModel(),
+                detail = new BookDetailViewModel()
+            };
         }
+
+        private void AuthorsSelection_Selected(object sender, RoutedEventArgs e)
+        {
+            DataContext = new
+            {
+                collection = new AuthorsListViewModel(),
+                detail = new AuthorDetailViewModel()
+            };
+        }
+
+        private void GenresSelection_Selected(object sender, RoutedEventArgs e)
+        {
+            DataContext = new
+            {
+                collection = new GenresListViewModel(),
+                detail = new GenreDetailViewModel()
+            };
+        }
+        /*
+private void Window_Activated(object sender, EventArgs e)
+{
+BooksListControl.lstBooks.ItemsSource = Books.BooksList;
+BooksListControl.lstBooks.Items.Refresh();
+BooksListControl.lstBooks.SelectedIndex = 0;
+} */
     }
 }
