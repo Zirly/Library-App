@@ -77,13 +77,48 @@
     <Compile Include="Model\Genres.cs" />
     <Compile Include="Model\Relation.cs" />
     <Compile Include="Model\Relations.cs" />
+    <Compile Include="ViewModel\AuthorDetailViewModel.cs" />
+    <Compile Include="ViewModel\AuthorsListViewModel.cs" />
+    <Compile Include="ViewModel\BookDetailViewModel.cs" />
+    <Compile Include="ViewModel\BooksListViewModel.cs" />
     <Compile Include="ViewModel\BookViewModel.cs" />
     <Compile Include="ViewModel\DatabaseConnection.cs" />
+    <Compile Include="ViewModel\ItemAddViewModel\AuthorAddViewModel.cs" />
+    <Compile Include="ViewModel\ItemAddViewModel\BookAddViewModel.cs" />
+    <Compile Include="ViewModel\GenreDetailViewModel.cs" />
+    <Compile Include="ViewModel\GenresListViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.xaml.cs">
+      <DependentUpon>MainViewModel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AuthorDetail.xaml.cs">
       <DependentUpon>AuthorDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AuthorDetailView.xaml.cs">
+      <DependentUpon>AuthorDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AuthorsListView.xaml.cs">
+      <DependentUpon>AuthorsListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ItemAdd.xaml.cs">
+      <DependentUpon>ItemAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\BookDetail.xaml.cs">
       <DependentUpon>BookDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BooksListView.xaml.cs">
+      <DependentUpon>BooksListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GenreDetailView.xaml.cs">
+      <DependentUpon>GenreDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GenresListView.xaml.cs">
+      <DependentUpon>GenresListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ItemAddView\AuthorAddView.xaml.cs">
+      <DependentUpon>AuthorAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ItemAddView\BookAddView.xaml.cs">
+      <DependentUpon>BookAddView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -97,11 +132,47 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ViewModel\MainViewModel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AuthorDetail.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\AuthorDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AuthorsListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ItemAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\BookDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BooksListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GenreDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GenresListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ItemAddView\AuthorAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ItemAddView\BookAddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
