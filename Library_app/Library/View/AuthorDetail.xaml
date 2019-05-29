@@ -26,13 +26,9 @@
                 <TextBox Grid.Column="1" Grid.Row="1"  Text="{Binding LastName}"/>
                 <TextBlock Grid.Column="0" Grid.Row="2" Text="Year of birth:" />
                 <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding YearBirth}"/>
-                <TextBlock Grid.Column="0" Grid.Row="3" Text="Genre:" />
-                <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Genre_AtBook.Name}"/>
-                <TextBlock Grid.Column="0" Grid.Row="4" Text="Isbn:" />
-                <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding Isbn}"/>
             </Grid>
             
-            <TextBlock Text="Description:" />
+            <TextBlock Text="Books:" />
             <TextBox Text="{Binding Description}" Margin="5,10,10,0" 
                      Width="350" Height="Auto"
                      HorizontalScrollBarVisibility="Visible"

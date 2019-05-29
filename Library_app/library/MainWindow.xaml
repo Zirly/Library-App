@@ -59,7 +59,7 @@
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
             <StatusBarItem DockPanel.Dock="Left" Margin="10,0">
-                <Button Width="55"  Content="Add Item" />
+                <Button Width="55"  Content="Add Item" Click="Item_Add_Button_Click"/>
             </StatusBarItem>
             <StatusBarItem  DockPanel.Dock="Right" Margin="10,0">
                 <Button Width="55" Content="Cancel"/>
