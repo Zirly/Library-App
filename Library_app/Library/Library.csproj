@@ -83,6 +83,8 @@
     <Compile Include="ViewModel\BooksListViewModel.cs" />
     <Compile Include="ViewModel\BookViewModel.cs" />
     <Compile Include="ViewModel\DatabaseConnection.cs" />
+    <Compile Include="ViewModel\ItemAddViewModel\AuthorAddViewModel.cs" />
+    <Compile Include="ViewModel\ItemAddViewModel\BookAddViewModel.cs" />
     <Compile Include="ViewModel\GenreDetailViewModel.cs" />
     <Compile Include="ViewModel\GenresListViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.xaml.cs">
@@ -97,6 +99,9 @@
     <Compile Include="View\AuthorsListView.xaml.cs">
       <DependentUpon>AuthorsListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ItemAdd.xaml.cs">
+      <DependentUpon>ItemAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\BookDetail.xaml.cs">
       <DependentUpon>BookDetail.xaml</DependentUpon>
     </Compile>
@@ -108,6 +113,12 @@
     </Compile>
     <Compile Include="View\GenresListView.xaml.cs">
       <DependentUpon>GenresListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ItemAddView\AuthorAddView.xaml.cs">
+      <DependentUpon>AuthorAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ItemAddView\BookAddView.xaml.cs">
+      <DependentUpon>BookAddView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +148,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ItemAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\BookDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,6 +165,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\GenresListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ItemAddView\AuthorAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ItemAddView\BookAddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

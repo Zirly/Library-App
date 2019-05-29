@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Library.View;
 using Library.Model;
 using Library.ViewModel;
 
@@ -56,6 +57,18 @@ namespace Library
             };
         }
 
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            BooksListControl.lstBooks.ItemsSource = Books.BooksList;
+            BooksListControl.lstBooks.Items.Refresh();
+            BooksListControl.lstBooks.SelectedIndex = 0;
+        }
+
+        private void Item_Add_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ItemAdd itemAdd = new ItemAdd();
+            itemAdd.Show();
+        }
         private void GenresSelection_Selected(object sender, RoutedEventArgs e)
         {
             DataContext = new
