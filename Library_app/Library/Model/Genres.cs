@@ -9,21 +9,22 @@ namespace Library.Model
     public static class Genres
     {
         public static List<Genre> GenresList { get; set; }
-        public static int Count { get; set; }
+        public static int LastIndex { get; set; }
 
         // tämä pois?
         static Genres()
         {
             Genres.GenresList = new List<Genre>();
-            Genres.Count = 0;
+            Genres.LastIndex = GenresList.Count + 1;
 
         }
 
         //TODO id
         public static void AddGenre(Genre genre)
         {
+            genre.GenreId = LastIndex;
+            LastIndex++;
             GenresList.Add(genre);
-            Count++;
         }
 
         public static Genre GetGenre(int id)

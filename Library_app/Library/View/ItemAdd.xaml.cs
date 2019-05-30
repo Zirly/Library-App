@@ -49,12 +49,15 @@ namespace Library.View
 
         private void ItemAdd_Click(object sender, RoutedEventArgs e)
         {
-            
 
-            //AddingGenre(ga.MyText);
-            
-            
+            GenreAddViewModel ga = (GenreAddViewModel)DataContext;
+            Genre genre = ga.MyGenre;
 
+            Genres.AddGenre(genre);
+            MessageBox.Show("Genre added!");
+
+
+            /*
             
             switch (cbAddItem.SelectedIndex)
             {
@@ -73,7 +76,7 @@ namespace Library.View
                 default:
                     MessageBox.Show("Error!");
                     break;
-            } 
+            } */
         }
 
         private bool AddingBook(string text)

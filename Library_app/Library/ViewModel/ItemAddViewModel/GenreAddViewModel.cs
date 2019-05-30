@@ -12,17 +12,17 @@ namespace Library.ViewModel.ItemAddViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private string myText;
-        public string MyText
-
+        private Genre myGenre = new Genre();
+        public Genre MyGenre
         {
-            get { return this.myText; }
+            get { return this.myGenre; }
             set
             {
-                this.myText = value;
-                OnPropertyChanged("MyText");
+                this.myGenre = value;
+                OnPropertyChanged("MyGenre");
             }
         }
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
