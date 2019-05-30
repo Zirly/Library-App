@@ -36,13 +36,15 @@ namespace Library.ViewModel.ItemAddViewModel
             }
         }
 
-        protected void OnPropertyChanged(string title)
+        protected void OnPropertyChanged(string text)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
-                handler(this, new PropertyChangedEventArgs(title));
+                handler(this, new PropertyChangedEventArgs(text));
             }
         }
+
+
     }
 }
