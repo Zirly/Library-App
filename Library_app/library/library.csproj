@@ -87,6 +87,12 @@
     <Compile Include="ViewModel\ItemAddViewModel\BookAddViewModel.cs" />
     <Compile Include="ViewModel\GenreDetailViewModel.cs" />
     <Compile Include="ViewModel\GenresListViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.xaml.cs">
+	<Compile Include="ViewModel\ItemAddViewModel\GenreAddViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.xaml.cs">
+	<Compile Include="View\AuthorDetail.xaml.cs">
+      <DependentUpon>MainViewModel.xaml</DependentUpon>
+
     <Compile Include="View\DetailView.xaml.cs">
       <DependentUpon>DetailView.xaml</DependentUpon>
     </Compile>
@@ -116,6 +122,9 @@
     </Compile>
     <Compile Include="View\ItemAddView\BookAddView.xaml.cs">
       <DependentUpon>BookAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ItemAddView\GenreAddView.xaml.cs">
+      <DependentUpon>GenreAddView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -166,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ItemAddView\BookAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ItemAddView\GenreAddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

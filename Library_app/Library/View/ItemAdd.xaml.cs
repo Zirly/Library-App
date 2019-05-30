@@ -39,5 +39,10 @@ namespace Library.View
         {
             DataContext = new AuthorAddViewModel();
         }
+
+        private void GenreAddView_Selected(object sender, RoutedEventArgs e)
+        {
+            DataContext = new GenreAddViewModel();
+        }
     }
 }
