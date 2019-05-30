@@ -20,14 +20,14 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="0" Grid.Row="0" Text="Name:"/>
-        <TextBox Text="{Binding MyBookTitle, Mode=TwoWay}" x:Name="bookTitle" x:FieldModifier="public" Grid.Column="1" Grid.Row="0"/>
+        <TextBox Text="{Binding MyBook.Title, Mode=TwoWay}" x:Name="bookTitle" x:FieldModifier="public" Grid.Column="1" Grid.Row="0"/>
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:"/>
         <ComboBox Grid.Column="1" Grid.Row="1">
             <ComboBoxItem Content="New Author"/>
             <ComboBoxItem Content="Authorlist"/>
         </ComboBox>
         <TextBlock Grid.Column="0" Grid.Row="2" Text="Year:"/>
-        <TextBox Text="{Binding MyBookYear, Mode=TwoWay}" x:Name="bookYear" x:FieldModifier="public" Grid.Column="1" Grid.Row="2"/>
+        <TextBox Text="{Binding MyBook.YearPublish, Mode=TwoWay}" x:Name="bookYear" x:FieldModifier="public" Grid.Column="1" Grid.Row="2"/>
         <TextBlock Grid.Column="0" Grid.Row="3" Text="Description:"/>
         <TextBox Grid.Column="1" Grid.Row="3"/>
         <TextBlock Grid.Column="0" Grid.Row="4" Text="ISBN:"/>

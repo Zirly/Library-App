@@ -12,6 +12,17 @@ namespace Library.ViewModel.ItemAddViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private Book myBook;
+        public Book MyBook
+        {
+            get { return this.myBook; }
+            set
+            {
+                this.myBook = value;
+                OnPropertyChanged("MyBook");
+            }
+        }
+        /*
         private string myBookTitle;
         public string MyBookTitle
 
@@ -34,7 +45,7 @@ namespace Library.ViewModel.ItemAddViewModel
                 this.myBookYear = value;
                 OnPropertyChanged("MyBookYear");
             }
-        }
+        } */
 
         protected void OnPropertyChanged(string text)
         {

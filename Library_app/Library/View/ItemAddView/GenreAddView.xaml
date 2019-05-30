@@ -15,6 +15,6 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="0" Grid.Row="0" Text="Name:"/>
-        <TextBox Text="{Binding MyText, Mode=TwoWay}" x:Name="genreName" x:FieldModifier="public" Grid.Column="1" Grid.Row="0"/>
+        <TextBox Text="{Binding MyGenre.Name, Mode=TwoWay}" x:Name="genreName" x:FieldModifier="public" Grid.Column="1" Grid.Row="0"/>
     </Grid>
 </UserControl>
