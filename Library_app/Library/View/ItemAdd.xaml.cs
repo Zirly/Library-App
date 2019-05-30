@@ -50,38 +50,56 @@ namespace Library.View
         private void ItemAdd_Click(object sender, RoutedEventArgs e)
         {
             
-            GenreAddViewModel ga = (GenreAddViewModel)DataContext;
-            AddingGenre(ga.MyText);
 
+            //AddingGenre(ga.MyText);
+            
             
 
-            /*
+            
             switch (cbAddItem.SelectedIndex)
             {
                 case 0:
-                    MessageBox.Show("Book added!");
+                    BookAddViewModel ba = (BookAddViewModel)DataContext;
+                    AddingBook(ba.MyBookTitle);
                     break;
                 case 1:
-                    MessageBox.Show("Author added!");
+                    AuthorAddViewModel aa = (AuthorAddViewModel)DataContext;
+                    AddingAuthor(aa.MyFirstName);
                     break;
                 case 2:
-                    if (AddingGenre()) { MessageBox.Show("Genre added!"); }
-                    
-                   
+                    GenreAddViewModel ga = (GenreAddViewModel)DataContext;
+                    AddingGenre(ga.MyText);
                     break;
                 default:
                     MessageBox.Show("Error!");
                     break;
-            } */
+            } 
+        }
+
+        private bool AddingBook(string text)
+        {
+            Book book = new Book();
+            book.Title = text;
+            Books.AddBook(book);
+            MessageBox.Show("Book added!");
+            return true;
+        }
+
+        private bool AddingAuthor(string text)
+        {
+            Author author = new Author();
+            author.FirstName = text;
+            Authors.AddAuthor(author);
+            MessageBox.Show("Author added!");
+            return true;
         }
 
         private bool AddingGenre(string text)
         {
-            MessageBox.Show(text);
-            //Genre genre = new Genre();
-            //GenreAddView genreAddView = new GenreAddView(genreName.);
-            //genre.Name =
-            //Genres.AddGenre(genre);
+            Genre genre = new Genre();
+            genre.Name = text;
+            Genres.AddGenre(genre);
+            MessageBox.Show("Genre added!");
             return true;
         }
     }
