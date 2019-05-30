@@ -89,8 +89,8 @@
     <Compile Include="ViewModel\GenresListViewModel.cs" />
     <Compile Include="View\DetailView.xaml.cs">
       <DependentUpon>DetailView.xaml</DependentUpon>
-    <Compile Include="ViewModel\ItemAddViewModel\GenreAddViewModel.cs" />
     </Compile>
+    <Compile Include="ViewModel\ItemAddViewModel\GenreAddViewModel.cs" />
     <Compile Include="View\AuthorDetailView.xaml.cs">
       <DependentUpon>AuthorDetailView.xaml</DependentUpon>
     </Compile>
