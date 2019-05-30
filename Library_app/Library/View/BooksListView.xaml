@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <DataTemplate x:Key="myTemplate" >
+        <DataTemplate x:Key="bookTemplate" >
             <Grid x:Name="GridItem">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -32,6 +32,6 @@
         </DataTemplate>
     </UserControl.Resources>
     <Grid>
-        <ListBox  Name="lstBooks" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource myTemplate}" SelectionChanged="LstBooks_SelectionChanged"/>
+        <ListBox  Name="lstBooks" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource bookTemplate}" SelectionChanged="LstBooks_SelectionChanged"/>
     </Grid>
 </UserControl>

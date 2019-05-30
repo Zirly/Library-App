@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Library.ViewModel
+namespace Library.View
 {
     /// <summary>
-    /// Interaction logic for MainViewModel.xaml
+    /// Interaction logic for GenreDetailView.xaml
     /// </summary>
-    public partial class MainViewModel : Window
+    public partial class GenreDetailView : UserControl
     {
-        public MainViewModel()
+        public GenreDetailView()
         {
             InitializeComponent();
         }

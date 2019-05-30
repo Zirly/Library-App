@@ -28,10 +28,11 @@ namespace Library.Model
         public static Book GetBook(int id)
         {
             Book book = new Book();
+
             foreach (var item in BooksList)
             {
                 if (item.BookId == id) book = item;
-            }
+            } 
             return book;
         }
         public static Book GetBook(string name)

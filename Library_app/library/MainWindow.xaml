@@ -5,9 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library"
         xmlns:view="clr-namespace:Library.View"
+        xmlns:viewmodel="clr-namespace:Library.ViewModel"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Library.MainWindow"
         mc:Ignorable="d"
         Title="Library Application" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Name="booksListTemplate" DataType="{x:Type viewmodel:BooksListViewModel}">
+            <view:BooksListView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="authorsListTemplate" DataType="{x:Type viewmodel:AuthorsListViewModel}">
+            <view:AuthorsListView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="genresListTemplate" DataType="{x:Type viewmodel:GenresListViewModel}">
+            <view:GenresListView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="genreDetailTemplate" DataType="{x:Type viewmodel:GenreDetailViewModel}">
+            <view:GenreDetailView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="authorDetailTemplate" DataType="{x:Type viewmodel:AuthorDetailViewModel}">
+            <view:AuthorDetailView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="bookDetailTemplate" DataType="{x:Type viewmodel:BookDetailViewModel}">
+            <view:BookDetail DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -31,9 +52,9 @@
         <Grid Grid.Row="1" Margin="10,0">
             <TextBlock Width="Auto" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">Show</TextBlock>
             <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,10,0,0" Width="70">
-                <ComboBoxItem IsSelected="True">Books</ComboBoxItem>
-                <ComboBoxItem>Authors</ComboBoxItem>
-                <ComboBoxItem>Genre</ComboBoxItem>
+                <ComboBoxItem Selected="BooksSelection_Selected" IsSelected="True" >Books</ComboBoxItem>
+                <ComboBoxItem Selected="AuthorsSelection_Selected" >Authors</ComboBoxItem>
+                <ComboBoxItem Selected="GenresSelection_Selected">Genre</ComboBoxItem>
             </ComboBox>
             <TextBlock Width="Auto" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,10,0,0">Search</TextBlock>
         </Grid>
@@ -44,12 +65,17 @@
             </Grid.ColumnDefinitions>
             <ListBox Grid.Column="0" Margin="0" HorizontalContentAlignment="Stretch" >
                 <System:String>COLLECTION</System:String>
-                <view:BooksListView x:Name="BooksListControl"/>
+                <ContentControl x:Name="collection" Content="{Binding collection}"/>
+                <!--<view:BooksListView x:Name="BooksListControl"/> -->
             </ListBox>
             <ListBox Grid.Column="1" Margin="0">
                 <System:String>DETAILS</System:String>
+                <ContentControl x:Name="detail" Content="{Binding detail}"/>
+                <!--
+                <view:DetailView x:Name="DetailControl"/>
+                <ContentControl Content="{Binding}"/>
                 <view:BookDetail x:Name="BookDetailControl"/>
-                <view:AuthorDetail x:Name="AuthorDetailControl"/>
+                <view:AuthorDetail x:Name="AuthorDetailControl"/> -->
             </ListBox>
         </Grid>
         <StatusBar Grid.Row="3" Height="40" >

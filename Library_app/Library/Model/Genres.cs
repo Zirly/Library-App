@@ -18,6 +18,7 @@ namespace Library.Model
             Genres.Count = 0;
 
         }
+
         //TODO id
         public static void AddGenre(Genre genre)
         {
@@ -27,6 +28,7 @@ namespace Library.Model
 
         public static Genre GetGenre(int id)
         {
+           
             Genre genre = new Genre();
             foreach (var item in GenresList)
             {

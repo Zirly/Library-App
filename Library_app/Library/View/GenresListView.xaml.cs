@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Library.Model;
 using Library.ViewModel;
@@ -17,30 +18,28 @@ using Library.ViewModel;
 namespace Library.View
 {
     /// <summary>
-    /// Interaction logic for AuthorsListView.xaml
+    /// Interaction logic for GenresListView.xaml
     /// </summary>
-    public partial class AuthorsListView : UserControl
+    public partial class GenresListView : UserControl
     {
-        public AuthorsListView()
+        public GenresListView()
         {
             InitializeComponent();
-            lstAuthors.ItemsSource = Authors.AuthorsList;
+            lstGenres.ItemsSource = Genres.GenresList;
         }
 
-        private void LstAuthors_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void LstGenres_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Author selected = (Author)lstAuthors.SelectedItem;
+            Genre selected = (Genre)lstGenres.SelectedItem;
             var mw = Application.Current.Windows
                 .Cast<Window>()
                 .FirstOrDefault(window => window is MainWindow) as MainWindow;
 
             mw.DataContext = new
             {
-                collection = new AuthorsListViewModel(),
-                detail = new AuthorDetailViewModel(selected)
+                collection = new GenresListViewModel(),
+                detail = new GenreDetailViewModel(selected)
             };
-
-
         }
     }
 }

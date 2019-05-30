@@ -21,9 +21,9 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="Title:" />
-                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Title}"/>
+                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MyBook.Title}"/>
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:" />
-                <ListBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding AuthorsList}">
+                <ListBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding MyBook.AuthorsList}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding FullName}"/>
@@ -31,15 +31,15 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
                 <TextBlock Grid.Column="0" Grid.Row="2" Text="Year of publishing:" />
-                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding YearPublish}"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding MyBook.YearPublish}"/>
                 <TextBlock Grid.Column="0" Grid.Row="3" Text="Genre:" />
-                <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Genre_AtBook.Name}"/>
+                <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding MyBook.Genre_AtBook.Name}"/>
                 <TextBlock Grid.Column="0" Grid.Row="4" Text="Isbn:" />
-                <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding Isbn}"/>
+                <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding MyBook.Isbn}"/>
             </Grid>
             
             <TextBlock Text="Description:" />
-            <TextBox Text="{Binding Description}" Margin="5,10,10,0" 
+            <TextBox Text="{Binding MyBook.Description}" Margin="5,10,10,0" 
                      Width="350" Height="Auto"
                      HorizontalScrollBarVisibility="Visible"
                      TextWrapping="Wrap"

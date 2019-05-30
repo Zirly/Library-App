@@ -1,12 +1,29 @@
-﻿<UserControl x:Class="Library.View.AuthorDetail"
+﻿<UserControl x:Class="Library.View.DetailView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.View"
+        xmlns:viewmodel="clr-namespace:Library.ViewModel"
+        xmlns:view="clr-namespace:Library.View"
         mc:Ignorable="d"
         d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type viewmodel:BookDetailViewModel}">
+            <view:BookDetail/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodel:AuthorDetailViewModel}">
+            <view:AuthorDetailView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodel:GenreDetailViewModel}">
+            <view:GenreDetailView/>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid>
+        <StackPanel x:Name="spDetail">
+            <ContentControl x:Name="detailContent" Content="{Binding}"/>
+        </StackPanel>
+        <!--
         <StackPanel x:Name="authorDetailData" Orientation="Vertical">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -37,6 +54,6 @@
                      MaxLength="500"
                      IsReadOnly="False"
                      AcceptsReturn="True" />
-        </StackPanel>
+        </StackPanel> -->
     </Grid>
 </UserControl>

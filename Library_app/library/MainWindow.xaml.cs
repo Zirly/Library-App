@@ -29,28 +29,53 @@ namespace Library
         {
             InitializeComponent();
             DatabaseConnection.ReadDataFromDB();
-
-            BooksListControl.lstBooks.ItemsSource = Books.BooksList;
-
-            BooksListControl.lstBooks.SelectedIndex = 0;
-
-
-            Author authorTest = Authors.GetAuthor(1);
-            AuthorDetailControl.authorDetailData.DataContext = authorTest;
-
+            DataContext = new
+            {
+                collection = new BooksListViewModel(),
+                detail = new BookDetailViewModel(Books.GetBook(1))
+            };
         }
 
-        private void Window_Activated(object sender, EventArgs e)
+        private void BooksSelection_Selected(object sender, RoutedEventArgs e)
         {
-            BooksListControl.lstBooks.ItemsSource = Books.BooksList;
-            BooksListControl.lstBooks.Items.Refresh();
-            BooksListControl.lstBooks.SelectedIndex = 0;
+            DataContext = new
+            {
+                collection = new BooksListViewModel(),      
+                detail = new BookDetailViewModel(Books.GetBook(1))       
+            };
         }
 
+        private void AuthorsSelection_Selected(object sender, RoutedEventArgs e)
+        {
+            DataContext = new
+            {
+                collection = new AuthorsListViewModel(),
+                detail = new AuthorDetailViewModel(Authors.GetAuthor(1))
+            };
+
+        }
+        private void GenresSelection_Selected(object sender, RoutedEventArgs e)
+        {
+            DataContext = new
+            {
+                collection = new GenresListViewModel(),
+                detail = new GenreDetailViewModel(Genres.GetGenre(1))
+            };
+        
+        }
         private void Item_Add_Button_Click(object sender, RoutedEventArgs e)
         {
             ItemAdd itemAdd = new ItemAdd();
             itemAdd.Show();
         }
+        
+        /*
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            BooksListControl.lstBooks.ItemsSource = Books.BooksList;
+            BooksListControl.lstBooks.Items.Refresh();
+            BooksListControl.lstBooks.SelectedIndex = 0;
+        } 
+        */
     }
 }
