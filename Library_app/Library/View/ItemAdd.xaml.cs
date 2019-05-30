@@ -49,7 +49,13 @@ namespace Library.View
 
         private void ItemAdd_Click(object sender, RoutedEventArgs e)
         {
+            
+            GenreAddViewModel ga = (GenreAddViewModel)DataContext;
+            AddingGenre(ga.MyText);
 
+            
+
+            /*
             switch (cbAddItem.SelectedIndex)
             {
                 case 0:
@@ -66,15 +72,16 @@ namespace Library.View
                 default:
                     MessageBox.Show("Error!");
                     break;
-            }
+            } */
         }
 
-        private bool AddingGenre()
+        private bool AddingGenre(string text)
         {
-            Genre genre = new Genre();
-            GenreAddView genreAddView = new GenreAddView(genreName.);
+            MessageBox.Show(text);
+            //Genre genre = new Genre();
+            //GenreAddView genreAddView = new GenreAddView(genreName.);
             //genre.Name =
-            Genres.AddGenre(genre);
+            //Genres.AddGenre(genre);
             return true;
         }
     }
