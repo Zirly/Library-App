@@ -30,5 +30,18 @@ namespace Library.ViewModel
                 }
             }
         }
+        public static void GetBooks()
+        {
+            foreach (var genre in Model.Genres.GenresList)
+            {
+                foreach (var book in Model.Books.BooksList)
+                {
+                    if (genre.Name == book.Genre_AtBook.Name)
+                    {
+                        genre.AddBook(book);
+                    }
+                }
+            }
+        }
     }
 }

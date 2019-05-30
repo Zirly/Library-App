@@ -19,14 +19,14 @@
         <DataTemplate x:Name="genresListTemplate" DataType="{x:Type viewmodel:GenresListViewModel}">
             <view:GenresListView DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="bookDetailTemplate" DataType="{x:Type viewmodel:BookDetailViewModel}">
-            <view:BookDetail DataContext="{Binding}"/>
+        <DataTemplate x:Name="genreDetailTemplate" DataType="{x:Type viewmodel:GenreDetailViewModel}">
+            <view:GenreDetailView DataContext="{Binding}"/>
         </DataTemplate>
         <DataTemplate x:Name="authorDetailTemplate" DataType="{x:Type viewmodel:AuthorDetailViewModel}">
             <view:AuthorDetailView DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="genreDetailTemplate" DataType="{x:Type viewmodel:GenreDetailViewModel}">
-            <view:GenreDetailView DataContext="{Binding}"/>
+        <DataTemplate x:Name="bookDetailTemplate" DataType="{x:Type viewmodel:BookDetailViewModel}">
+            <view:BookDetail DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
     <Grid>
@@ -52,7 +52,7 @@
         <Grid Grid.Row="1" Margin="10,0">
             <TextBlock Width="Auto" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">Show</TextBlock>
             <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,10,0,0" Width="70">
-                <ComboBoxItem IsSelected="True" Selected="BooksSelection_Selected" >Books</ComboBoxItem>
+                <ComboBoxItem Selected="BooksSelection_Selected" IsSelected="True" >Books</ComboBoxItem>
                 <ComboBoxItem Selected="AuthorsSelection_Selected" >Authors</ComboBoxItem>
                 <ComboBoxItem Selected="GenresSelection_Selected">Genre</ComboBoxItem>
             </ComboBox>
@@ -65,13 +65,14 @@
             </Grid.ColumnDefinitions>
             <ListBox Grid.Column="0" Margin="0" HorizontalContentAlignment="Stretch" >
                 <System:String>COLLECTION</System:String>
-                <ContentControl Content="{Binding collection}"/>
+                <ContentControl x:Name="collection" Content="{Binding collection}"/>
                 <!--<view:BooksListView x:Name="BooksListControl"/> -->
             </ListBox>
             <ListBox Grid.Column="1" Margin="0">
                 <System:String>DETAILS</System:String>
-                <ContentControl Content="{Binding detail}"/>
+                <ContentControl x:Name="detail" Content="{Binding detail}"/>
                 <!--
+                <view:DetailView x:Name="DetailControl"/>
                 <ContentControl Content="{Binding}"/>
                 <view:BookDetail x:Name="BookDetailControl"/>
                 <view:AuthorDetail x:Name="AuthorDetailControl"/> -->

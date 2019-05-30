@@ -17,9 +17,9 @@ namespace Library.View
     /// <summary>
     /// Interaction logic for BookDetail.xaml
     /// </summary>
-    public partial class AuthorDetail : UserControl
+    public partial class DetailView : UserControl
     {
-        public AuthorDetail()
+        public DetailView()
         {
             InitializeComponent();
         }

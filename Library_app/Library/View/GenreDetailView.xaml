@@ -7,6 +7,27 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TextBlock Text="GenreDetail"/>
+        <StackPanel x:Name="detailData" Orientation="Vertical">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Name:" />
+                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MyGenre.Name}"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Books:" />
+                <ListBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding MyGenre.BooksList}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Title}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </StackPanel>
     </Grid>
 </UserControl>

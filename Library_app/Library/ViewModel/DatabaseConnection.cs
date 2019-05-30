@@ -38,6 +38,7 @@ namespace Library.ViewModel
             ReadRelationsFromDatabase();
             ReadBooksFromDatabase();
             BookViewModel.GetAuthors();
+            BookViewModel.GetBooks();
         }
 
         internal static void ReadRelationsFromDatabase()
@@ -86,10 +87,10 @@ namespace Library.ViewModel
                     if (reader.HasRows)
                     {
                         while (reader.Read())
-                        {
-                            Genre genre = new Genre();
-                            genre.GenreId = reader.GetInt32(0);
-                            genre.Name = reader.GetString(1);
+                        {                  
+                            int genreId = reader.GetInt32(0);
+                            string name = reader.GetString(1);
+                            Genre genre = new Genre(genreId, name);
                             Genres.AddGenre(genre);
                         }
                     }

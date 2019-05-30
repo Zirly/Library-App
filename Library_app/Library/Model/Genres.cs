@@ -28,6 +28,7 @@ namespace Library.Model
 
         public static Genre GetGenre(int id)
         {
+           
             Genre genre = new Genre();
             foreach (var item in GenresList)
             {

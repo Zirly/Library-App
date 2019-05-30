@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Library.Model;
+using Library.ViewModel;
 
 namespace Library.View
 {
@@ -28,6 +29,17 @@ namespace Library.View
 
         private void LstAuthors_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Author selected = (Author)lstAuthors.SelectedItem;
+            var mw = Application.Current.Windows
+                .Cast<Window>()
+                .FirstOrDefault(window => window is MainWindow) as MainWindow;
+
+            mw.DataContext = new
+            {
+                collection = new AuthorsListViewModel(),
+                detail = new AuthorDetailViewModel(selected)
+            };
+
 
         }
     }
