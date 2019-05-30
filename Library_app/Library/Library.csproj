@@ -87,19 +87,10 @@
     <Compile Include="ViewModel\ItemAddViewModel\BookAddViewModel.cs" />
     <Compile Include="ViewModel\GenreDetailViewModel.cs" />
     <Compile Include="ViewModel\GenresListViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.xaml.cs" />
-	  <Compile Include="ViewModel\ItemAddViewModel\GenreAddViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.xaml.cs" />
-	  <Compile Include="View\AuthorDetail.xaml.cs">
-      <DependentUpon>MainViewModel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DetailView.xaml.cs">
-      <DependentUpon>DetailView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DetailView.xaml.cs">
-      <DependentUpon>DetailView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\ItemAddViewModel\GenreAddViewModel.cs" />
+    <Compile Include="View\DetailView.xaml.cs">
+      <DependentUpon>DetailView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AuthorDetailView.xaml.cs">
       <DependentUpon>AuthorDetailView.xaml</DependentUpon>
     </Compile>
