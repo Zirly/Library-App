@@ -87,8 +87,11 @@
             <StatusBarItem DockPanel.Dock="Left" Margin="10,0">
                 <Button Width="55"  Content="Add Item" Click="Item_Add_Button_Click"/>
             </StatusBarItem>
+            <StatusBarItem DockPanel.Dock="Left">
+                <Button Width="75"  Content="Remove Item" Click="Item_Remove_Button_Click"/>
+            </StatusBarItem>
             <StatusBarItem  DockPanel.Dock="Right" Margin="10,0">
-                <Button Width="55" Content="Cancel"/>
+                <Button Width="55" Content="Exit" Click="Exit_Button_Click"/>
             </StatusBarItem>
             <StatusBarItem DockPanel.Dock="Right" >
                 <Button Width="55"  Content="Save"/>
