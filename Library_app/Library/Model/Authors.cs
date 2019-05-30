@@ -9,20 +9,22 @@ namespace Library.Model
     public static class Authors
     {
         public static List<Author> AuthorsList { get; set; }
-        public static int Count { get; set; }
+        public static int LastIndex { get; set; }
 
         // tämä pois?
         static Authors()
         {
             Authors.AuthorsList = new List<Author>();
-            Authors.Count = 0;
+            Authors.LastIndex = AuthorsList.Count + 1;
 
         }
+
         //TODO id
         public static void AddAuthor(Author author)
         {
+            author.AuthorId = LastIndex;
+            LastIndex++;
             AuthorsList.Add(author);
-            Count++;
         }
 
         public static Author GetAuthor(int id)
