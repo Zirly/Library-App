@@ -83,6 +83,7 @@ namespace Library.View
         {
             Book book = new Book();
             book.Title = text;
+            book.YearPublish = text;
             Books.AddBook(book);
             MessageBox.Show("Book added!");
             return true;
