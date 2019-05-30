@@ -72,7 +72,7 @@ namespace Library.View
         private bool AddingGenre()
         {
             Genre genre = new Genre();
-            GenreAddView genreAddView = new GenreAddView(genreName.);
+            // GenreAddView genreAddView = new GenreAddView(genreName.);
             //genre.Name =
             Genres.AddGenre(genre);
             return true;
