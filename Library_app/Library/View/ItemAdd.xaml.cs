@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Library.Model;
+using Library.View.ItemAddView;
 
 namespace Library.View
 {
@@ -43,6 +45,37 @@ namespace Library.View
         private void GenreAddView_Selected(object sender, RoutedEventArgs e)
         {
             DataContext = new GenreAddViewModel();
+        }
+
+        private void ItemAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+            switch (cbAddItem.SelectedIndex)
+            {
+                case 0:
+                    MessageBox.Show("Book added!");
+                    break;
+                case 1:
+                    MessageBox.Show("Author added!");
+                    break;
+                case 2:
+                    if (AddingGenre()) { MessageBox.Show("Genre added!"); }
+                    
+                   
+                    break;
+                default:
+                    MessageBox.Show("Error!");
+                    break;
+            }
+        }
+
+        private bool AddingGenre()
+        {
+            Genre genre = new Genre();
+            GenreAddView genreAddView = new GenreAddView(genreName.);
+            //genre.Name =
+            Genres.AddGenre(genre);
+            return true;
         }
     }
 }

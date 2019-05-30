@@ -20,9 +20,10 @@ namespace Library.View.ItemAddView
     /// </summary>
     public partial class GenreAddView : UserControl
     {
-        public GenreAddView()
+        public GenreAddView(string Str_Name)
         {
             InitializeComponent();
+            genreName.Text = Str_Name;
         }
     }
 }
