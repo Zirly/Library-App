@@ -29,9 +29,9 @@
         <TextBlock Grid.Column="0" Grid.Row="2" Text="Year:"/>
         <TextBox Text="{Binding MyBook.YearPublish, Mode=TwoWay}" x:Name="bookYear" x:FieldModifier="public" Grid.Column="1" Grid.Row="2"/>
         <TextBlock Grid.Column="0" Grid.Row="3" Text="Description:"/>
-        <TextBox Grid.Column="1" Grid.Row="3"/>
+        <TextBox Text="{Binding MyBook.Description, Mode=TwoWay}" x:Name="bookDesc" x:FieldModifier="public" Grid.Column="1" Grid.Row="3"/>
         <TextBlock Grid.Column="0" Grid.Row="4" Text="ISBN:"/>
-        <TextBox Grid.Column="1" Grid.Row="4"/>
+        <TextBox Text="{Binding MyBook.Isbn, Mode=TwoWay}" x:Name="bookIsbn" x:FieldModifier="public" Grid.Column="1" Grid.Row="4"/>
         <TextBlock Grid.Column="0" Grid.Row="5" Text="Genre:"/>
         <ComboBox Grid.Column="1" Grid.Row="5">
             <ComboBoxItem Content="New Genre"/>

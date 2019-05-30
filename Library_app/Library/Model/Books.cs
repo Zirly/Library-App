@@ -9,26 +9,26 @@ namespace Library.Model
     public static class Books
     {
         public static List<Book> BooksList { get; set; }
-        public static int Count { get; set; }
+        public static int LastIndex { get; set; }
 
         // tämä pois?
         static Books()
         {
             Books.BooksList = new List<Book>();
-            Books.Count = 0;
+            Books.LastIndex = BooksList.Count + 1;
 
         }
         //TODO id
         public static void AddBook(Book book)
         {
+            book.BookId = LastIndex;
+            LastIndex++;
             BooksList.Add(book);
-            Count++;
         }
 
         public static Book GetBook(int id)
         {
             Book book = new Book();
-
             foreach (var item in BooksList)
             {
                 if (item.BookId == id) book = item;

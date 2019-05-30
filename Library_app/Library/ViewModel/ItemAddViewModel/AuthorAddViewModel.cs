@@ -12,24 +12,25 @@ namespace Library.ViewModel.ItemAddViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private string myFirstName;
-        public string MyFirstName
-
+        private Author myAuthor = new Author();
+        public Author MyAuthor
         {
-            get { return this.myFirstName; }
+            get { return this.myAuthor; }
             set
             {
-                this.myFirstName = value;
-                OnPropertyChanged("MyFirstName");
+                this.myAuthor = value;
+                OnPropertyChanged("MyAuthor");
             }
         }
-        protected void OnPropertyChanged(string firstName)
+
+        protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
-                handler(this, new PropertyChangedEventArgs(firstName));
+                handler(this, new PropertyChangedEventArgs(name));
             }
         }
     }
 }
+

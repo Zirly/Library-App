@@ -68,7 +68,17 @@ namespace Library
             ItemAdd itemAdd = new ItemAdd();
             itemAdd.Show();
         }
-        
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            DataContext = new
+            {
+                collection = new BooksListViewModel(),
+                detail = new BookDetailViewModel(Books.GetBook(1))
+            };
+            
+        }
+
         /*
         private void Window_Activated(object sender, EventArgs e)
         {

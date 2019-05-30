@@ -12,7 +12,7 @@ namespace Library.ViewModel.ItemAddViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Book myBook;
+        private Book myBook = new Book();
         public Book MyBook
         {
             get { return this.myBook; }

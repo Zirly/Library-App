@@ -18,7 +18,6 @@ namespace Library.Model
             Genres.LastIndex = GenresList.Count + 1;
 
         }
-
         //TODO id
         public static void AddGenre(Genre genre)
         {
@@ -29,7 +28,6 @@ namespace Library.Model
 
         public static Genre GetGenre(int id)
         {
-           
             Genre genre = new Genre();
             foreach (var item in GenresList)
             {
