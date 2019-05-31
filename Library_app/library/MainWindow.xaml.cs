@@ -57,6 +57,7 @@ namespace Library
             };
 
         }
+
         private void GenresSelection_Selected(object sender, RoutedEventArgs e)
         {
             DataContext = new
@@ -64,22 +65,42 @@ namespace Library
                 collection = new GenresListViewModel(),
                 detail = new GenreDetailViewModel(Genres.GetGenre(1))
             };
-        
         }
+
         private void Item_Add_Button_Click(object sender, RoutedEventArgs e)
         {
             ItemAdd itemAdd = new ItemAdd();
             itemAdd.Show();
         }
 
-        
         private void Window_Activated(object sender, EventArgs e)
         {
-            DataContext = new
+            switch (comboBox.SelectedIndex)
             {
-                collection = new BooksListViewModel(),
-                detail = new BookDetailViewModel(Books.GetBook(Books.BooksList.Count))
-            };
+                case 0:
+                    DataContext = new
+                    {
+                        collection = new BooksListViewModel(),
+                        detail = new BookDetailViewModel(Books.GetBook(Books.BooksList.Count))
+                    };
+                    break;
+                case 1:
+                    DataContext = new
+                    {
+                        collection = new AuthorsListViewModel(),
+                        detail = new AuthorDetailViewModel(Authors.GetAuthor(1))
+                    };
+                    break;
+                case 2:
+                    DataContext = new
+                    {
+                        collection = new GenresListViewModel(),
+                        detail = new GenreDetailViewModel(Genres.GetGenre(1))
+                    };
+                    break;
+                default:
+                    break;
+            }
         }
         
         private void Exit_Button_Click(object sender, RoutedEventArgs e)
@@ -93,13 +114,9 @@ namespace Library
             }
         }
 
-        /*
-        private void Window_Activated(object sender, EventArgs e)
+        private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
-            BooksListControl.lstBooks.ItemsSource = Books.BooksList;
-            BooksListControl.lstBooks.Items.Refresh();
-            BooksListControl.lstBooks.SelectedIndex = 0;
-        } 
-        */
+            if (LibraryModel.IsChanged) DatabaseConnection.SaveDataToDB();
+        }
     }
 }

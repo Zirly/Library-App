@@ -12,6 +12,6 @@
         </DataTemplate>
     </UserControl.Resources>
     <Grid>
-        <ListBox  Name="lstGenres" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource genreTemplate}" SelectionChanged="LstGenres_SelectionChanged"/>
+        <ListBox ItemsSource="{Binding MyGenreList}" Name="lstGenres" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource genreTemplate}" SelectionChanged="LstGenres_SelectionChanged"/>
     </Grid>
 </UserControl>

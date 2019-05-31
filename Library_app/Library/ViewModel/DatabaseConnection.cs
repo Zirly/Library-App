@@ -104,6 +104,11 @@ namespace Library.ViewModel
             }
         }
 
+        internal static void SaveDataToDB()
+        {
+            throw new NotImplementedException();
+        }
+
         internal static void ReadAuthorsFromDatabase()
         {
             try

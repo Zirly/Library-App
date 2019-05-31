@@ -31,6 +31,6 @@
         </DataTemplate>
     </UserControl.Resources>
     <Grid>
-        <ListBox  Name="lstAuthors" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource authorTemplate}" SelectionChanged="LstAuthors_SelectionChanged"/>
+        <ListBox  Name="lstAuthors" ItemsSource="{Binding MyAuthorList}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource authorTemplate}" SelectionChanged="LstAuthors_SelectionChanged"/>
     </Grid>
 </UserControl>

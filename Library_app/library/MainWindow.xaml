@@ -71,11 +71,6 @@
             <ListBox Grid.Column="1" Margin="0">
                 <System:String>DETAILS</System:String>
                 <ContentControl Content="{Binding detail}"/>
-                <!--
-                <view:DetailView x:Name="DetailControl"/>
-                <ContentControl Content="{Binding}"/>
-                <view:BookDetail x:Name="BookDetailControl"/>
-                <view:AuthorDetail x:Name="AuthorDetailControl"/> -->
             </ListBox>
         </Grid>
         <StatusBar Grid.Row="3" Height="40" >
@@ -92,7 +87,7 @@
                 <Button Width="55" Content="Exit" Click="Exit_Button_Click"/>
             </StatusBarItem>
             <StatusBarItem DockPanel.Dock="Right" >
-                <Button Width="55"  Content="Save"/>
+                <Button Width="55"  Content="Save" Click="Save_Button_Click"/>
             </StatusBarItem>
         </StatusBar>
     </Grid>
