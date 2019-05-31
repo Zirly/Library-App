@@ -25,6 +25,7 @@ namespace Library
     /// </summary>
     public partial class MainWindow : Window
     {
+       
         public MainWindow()
         {
             InitializeComponent();
@@ -33,16 +34,18 @@ namespace Library
             {
                 collection = new BooksListViewModel(),
                 detail = new BookDetailViewModel(Books.GetBook(1))
-            };
+            }; 
+            
         }
 
         private void BooksSelection_Selected(object sender, RoutedEventArgs e)
         {
+            
             DataContext = new
             {
                 collection = new BooksListViewModel(),      
                 detail = new BookDetailViewModel(Books.GetBook(1))       
-            };
+            }; 
         }
 
         private void AuthorsSelection_Selected(object sender, RoutedEventArgs e)
@@ -74,9 +77,8 @@ namespace Library
             DataContext = new
             {
                 collection = new BooksListViewModel(),
-                detail = new BookDetailViewModel(Books.GetBook(1))
+                detail = new BookDetailViewModel(Books.GetBook(Books.BooksList.Count))
             };
-            
         }
 
         /*

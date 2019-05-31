@@ -29,7 +29,7 @@
             <view:BookDetail DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
-    <Grid>
+    <Grid x:Name="myGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <!-- MENU -->
@@ -63,14 +63,14 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ListBox Grid.Column="0" Margin="0" HorizontalContentAlignment="Stretch" >
+            <ListBox x:Name="lstBase" Grid.Column="0" Margin="0" HorizontalContentAlignment="Stretch" >
                 <System:String>COLLECTION</System:String>
-                <ContentControl x:Name="collection" Content="{Binding collection}"/>
+                <ContentControl Content="{Binding collection}"/>
                 <!--<view:BooksListView x:Name="BooksListControl"/> -->
             </ListBox>
             <ListBox Grid.Column="1" Margin="0">
                 <System:String>DETAILS</System:String>
-                <ContentControl x:Name="detail" Content="{Binding detail}"/>
+                <ContentControl Content="{Binding detail}"/>
                 <!--
                 <view:DetailView x:Name="DetailControl"/>
                 <ContentControl Content="{Binding}"/>

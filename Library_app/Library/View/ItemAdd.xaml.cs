@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Library.Model;
 using Library.View.ItemAddView;
+using Library.ViewModel;
 
 namespace Library.View
 {
@@ -22,6 +23,7 @@ namespace Library.View
     /// </summary>
     public partial class ItemAdd : Window
     {
+       
         public ItemAdd()
         {
             InitializeComponent();
@@ -55,8 +57,8 @@ namespace Library.View
                 case 0:
                     BookAddViewModel ba = (BookAddViewModel)DataContext;
                     Book book = ba.MyBook;
-
                     Books.AddBook(book);
+                    
                     MessageBox.Show("Book added!");
                     break;
                 case 1:

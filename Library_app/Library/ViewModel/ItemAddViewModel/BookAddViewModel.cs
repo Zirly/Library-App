@@ -22,30 +22,7 @@ namespace Library.ViewModel.ItemAddViewModel
                 OnPropertyChanged("MyBook");
             }
         }
-        /*
-        private string myBookTitle;
-        public string MyBookTitle
 
-        {
-            get { return this.myBookTitle; }
-            set
-            {
-                this.myBookTitle = value;
-                OnPropertyChanged("MyBookTitle");
-            }
-        }
-
-        private string myBookYear;
-        public string MyBookYear
-
-        {
-            get { return this.myBookYear; }
-            set
-            {
-                this.myBookYear = value;
-                OnPropertyChanged("MyBookYear");
-            }
-        } */
 
         protected void OnPropertyChanged(string text)
         {
