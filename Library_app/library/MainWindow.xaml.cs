@@ -69,6 +69,7 @@ namespace Library
             itemAdd.Show();
         }
 
+        /*
         private void Window_Activated(object sender, EventArgs e)
         {
             DataContext = new
@@ -78,18 +79,7 @@ namespace Library
             };
             
         }
-
-        private void Item_Remove_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (MessageBox.Show("Are you sure you want to remove selected item?", "Remove Item", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                Close();
-            }
-            else
-            {
-            }
-        }
-
+        */
         private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to exit?", "Exit Program", MessageBoxButton.YesNo) == MessageBoxResult.Yes)

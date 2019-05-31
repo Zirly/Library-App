@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Library.Model;
+using Library.ViewModel;
 
 namespace Library.View
 {
@@ -22,6 +24,21 @@ namespace Library.View
         public BookDetail()
         {
             InitializeComponent();
+        }
+
+        private void Item_Remove_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to remove item?", "Remove Item", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                BookDetailViewModel sd = (BookDetailViewModel)DataContext;
+                Book book = sd.MyBook;
+           // string id = sd.MyBook.BookId.ToString();
+                MessageBox.Show(sd.MyBook.Title);
+                Books.RemoveBook(sd.MyBook.BookId);
+            }
+            else
+            {
+            }
         }
     }
 }
