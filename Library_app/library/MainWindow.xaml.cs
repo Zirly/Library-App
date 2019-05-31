@@ -72,7 +72,7 @@ namespace Library
             itemAdd.Show();
         }
 
-        /*
+        
         private void Window_Activated(object sender, EventArgs e)
         {
             DataContext = new
@@ -81,7 +81,7 @@ namespace Library
                 detail = new BookDetailViewModel(Books.GetBook(Books.BooksList.Count))
             };
         }
-        */
+        
         private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to exit?", "Exit Program", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
