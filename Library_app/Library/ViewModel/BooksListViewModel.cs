@@ -13,15 +13,15 @@ namespace Library.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ObservableCollection<Book> _testList = new ObservableCollection<Book>();
+        private ObservableCollection<Book> _myBookList = new ObservableCollection<Book>();
 
-        public ObservableCollection<Book> TestList
+        public ObservableCollection<Book> MyBookList
         {
-            get { return this._testList; }
+            get { return this._myBookList; }
             set
             {
-                this._testList = value;
-                OnPropertyChanged("TestList");
+                this._myBookList = value;
+                OnPropertyChanged("MyBookList");
             }
         }
 
@@ -30,7 +30,7 @@ namespace Library.ViewModel
         {
             foreach (var item in Books.BooksList)
             {
-                TestList.Add(item);
+                MyBookList.Add(item);
             }
         }
 

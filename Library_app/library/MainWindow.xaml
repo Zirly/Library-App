@@ -8,7 +8,7 @@
         xmlns:viewmodel="clr-namespace:Library.ViewModel"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Library.MainWindow"
         mc:Ignorable="d"
-        Title="Library Application" Height="450" Width="800" >
+        Title="Library Application" Height="450" Width="800" Activated="Window_Activated" >
     <Window.Resources>
         <DataTemplate x:Name="booksListTemplate" DataType="{x:Type viewmodel:BooksListViewModel}">
             <view:BooksListView DataContext="{Binding}"/>
