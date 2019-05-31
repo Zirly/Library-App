@@ -32,9 +32,17 @@ namespace Library.View
             {
                 BookDetailViewModel sd = (BookDetailViewModel)DataContext;
                 Book book = sd.MyBook;
-           // string id = sd.MyBook.BookId.ToString();
-                MessageBox.Show(sd.MyBook.Title);
                 Books.RemoveBook(sd.MyBook.BookId);
+      
+                var mw = Application.Current.Windows
+                    .Cast<Window>()
+                    .FirstOrDefault(window => window is MainWindow) as MainWindow;
+
+                mw.DataContext = new
+                {
+                    collection = new BooksListViewModel(),
+                    detail = new BookDetailViewModel(Books.GetBook(Books.BooksList.Count))
+                };
             }
             else
             {
