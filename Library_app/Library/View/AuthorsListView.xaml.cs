@@ -24,7 +24,7 @@ namespace Library.View
         public AuthorsListView()
         {
             InitializeComponent();
-            lstAuthors.ItemsSource = Authors.AuthorsList;
+            
         }
 
         private void LstAuthors_SelectionChanged(object sender, SelectionChangedEventArgs e)

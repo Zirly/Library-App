@@ -24,8 +24,7 @@ namespace Library.View
     {
         public GenresListView()
         {
-            InitializeComponent();
-            //lstGenres.ItemsSource = Genres.GenresList;
+            InitializeComponent();            
         }
 
         private void LstGenres_SelectionChanged(object sender, SelectionChangedEventArgs e)

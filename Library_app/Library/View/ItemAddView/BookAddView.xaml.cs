@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Library.Model;
 
 namespace Library.View.ItemAddView
 {
@@ -23,6 +24,8 @@ namespace Library.View.ItemAddView
         public BookAddView()
         {
             InitializeComponent();
+            cbGenres.ItemsSource = Genres.GenresList;
+            
         }
 
 

@@ -25,6 +25,7 @@ namespace Library.ViewModel
             }
         }
 
+
         public GenresListViewModel()
         {
             foreach (var item in Genres.GenresList)
@@ -32,7 +33,7 @@ namespace Library.ViewModel
                 MyGenreList.Add(item);
             }
         }
-
+        //
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -41,5 +42,6 @@ namespace Library.ViewModel
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+
     }
 }

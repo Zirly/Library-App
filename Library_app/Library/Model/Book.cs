@@ -41,6 +41,7 @@ namespace Library.Model
         public string Isbn { get; set; }
         public Genre Genre_AtBook { get; set; }
         public List<Author> AuthorsList { get; set; }
+        
 
         public Book() { }
 
