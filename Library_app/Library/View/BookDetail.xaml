@@ -10,8 +10,8 @@
         <StackPanel x:Name="detailData" Orientation="Vertical">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -37,7 +37,7 @@
                 <TextBlock Grid.Column="0" Grid.Row="4" Text="Isbn:" />
                 <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding MyBook.Isbn}"/>
             </Grid>
-            
+
             <TextBlock Text="Description:" />
             <TextBox Text="{Binding MyBook.Description}" Margin="5,10,10,0" 
                      Width="350" Height="Auto"
@@ -47,6 +47,7 @@
                      MaxLength="500"
                      IsReadOnly="False"
                      AcceptsReturn="True" />
+            <Button Width="100" Margin="0,20,0,0" Content="Remove" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Item_Remove_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>

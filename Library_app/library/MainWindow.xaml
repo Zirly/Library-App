@@ -8,7 +8,7 @@
         xmlns:viewmodel="clr-namespace:Library.ViewModel"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Library.MainWindow"
         mc:Ignorable="d"
-        Title="Library Application" Height="450" Width="800" Activated="Window_Activated">
+        Title="Library Application" Height="450" Width="800" >
     <Window.Resources>
         <DataTemplate x:Name="booksListTemplate" DataType="{x:Type viewmodel:BooksListViewModel}">
             <view:BooksListView DataContext="{Binding}"/>
@@ -87,8 +87,9 @@
             <StatusBarItem DockPanel.Dock="Left" Margin="10,0">
                 <Button Width="55"  Content="Add Item" Click="Item_Add_Button_Click"/>
             </StatusBarItem>
+            <StatusBarItem DockPanel.Dock="Left"/>
             <StatusBarItem  DockPanel.Dock="Right" Margin="10,0">
-                <Button Width="55" Content="Cancel"/>
+                <Button Width="55" Content="Exit" Click="Exit_Button_Click"/>
             </StatusBarItem>
             <StatusBarItem DockPanel.Dock="Right" >
                 <Button Width="55"  Content="Save"/>

@@ -12,7 +12,6 @@ namespace Library.ViewModel
     {
         public Book MyBook { get; set; }
 
-        public BookDetailViewModel() { }
         public BookDetailViewModel(Book book)
         {
             MyBook = book;
