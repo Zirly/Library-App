@@ -25,7 +25,6 @@ namespace Library.ViewModel
             }
         }
 
-
         public BooksListViewModel()
         {
             foreach (var item in Books.BooksList)

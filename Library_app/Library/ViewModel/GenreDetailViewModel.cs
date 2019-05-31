@@ -11,7 +11,6 @@ namespace Library.ViewModel
     {
         public Genre MyGenre { get; set; }
 
-        public GenreDetailViewModel() { }
         public GenreDetailViewModel(Genre genre)
         {
             MyGenre = genre;

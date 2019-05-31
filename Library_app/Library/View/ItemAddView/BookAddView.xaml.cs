@@ -24,5 +24,7 @@ namespace Library.View.ItemAddView
         {
             InitializeComponent();
         }
+
+
     }
 }

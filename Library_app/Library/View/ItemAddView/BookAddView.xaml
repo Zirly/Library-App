@@ -33,7 +33,7 @@
         <TextBlock Grid.Column="0" Grid.Row="4" Text="ISBN:"/>
         <TextBox Text="{Binding MyBook.Isbn, Mode=TwoWay}" x:Name="bookIsbn" x:FieldModifier="public" Grid.Column="1" Grid.Row="4"/>
         <TextBlock Grid.Column="0" Grid.Row="5" Text="Genre:"/>
-        <ComboBox Grid.Column="1" Grid.Row="5">
+        <ComboBox Grid.Column="1" Grid.Row="5" ItemsSource="{Binding MyGenre.GenresList}">
             <ComboBoxItem Content="New Genre"/>
             <ComboBoxItem Content="Genrelist"/>
         </ComboBox>

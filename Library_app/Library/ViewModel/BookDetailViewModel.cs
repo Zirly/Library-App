@@ -7,7 +7,6 @@ using Library.Model;
 
 namespace Library.ViewModel
 {
-    
     public class BookDetailViewModel
     {
         public Book MyBook { get; set; }

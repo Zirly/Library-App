@@ -23,7 +23,6 @@ namespace Library.ViewModel.ItemAddViewModel
             }
         }
 
-
         protected void OnPropertyChanged(string text)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
