@@ -9,6 +9,7 @@ namespace Library.Model
 {
     public class Author
     {
+        public bool IsChanged { get; set; } = false;
         public int AuthorId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

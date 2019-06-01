@@ -8,6 +8,7 @@ namespace Library.Model
 {
     public static class Authors
     {
+        public static bool IsChanged { get; set; } = false;
         public static List<Author> AuthorsList { get; set; }
         public static int LastIndex { get; set; }
 

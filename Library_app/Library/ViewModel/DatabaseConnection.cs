@@ -45,7 +45,7 @@ namespace Library.ViewModel
                     if (reader.HasRows)
                     {
                         while (reader.Read())
-                        {                  
+                        {
                             int genreId = reader.GetInt32(0);
                             string name = reader.GetString(1);
                             Genre genre = new Genre(genreId, name);
@@ -62,53 +62,94 @@ namespace Library.ViewModel
             }
         }
 
-        internal static bool SaveDataToDB()
+        public static void SaveDataToDB()
         {
             if (LibraryModel.AreChangesMade())
             {
-                foreach (var item in Genres.GenresList)
+               if (Genres.IsChanged) SaveNewGenresToDB();
+               if (Authors.IsChanged) SaveNewAuthorsToDB();
+            }
+        }
+
+        internal static void SaveNewAuthorsToDB()
+        {
+            foreach (var author in Authors.AuthorsList)
+            {
+                if (author.IsChanged)
                 {
-                    if (item.IsChanged)
+                    string connectionString = Properties.Settings.Default.cn_String;
+                    using (SqlConnection con = new SqlConnection(connectionString))
                     {
-
-                        string connectionString = Properties.Settings.Default.cn_String;
-                        using (SqlConnection con = new SqlConnection(connectionString))
+                        try
                         {
-                            try
+                            using (var cmd = new SqlCommand("INSERT INTO author_table (author_id, firstName, lastName, yearBirth) VALUES (@author_id,@firstName,@lastName,@yearBirth)"))
                             {
-                                using (var cmd = new SqlCommand("INSERT INTO genre_table (genre_id, name) VALUES (@genre_id,@name)"))
+                                cmd.Connection = con;
+                                cmd.Parameters.AddWithValue("@author_id", author.AuthorId);
+                                cmd.Parameters.AddWithValue("@firstName", ((object)author.FirstName) ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("@lastName", author.LastName);
+                                cmd.Parameters.AddWithValue("@yearBirth", ((object)author.YearBirth) ?? DBNull.Value);
+                                con.Open();
+                                if (cmd.ExecuteNonQuery() > 0)
                                 {
-                                    cmd.Connection = con;
-                                    cmd.Parameters.AddWithValue("@genre_id", item.GenreId);
-                                    cmd.Parameters.AddWithValue("@name", item.Name);
-                                    con.Open();
-                                    if (cmd.ExecuteNonQuery() > 0)
-                                    {
-                                        MessageBox.Show("Record inserted");
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Record failed");
-                                    }
-
+                                    MessageBox.Show("Record inserted");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Record failed");
                                 }
 
-
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Error during insert: " + ex.Message);
                             }
                         }
-                        
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error during insert: " + ex.Message);
+                        }
+                    }
+                }
+            }
+        }
+
+        internal static void SaveNewGenresToDB()
+        {
+
+            foreach (var genre in Genres.GenresList)
+            {
+                if (genre.IsChanged)
+                {
+                    string connectionString = Properties.Settings.Default.cn_String;
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                    {
+                        try
+                        {
+                            using (var cmd = new SqlCommand("INSERT INTO genre_table (genre_id, name) VALUES (@genre_id,@name)"))
+                            {
+                                cmd.Connection = con;
+                                cmd.Parameters.AddWithValue("@genre_id", genre.GenreId);
+                                cmd.Parameters.AddWithValue("@name", genre.Name);
+                                con.Open();
+                                if (cmd.ExecuteNonQuery() > 0)
+                                {
+                                    MessageBox.Show("Record inserted");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Record failed");
+                                }
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error during insert: " + ex.Message);
+                        }
                     }
 
                 }
-                return true;
-                
+
             }
-            return false;
         }
+
 
         internal static void ReadAuthorsFromDatabase()
         {
@@ -161,7 +202,7 @@ namespace Library.ViewModel
                             int bookId = reader.GetInt32(0);
                             string bookTitle = reader.GetString(1);
                             int year = reader[2] as int? ?? default(int);
-                            string description = reader[3] as string;            
+                            string description = reader[3] as string;
                             string isbn = reader[4] as string;
                             int genreId = reader.GetInt32(5);
                             int authorId = reader.GetInt32(6);

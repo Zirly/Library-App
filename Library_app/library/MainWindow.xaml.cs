@@ -116,9 +116,8 @@ namespace Library
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (DatabaseConnection.SaveDataToDB()) MessageBox.Show("Changes saved");
-            else MessageBox.Show("No changes");
-           
+            DatabaseConnection.SaveDataToDB();
+
         }
     }
 }

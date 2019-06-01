@@ -209,10 +209,10 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="ViewModel\libraryDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ViewModel\libraryDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>libraryDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>

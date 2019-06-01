@@ -108,7 +108,9 @@ namespace Library.View
                 MessageBox.Show("Last name cannnot be empty.");
                 return false;
             }
+            author.IsChanged = true;
             Authors.AddAuthor(author);
+            Authors.IsChanged = true;
             return true;
         }
 

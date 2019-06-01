@@ -11,7 +11,7 @@ namespace Library.Model
         
         public static bool AreChangesMade()
         {
-            if (Genres.IsChanged) return true;
+            if (Genres.IsChanged || Authors.IsChanged) return true;
             return false;
         }
     }

@@ -33,7 +33,7 @@ namespace Library.ViewModel
                 MyGenreList.Add(item);
             }
         }
-        //
+        // 
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
