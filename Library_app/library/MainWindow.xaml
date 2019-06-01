@@ -29,6 +29,7 @@
             <view:BookDetail DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
+
     <Grid x:Name="myGrid" Background="#f1eded">
 
         <Grid.RowDefinitions>
@@ -52,8 +53,8 @@
             </MenuItem>
             <MenuItem Header="_Options"/>
         </Menu>
-        <Border Grid.Row="1" Margin="10,0" BorderThickness="0,0,0,0" BorderBrush="AliceBlue">
-        <Grid Grid.Row="1" Background="Coral">
+        <Border Grid.Row="1" Margin="10,0" BorderThickness="1,1,1,0" BorderBrush="#abadb3">
+            <Grid Grid.Row="1" Background="#d3eaed">
             <TextBlock Width="Auto" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">Show:</TextBlock>
             <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,10,0,0" Width="70">
                 <ComboBoxItem Selected="BooksSelection_Selected" IsSelected="True" >Books</ComboBoxItem>
@@ -63,14 +64,21 @@
             <TextBlock Width="Auto" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,10,0,0">Search</TextBlock>
         </Grid>
         </Border>
-        <Grid Margin="10,0" Grid.Row="2" Background="Coral">
+        <Border Grid.Row="2" Margin="10,0" BorderBrush="#abadb3" BorderThickness="1,0,1,0">
+            <Grid  Grid.Row="2" Background="#d3eaed" Height="Auto">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="COLLECTION" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,0" FontWeight="Bold" FontFamily="Arial"/>
-            <TextBlock Grid.Column="1" Text="DETAILS" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" FontWeight="Bold" FontFamily="Arial"/>
-        </Grid>
+                <Border BorderThickness="1" BorderBrush="#abadb3" Background="AliceBlue" CornerRadius="4,4,0,0" Width="120" Padding="0,2,0,2" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="COLLECTION" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontWeight="Bold" FontFamily="Arial" />
+                </Border>
+                <Border Grid.Column="1" BorderThickness="1" BorderBrush="#abadb3" Background="AliceBlue" CornerRadius="4,4,0,0" Width="80" Padding="0,2,0,2" HorizontalAlignment="Left" Margin="20,0,0,0">
+                    <TextBlock Text="DETAILS" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial"/>
+                </Border>
+
+            </Grid>
+        </Border>
         <Grid Grid.Row="3" Margin="10,0" Background="AliceBlue">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
