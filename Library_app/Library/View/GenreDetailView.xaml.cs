@@ -24,5 +24,10 @@ namespace Library.View
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            lstBooks.Items.Refresh();
+        }
     }
 }

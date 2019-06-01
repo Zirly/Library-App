@@ -26,6 +26,16 @@ namespace Library.Model
             LastIndex++;
             AuthorsList.Add(author);
         }
+        public static void AddBookToAuthor(Book book, Author author)
+        {
+            foreach (var a in AuthorsList)
+            {
+                if (a == author)
+                {
+                    a.AddBook(book);
+                }
+            }
+        }
 
         public static Author GetAuthor(int id)
         {

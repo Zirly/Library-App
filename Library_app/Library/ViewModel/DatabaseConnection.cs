@@ -20,68 +20,26 @@ namespace Library.ViewModel
 
             return cn_connection;
         }
-        public static DataTable Get_DataTable(string SQL_Text)
-        {
-            SqlConnection cn_connection = Get_DB_Connection();
 
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter(SQL_Text, cn_connection);
-            adapter.Fill(table);
-            return table;
-
-        }
 
         internal static void ReadDataFromDB()
         {
             ReadGenresFromDatabase();
             ReadAuthorsFromDatabase();
-            ReadRelationsFromDatabase();
             ReadBooksFromDatabase();
-            BookViewModel.GetAuthors();
-            BookViewModel.GetBooks();
-        }
-
-        internal static void ReadRelationsFromDatabase()
-        {
-            try
-            {
-                SqlConnection connection = Get_DB_Connection();
-                using (connection)
-                {
-                    SqlCommand command = new SqlCommand("SELECT * FROM book_author;", connection);
-                    //connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            Relation relation = new Relation();
-                            relation.RelationId = reader.GetInt32(0);
-                            relation.BookId = reader.GetInt32(1);
-                            relation.AuthorId = reader.GetInt32(2);
-                            Relations.AddRelation(relation);
-                        }
-                    }
-                    reader.Close();
-                }
-                Close_DB_Connection();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //ModelRelations.GetAuthors();
+            ModelRelations.GetBookLists();
         }
 
         internal static void ReadGenresFromDatabase()
         {
             try
             {
-                SqlConnection connection = Get_DB_Connection();
-                using (connection)
+                string connectionString = Properties.Settings.Default.cn_String;
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("SELECT * FROM genre_table;", connection);
-                    //connection.Open();
+                    SqlCommand command = new SqlCommand("SELECT * FROM genre_table;", con);
+                    con.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
                     if (reader.HasRows)
@@ -104,20 +62,63 @@ namespace Library.ViewModel
             }
         }
 
-        internal static void SaveDataToDB()
+        internal static bool SaveDataToDB()
         {
-            throw new NotImplementedException();
+            if (LibraryModel.AreChangesMade())
+            {
+                foreach (var item in Genres.GenresList)
+                {
+                    if (item.IsChanged)
+                    {
+
+                        string connectionString = Properties.Settings.Default.cn_String;
+                        using (SqlConnection con = new SqlConnection(connectionString))
+                        {
+                            try
+                            {
+                                using (var cmd = new SqlCommand("INSERT INTO genre_table (genre_id, name) VALUES (@genre_id,@name)"))
+                                {
+                                    cmd.Connection = con;
+                                    cmd.Parameters.AddWithValue("@genre_id", item.GenreId);
+                                    cmd.Parameters.AddWithValue("@name", item.Name);
+                                    con.Open();
+                                    if (cmd.ExecuteNonQuery() > 0)
+                                    {
+                                        MessageBox.Show("Record inserted");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Record failed");
+                                    }
+
+                                }
+
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error during insert: " + ex.Message);
+                            }
+                        }
+                        
+                    }
+
+                }
+                return true;
+                
+            }
+            return false;
         }
 
         internal static void ReadAuthorsFromDatabase()
         {
             try
             {
-                SqlConnection connection = Get_DB_Connection();
-                using (connection)
+                string connectionString = Properties.Settings.Default.cn_String;
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("SELECT * FROM author_table;", connection);
-                    //connection.Open();
+                    SqlCommand command = new SqlCommand("SELECT * FROM author_table;", con);
+                    con.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
                     if (reader.HasRows)
@@ -146,11 +147,11 @@ namespace Library.ViewModel
         {
             try
             {
-                SqlConnection connection = Get_DB_Connection();
-                using (connection)
+                string connectionString = Properties.Settings.Default.cn_String;
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("SELECT * FROM book_table;", connection);
-                    //connection.Open();
+                    SqlCommand command = new SqlCommand("SELECT * FROM book_table;", con);
+                    con.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
                     if (reader.HasRows)
@@ -159,12 +160,13 @@ namespace Library.ViewModel
                         {
                             int bookId = reader.GetInt32(0);
                             string bookTitle = reader.GetString(1);
-                            string description = reader[2] as string;
-                            int year = reader[3] as int? ?? default(int);
+                            int year = reader[2] as int? ?? default(int);
+                            string description = reader[3] as string;            
                             string isbn = reader[4] as string;
                             int genreId = reader.GetInt32(5);
+                            int authorId = reader.GetInt32(6);
 
-                            Book book = new Book(bookId, bookTitle, description, year, isbn, genreId);
+                            Book book = new Book(bookId, bookTitle, description, year, isbn, genreId, authorId);
                             Books.AddBook(book);
                         }
                     }
@@ -181,9 +183,16 @@ namespace Library.ViewModel
         //updates, inserts
         public static void Execute_SQL(string SQL_Text)
         {
-            SqlConnection cn_connection = Get_DB_Connection();
-            SqlCommand cmd_Command = new SqlCommand(SQL_Text, cn_connection);
-            cmd_Command.ExecuteNonQuery();
+            try
+            {
+                SqlConnection cn_connection = Get_DB_Connection();
+                SqlCommand cmd_Command = new SqlCommand(SQL_Text, cn_connection);
+                cmd_Command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
         public static void Close_DB_Connection()
         {

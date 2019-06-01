@@ -8,15 +8,11 @@ namespace Library.Model
 {
     public static class LibraryModel
     {
-        public static bool IsChanged { get; set; } = false;
-
-        public static void ChangesMade()
+        
+        public static bool AreChangesMade()
         {
-            IsChanged = true;
-        }
-        public static void LibrarySaved()
-        {
-            IsChanged = false;
+            if (Genres.IsChanged) return true;
+            return false;
         }
     }
 }

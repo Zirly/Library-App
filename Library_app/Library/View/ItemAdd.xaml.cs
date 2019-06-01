@@ -23,7 +23,7 @@ namespace Library.View
     /// </summary>
     public partial class ItemAdd : Window
     {
-       
+
         public ItemAdd()
         {
             InitializeComponent();
@@ -51,35 +51,91 @@ namespace Library.View
 
         private void ItemAdd_Click(object sender, RoutedEventArgs e)
         {
+            bool isAdded = false;
 
-            switch (cbAddItem.SelectedIndex)
+        
+                switch (cbAddItem.SelectedIndex)
+                {
+                    case 0:
+                        if (AddItemBook())
+                        {
+                            MessageBox.Show("Book added!");
+                            isAdded = true;
+                        }
+                        break;
+                    case 1:
+                        if (AddItemAuthor())
+                        {
+                            MessageBox.Show("Author added!");
+                            isAdded = true;
+                        }
+                        break;
+                    case 2:
+                        if (AddItemGenre())
+                        {
+                            MessageBox.Show("Genre added!");
+                            isAdded = true;
+                        }                           
+                        break;
+                    default:
+                        MessageBox.Show("Error!");
+                        break;
+                }
+            if (isAdded) Close();
+        }
+
+        private bool AddItemGenre()
+        {
+            GenreAddViewModel ga = (GenreAddViewModel)DataContext;
+            Genre genre = ga.MyGenre;
+            if (string.IsNullOrEmpty(genre.Name))
             {
-                case 0:
-                    BookAddViewModel ba = (BookAddViewModel)DataContext;
-                    Book book = ba.MyBook;
-                    Books.AddBook(book);
-                    Genres.AddBookToGenre(book, book.Genre_AtBook);
-                    MessageBox.Show("Book added!");
-                    break;
-                case 1:
-                    AuthorAddViewModel aa = (AuthorAddViewModel)DataContext;
-                    Author author = aa.MyAuthor;
-
-                    Authors.AddAuthor(author);
-                    MessageBox.Show("Author added!");
-                    break;
-                case 2:
-                    GenreAddViewModel ga = (GenreAddViewModel)DataContext;
-                    Genre genre = ga.MyGenre;
-
-                    Genres.AddGenre(genre);
-                    MessageBox.Show("Genre added!");
-                    break;
-                default:
-                    MessageBox.Show("Error!");
-                    break;
+                MessageBox.Show("Name cannnot be empty.");
+                return false;
             }
-            Close();
+            genre.IsChanged = true;
+            Genres.AddGenre(genre);
+            Genres.IsChanged = true;
+            return true;
+        }
+
+        private bool AddItemAuthor()
+        {
+            AuthorAddViewModel aa = (AuthorAddViewModel)DataContext;
+            Author author = aa.MyAuthor;
+            if (string.IsNullOrEmpty(author.LastName))
+            {
+                MessageBox.Show("Last name cannnot be empty.");
+                return false;
+            }
+            Authors.AddAuthor(author);
+            return true;
+        }
+
+        private bool AddItemBook()
+        {
+            BookAddViewModel ba = (BookAddViewModel)DataContext;
+            Book book = ba.MyBook;
+
+            if (string.IsNullOrEmpty(book.Title))
+            {
+                MessageBox.Show("Title cannnot be empty.");
+                return false;
+            }
+            if (book.Author_AtBook == null)
+            {
+                MessageBox.Show("Author must be added.");
+                return false;
+            }
+            if (book.Genre_AtBook == null)
+            {
+                MessageBox.Show("Genre must be added.");
+                return false;
+            }
+            Books.AddBook(book);
+            Genres.AddBookToGenre(book, book.Genre_AtBook);
+            Authors.AddBookToAuthor(book, book.Author_AtBook);
+            return true;
         }
     }
 }

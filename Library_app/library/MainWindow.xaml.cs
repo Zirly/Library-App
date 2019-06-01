@@ -88,14 +88,14 @@ namespace Library
                     DataContext = new
                     {
                         collection = new AuthorsListViewModel(),
-                        detail = new AuthorDetailViewModel(Authors.GetAuthor(1))
+                        detail = new AuthorDetailViewModel(Authors.GetAuthor(Authors.AuthorsList.Count))
                     };
                     break;
                 case 2:
                     DataContext = new
                     {
                         collection = new GenresListViewModel(),
-                        detail = new GenreDetailViewModel(Genres.GetGenre(1))
+                        detail = new GenreDetailViewModel(Genres.GetGenre(Genres.GenresList.Count))
                     };
                     break;
                 default:
@@ -116,7 +116,9 @@ namespace Library
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (LibraryModel.IsChanged) DatabaseConnection.SaveDataToDB();
+            if (DatabaseConnection.SaveDataToDB()) MessageBox.Show("Changes saved");
+            else MessageBox.Show("No changes");
+           
         }
     }
 }

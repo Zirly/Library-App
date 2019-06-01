@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Library.ViewModel
 {
-    public static class BookViewModel
-    {
+    public static class ModelRelations
+    {/*
         public static void GetAuthors()
         {
             foreach (var relation in Model.Relations.RelationsList)
@@ -29,16 +29,28 @@ namespace Library.ViewModel
                     
                 }
             }
-        }
-        public static void GetBooks()
+        }*/
+        public static void GetBookLists()
         {
+            // adding books to its genre
             foreach (var genre in Model.Genres.GenresList)
             {
                 foreach (var book in Model.Books.BooksList)
                 {
-                    if (genre.Name == book.Genre_AtBook.Name)
+                    if (genre.GenreId == book.Genre_AtBook.GenreId)
                     {
                         genre.AddBook(book);
+                    }
+                }
+            }
+            // adding books to its author
+            foreach (var author in Model.Authors.AuthorsList)
+            {
+                foreach (var book in Model.Books.BooksList)
+                {
+                    if (author.AuthorId == book.Author_AtBook.AuthorId)
+                    {
+                        author.AddBook(book);
                     }
                 }
             }

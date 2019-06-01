@@ -16,10 +16,10 @@ namespace Library.Model
         private string title;
         public string Title
         {
-            get { return this.title; }
+            get { return title; }
             set
             {
-                this.title = value;
+                title = value;
                 OnPropertyChanged("Title");
             }
         }
@@ -40,12 +40,12 @@ namespace Library.Model
         public int? YearPublish { get; set; }
         public string Isbn { get; set; }
         public Genre Genre_AtBook { get; set; }
-        public List<Author> AuthorsList { get; set; }
+        public Author Author_AtBook { get; set; }
         
 
         public Book() { }
 
-        public Book(int id, string title, string description, int year, string isbn, int genreId)
+        public Book(int id, string title, string description, int year, string isbn, int genreId, int authorId)
         {
             BookId = id;
             Title = title;
@@ -53,11 +53,7 @@ namespace Library.Model
             YearPublish = year;
             Isbn = isbn;
             AttachGenre(genreId);
-            AuthorsList = new List<Author>();
-        }
-        public void AddAuthor(Author author)
-        {
-            AuthorsList.Add(author);
+            AttachAuthor(authorId);
         }
 
         public void AttachGenre(int id)
@@ -67,6 +63,16 @@ namespace Library.Model
                 if (item.GenreId == id)
                 {
                     Genre_AtBook = item;
+                }
+            }
+        }
+        public void AttachAuthor(int id)
+        {
+            foreach (var item in Authors.AuthorsList)
+            {
+                if (item.AuthorId == id)
+                {
+                    Author_AtBook = item;
                 }
             }
         }

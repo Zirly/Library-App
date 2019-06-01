@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,16 @@ namespace Library.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int? YearBirth { get; set; }
-        public List<Book> BooksList { get; set; }
+        private ObservableCollection<Book> _booksList = new ObservableCollection<Book>();
+        public ObservableCollection<Book> BooksList
+        {
+            get { return _booksList; }
+            set
+            {
+                _booksList = value;
+            }
+        }
+       
         public string FullName
         {
             get
@@ -32,7 +42,7 @@ namespace Library.Model
             FirstName = fname;
             LastName = lname;
             YearBirth = year;
-            BooksList = new List<Book>();
+            BooksList = new ObservableCollection<Book>();
         }
         //methods
         public void AddBook(Book book)

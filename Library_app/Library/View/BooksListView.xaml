@@ -27,14 +27,8 @@
 
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Title}" HorizontalAlignment="Left" TextAlignment="Left"/>
                 <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding YearPublish}" HorizontalAlignment="Right" TextAlignment="Right"/>
-                <ListBox Grid.Column="0" Grid.Row="1" BorderThickness="0" FontSize="10" ItemsSource="{Binding AuthorsList}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding FullName}"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Genre_AtBook.Name}" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right"/>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Author_AtBook.FullName}" HorizontalAlignment="Left" TextAlignment="Left" FontSize="10"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Genre_AtBook.Name}" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right"/>
             </Grid>
             </Border>
         </DataTemplate>

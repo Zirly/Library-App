@@ -19,10 +19,10 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" Text="Name:"/>
-        <TextBox Text="{Binding MyBook.Title, Mode=TwoWay}" x:Name="bookTitle" x:FieldModifier="public" Grid.Column="1" Grid.Row="0"/>
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="Title:"/>
+        <TextBox Text="{Binding MyBook.Title, Mode=TwoWay}" x:Name="bookTitle" Grid.Column="1" Grid.Row="0"/>
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:"/>
-        <ComboBox x:Name="cbAuthors" Grid.Column="1" Grid.Row="1">
+        <ComboBox x:Name="cbAuthors" SelectedItem="{Binding MyBook.Author_AtBook, Mode=TwoWay}" Grid.Column="1" Grid.Row="1">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding FullName}"/>

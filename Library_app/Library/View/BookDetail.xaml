@@ -23,13 +23,7 @@
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="Title:" />
                 <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MyBook.Title}"/>
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:" />
-                <ListBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding MyBook.AuthorsList}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding FullName}"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding MyBook.Author_AtBook.FullName, Mode=OneWay}"/>
                 <TextBlock Grid.Column="0" Grid.Row="2" Text="Year of publishing:" />
                 <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding MyBook.YearPublish}"/>
                 <TextBlock Grid.Column="0" Grid.Row="3" Text="Genre:" />

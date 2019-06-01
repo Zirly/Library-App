@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -23,8 +24,8 @@ namespace Library.Model
             }
         }
 
-        private List<Book> _booksList = new List<Book>();
-        public List<Book> BooksList
+        private ObservableCollection<Book> _booksList = new ObservableCollection<Book>();
+        public ObservableCollection<Book> BooksList
         {
             get { return this._booksList; }
             set
@@ -34,12 +35,14 @@ namespace Library.Model
             }
         }
 
+        public bool IsChanged { get; set; } = false;
+
         public Genre() { }
         public Genre(int id, string name)
         {
             GenreId = id;
             Name = name;
-            BooksList = new List<Book>();
+            BooksList = new ObservableCollection<Book>();
         }
 
         public void AddBook(Book book)
