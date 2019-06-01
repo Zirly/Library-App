@@ -75,6 +75,7 @@
     <Compile Include="Model\Books.cs" />
     <Compile Include="Model\Genre.cs" />
     <Compile Include="Model\Genres.cs" />
+    <Compile Include="Model\LibraryModel.cs" />
     <Compile Include="Model\Relation.cs" />
     <Compile Include="Model\Relations.cs" />
     <Compile Include="ViewModel\AuthorDetailViewModel.cs" />
