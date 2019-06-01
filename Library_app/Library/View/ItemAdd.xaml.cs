@@ -58,7 +58,7 @@ namespace Library.View
                     BookAddViewModel ba = (BookAddViewModel)DataContext;
                     Book book = ba.MyBook;
                     Books.AddBook(book);
-                    
+                    Genres.AddBookToGenre(book, book.Genre_AtBook);
                     MessageBox.Show("Book added!");
                     break;
                 case 1:

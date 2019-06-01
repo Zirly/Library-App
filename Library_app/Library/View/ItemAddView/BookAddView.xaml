@@ -22,9 +22,12 @@
         <TextBlock Grid.Column="0" Grid.Row="0" Text="Name:"/>
         <TextBox Text="{Binding MyBook.Title, Mode=TwoWay}" x:Name="bookTitle" x:FieldModifier="public" Grid.Column="1" Grid.Row="0"/>
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:"/>
-        <ComboBox Grid.Column="1" Grid.Row="1">
-            <ComboBoxItem Content="New Author"/>
-            <ComboBoxItem Content="Authorlist"/>
+        <ComboBox x:Name="cbAuthors" Grid.Column="1" Grid.Row="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding FullName}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBlock Grid.Column="0" Grid.Row="2" Text="Year:"/>
         <TextBox Text="{Binding MyBook.YearPublish, Mode=TwoWay}" x:Name="bookYear" x:FieldModifier="public" Grid.Column="1" Grid.Row="2"/>
@@ -33,7 +36,7 @@
         <TextBlock Grid.Column="0" Grid.Row="4" Text="ISBN:"/>
         <TextBox Text="{Binding MyBook.Isbn, Mode=TwoWay}" x:Name="bookIsbn" x:FieldModifier="public" Grid.Column="1" Grid.Row="4"/>
         <TextBlock Grid.Column="0" Grid.Row="5" Text="Genre:"/>
-        <ComboBox x:Name="cbGenres"  Grid.Column="1" Grid.Row="5">
+        <ComboBox x:Name="cbGenres" SelectedItem="{Binding MyBook.Genre_AtBook, Mode=TwoWay}"  Grid.Column="1" Grid.Row="5">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>

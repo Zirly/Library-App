@@ -25,6 +25,7 @@ namespace Library.View.ItemAddView
         {
             InitializeComponent();
             cbGenres.ItemsSource = Genres.GenresList;
+            cbAuthors.ItemsSource = Authors.AuthorsList;
             
         }
 

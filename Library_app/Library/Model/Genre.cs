@@ -23,8 +23,16 @@ namespace Library.Model
             }
         }
 
-
-        public List<Book> BooksList { get; set; }
+        private List<Book> _booksList = new List<Book>();
+        public List<Book> BooksList
+        {
+            get { return this._booksList; }
+            set
+            {
+                this._booksList = value;
+                OnPropertyChanged("BooksList");
+            }
+        }
 
         public Genre() { }
         public Genre(int id, string name)
@@ -36,6 +44,11 @@ namespace Library.Model
 
         public void AddBook(Book book)
         {
+            /* tarvitseeko tarkastaa että kirja on jo listalla?
+            foreach (var item in BooksList)
+            {
+                if (item == book) return;
+            } */
             BooksList.Add(book);
         }
         protected void OnPropertyChanged(string name)

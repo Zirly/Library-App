@@ -26,6 +26,17 @@ namespace Library.Model
             GenresList.Add(genre);
         }
 
+        public static void AddBookToGenre(Book book, Genre genre)
+        {
+            foreach (var g in GenresList)
+            {
+                if ( g == genre)
+                {
+                    g.AddBook(book);
+                }
+            }
+        }
+
         public static Genre GetGenre(int id)
         {
             Genre genre = new Genre();
