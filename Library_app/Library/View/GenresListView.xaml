@@ -8,10 +8,17 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <DataTemplate x:Key="genreTemplate" >
-            <TextBlock Text="{Binding Name}"/>
+            <Border BorderThickness="2" CornerRadius="4" Background="White">
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="#73B2F5" Opacity="0.5"/>
+                </Border.BorderBrush>
+                <Grid Margin="2" x:Name="GridItem">
+                    <TextBlock Text="{Binding Name}" FontFamily="Arial"/>
+                </Grid>
+            </Border>
         </DataTemplate>
     </UserControl.Resources>
-    <Grid>
-        <ListBox ItemsSource="{Binding MyGenreList, Mode=TwoWay}" Name="lstGenres" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource genreTemplate}" SelectionChanged="LstGenres_SelectionChanged"/>
+    <Grid Margin="5">
+        <ListBox ItemsSource="{Binding MyGenreList, Mode=TwoWay}" Name="lstGenres" HorizontalContentAlignment="Stretch" Background="AliceBlue" BorderThickness="0" ItemTemplate="{StaticResource genreTemplate}" SelectionChanged="LstGenres_SelectionChanged" />
     </Grid>
 </UserControl>

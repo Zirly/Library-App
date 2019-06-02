@@ -28,6 +28,62 @@
         <DataTemplate x:Name="bookDetailTemplate" DataType="{x:Type viewmodel:BookDetailViewModel}">
             <view:BookDetail DataContext="{Binding}"/>
         </DataTemplate>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
     <Grid x:Name="myGrid" Background="#f1eded">
@@ -45,35 +101,35 @@
             <!-- BUTTONS -->
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
-            <MenuItem Header="_File">
-                <MenuItem Header="_Open"/>              
-                <MenuItem Header="_Save"/>
+            <MenuItem Header="_File" FontFamily="Arial">
+                <MenuItem Header="_Save" Click="Save_Button_Click"/>
                 <Separator/>
-                <MenuItem Header="_Exit"/>
+                <MenuItem Header="_Exit" Click="Exit_Button_Click"/>
             </MenuItem>
-            <MenuItem Header="_Options"/>
+            <MenuItem Header="_Options" FontFamily="Arial">
+                <MenuItem Header="_Add Item" FontFamily="Arial" Click="Item_Add_Button_Click"/>
+            </MenuItem>
         </Menu>
         <Border Grid.Row="1" Margin="10,0" BorderThickness="1,1,1,0" BorderBrush="#abadb3">
             <Grid Grid.Row="1" Background="#d3eaed">
-            <TextBlock Width="Auto" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">Show:</TextBlock>
-            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,10,0,0" Width="70">
-                <ComboBoxItem Selected="BooksSelection_Selected" IsSelected="True" >Books</ComboBoxItem>
-                <ComboBoxItem Selected="AuthorsSelection_Selected" >Authors</ComboBoxItem>
-                <ComboBoxItem Selected="GenresSelection_Selected">Genre</ComboBoxItem>
-            </ComboBox>
-            <TextBlock Width="Auto" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,10,0,0">Search</TextBlock>
-        </Grid>
+                <TextBlock Width="Auto" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">Show:</TextBlock>
+                <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="48.12,6.909,0,0" Width="70" FontFamily="Arial">
+                    <ComboBoxItem Selected="BooksSelection_Selected" IsSelected="True" >Books</ComboBoxItem>
+                    <ComboBoxItem Selected="AuthorsSelection_Selected" >Authors</ComboBoxItem>
+                    <ComboBoxItem Selected="GenresSelection_Selected">Genre</ComboBoxItem>
+                </ComboBox>
+            </Grid>
         </Border>
         <Border Grid.Row="2" Margin="10,0" BorderBrush="#abadb3" BorderThickness="1,0,1,0">
             <Grid  Grid.Row="2" Background="#d3eaed" Height="Auto">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-                <Border BorderThickness="1" BorderBrush="#abadb3" Background="AliceBlue" CornerRadius="4,4,0,0" Width="120" Padding="0,2,0,2" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="1,1,1,0" BorderBrush="#abadb3" Background="AliceBlue" CornerRadius="4,4,0,0" Width="120" Padding="0,2,0,2" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center">
                     <TextBlock Text="COLLECTION" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontWeight="Bold" FontFamily="Arial" />
                 </Border>
-                <Border Grid.Column="1" BorderThickness="1" BorderBrush="#abadb3" Background="AliceBlue" CornerRadius="4,4,0,0" Width="80" Padding="0,2,0,2" HorizontalAlignment="Left" Margin="20,0,0,0">
+                <Border Grid.Column="1" BorderThickness="1,1,1,0" BorderBrush="#abadb3" Background="AliceBlue" CornerRadius="4,4,0,0" Width="80" Padding="0,2,0,2" HorizontalAlignment="Left" Margin="20,0,0,0">
                     <TextBlock Text="DETAILS" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial"/>
                 </Border>
 
@@ -85,14 +141,14 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="lstBase" Grid.Column="0" Margin="0" Background="AliceBlue">
-                <ContentControl Content="{Binding collection}" Background="AliceBlue"/>
-
+            <Border Grid.Column="0" BorderThickness="1,1,1,1" BorderBrush="#abadb3" Background="AliceBlue">
+                <ContentControl Content="{Binding collection}"/>
                 <!--<view:BooksListView x:Name="BooksListControl"/> -->
-            </Grid>
-            <ListBox x:Name="lstDetail" Grid.Column="1" Margin="0" Background="AliceBlue">
-                <ContentControl x:Name="cc" Content="{Binding detail}"/>
-            </ListBox>
+            </Border>
+            <Border Grid.Column="1" BorderThickness="0,1,1,1" BorderBrush="#abadb3">
+                <ContentControl Grid.Column="1" x:Name="cc" Content="{Binding detail}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="AliceBlue" />
+            </Border>
+
         </Grid>
         <StatusBar Grid.Row="4" Height="40" >
             <StatusBar.ItemsPanel>
@@ -101,14 +157,14 @@
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
             <StatusBarItem DockPanel.Dock="Left" Margin="10,0">
-                <Button Width="55"  Content="Add Item" Click="Item_Add_Button_Click"/>
+                <Button Width="55"  Content="Add Item" Click="Item_Add_Button_Click" Style="{DynamicResource ButtonStyle1}" MinHeight="20"/>
             </StatusBarItem>
             <StatusBarItem DockPanel.Dock="Left"/>
             <StatusBarItem  DockPanel.Dock="Right" Margin="10,0">
-                <Button Width="55" Content="Exit" Click="Exit_Button_Click"/>
+                <Button Width="55" Content="Exit" Click="Exit_Button_Click" Style="{DynamicResource ButtonStyle1}" MinHeight="20"/>
             </StatusBarItem>
             <StatusBarItem DockPanel.Dock="Right" >
-                <Button Width="55"  Content="Save" Click="Save_Button_Click"/>
+                <Button Width="55"  Content="Save" Click="Save_Button_Click" Style="{DynamicResource ButtonStyle1}" MinHeight="20"/>
             </StatusBarItem>
         </StatusBar>
     </Grid>

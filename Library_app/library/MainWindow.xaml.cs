@@ -106,12 +106,16 @@ namespace Library
         
         private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to exit?", "Exit Program", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (LibraryModel.AreItemsAdded() || LibraryModel.AreItemsRemoved())
             {
-                Close();
+                if (MessageBox.Show("All unsaved changes will be lost. Are you sure you want to exit?", "Exit Program", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    Close();
+                }
             }
             else
-	        {
+            {
+                Close();
             }
         }
 

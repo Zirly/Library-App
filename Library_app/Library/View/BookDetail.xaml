@@ -6,42 +6,45 @@
         xmlns:local="clr-namespace:Library.View"
         mc:Ignorable="d"
         d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <StackPanel x:Name="detailData" Orientation="Vertical">
+    
+
+    <DockPanel x:Name="detailData"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="True" Margin="5">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="*" MinWidth="120" />
+                    <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                <RowDefinition MinHeight="20"/>
+                <RowDefinition MinHeight="20"/>
+                <RowDefinition MinHeight="20"/>
+                <RowDefinition MinHeight="20"/>
+                <RowDefinition MinHeight="20"/>
+                <RowDefinition MinHeight="20"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Column="0" Grid.Row="0" Text="Title:" />
-                <TextBox x:Name="txtBookTitle" Grid.Column="1" Grid.Row="0" Text="{Binding MyBook.Title}"/>
-                <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:" />
-                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding MyBook.Author_AtBook.FullName, Mode=OneWay}"/>
-                <TextBlock Grid.Column="0" Grid.Row="2" Text="Year of publishing:" />
-                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding MyBook.YearPublish}"/>
-                <TextBlock Grid.Column="0" Grid.Row="3" Text="Genre:" />
-                <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding MyBook.Genre_AtBook.Name}"/>
-                <TextBlock Grid.Column="0" Grid.Row="4" Text="Isbn:" />
-                <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding MyBook.Isbn}"/>
-            </Grid>
-
-            <TextBlock Text="Description:" />
-            <TextBox Text="{Binding MyBook.Description}" Margin="5,10,10,0" 
-                     Width="350" Height="Auto"
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Title:" Margin="10,0,0,0" FontFamily="Arial"/>
+            <TextBox x:Name="txtBookTitle" Grid.Column="1" Grid.Row="0" Text="{Binding MyBook.Title}" Margin="0,0,10,0" FontFamily="Arial"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:" Margin="10,0,0,0" FontFamily="Arial"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding MyBook.Author_AtBook.FullName, Mode=OneWay}" Margin="0,0,10,0" FontFamily="Arial"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Year of publishing:" Margin="10,0,0,0" FontFamily="Arial"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding MyBook.YearPublish}" Margin="0,0,10,0" FontFamily="Arial"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Genre:" Margin="10,0,0,0" FontFamily="Arial"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding MyBook.Genre_AtBook.Name}" Margin="0,0,10,0" FontFamily="Arial"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Isbn:" Margin="10,0,0,0" FontFamily="Arial"/>
+            <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding MyBook.Isbn}" Margin="0,0,10,0" FontFamily="Arial" />
+            <TextBlock Grid.Row="5" Text="Description:" Margin="10,0,0,0" FontFamily="Arial"/>
+            <TextBox Grid.Row="6" Grid.ColumnSpan="2" Text="{Binding MyBook.Description}" Margin="10,0,10,0" FontFamily="Arial" 
+                     Width="Auto" Height="Auto"
                      HorizontalScrollBarVisibility="Visible"
                      TextWrapping="Wrap"
                      TextAlignment="Left"
                      MaxLength="500"
                      IsReadOnly="False"
                      AcceptsReturn="True" />
-            <Button Width="100" Margin="0,20,0,0" Content="Remove" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="BookRemove_Click"/>
-        </StackPanel>
-    </Grid>
+                <Button Grid.Row="7" Grid.Column="2" Width="100" Margin="10,10,10,10" Content="Remove" Click="BookRemove_Click" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Arial" Height="20"/>
+            </Grid>
+        </DockPanel>
+    
 </UserControl>

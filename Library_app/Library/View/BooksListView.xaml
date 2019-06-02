@@ -8,7 +8,7 @@
         d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <DataTemplate x:Key="bookTemplate" >
-            <Border BorderThickness="2" CornerRadius="4">
+            <Border BorderThickness="2" CornerRadius="4" Background="White">
                 <Border.BorderBrush>
                     <SolidColorBrush Color="#73B2F5" Opacity="0.5"/>
                 </Border.BorderBrush>
@@ -29,7 +29,7 @@
             </Border>
         </DataTemplate>
     </UserControl.Resources>
-    <Grid x:Name="myGrid">
-        <ListBox x:Name="lstBooks" ItemsSource="{Binding MyBookList}" HorizontalContentAlignment="Stretch"  ItemTemplate="{StaticResource bookTemplate}"  SelectionChanged="LstBooks_SelectionChanged" />
+    <Grid x:Name="myGrid" Margin="5">
+        <ListBox x:Name="lstBooks" ItemsSource="{Binding MyBookList}" HorizontalContentAlignment="Stretch"  ItemTemplate="{StaticResource bookTemplate}"  SelectionChanged="LstBooks_SelectionChanged" Background="AliceBlue" BorderThickness="0"/>
     </Grid>
 </UserControl>
