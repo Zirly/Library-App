@@ -8,6 +8,7 @@ namespace Library.Model
 {
     public static class Authors
     {
+        public static bool AreRemovedItems { get; set; } = false;
         public static bool IsChanged { get; set; } = false;
         public static List<Author> AuthorsList { get; set; }
         public static int LastIndex { get; set; }
@@ -16,11 +17,20 @@ namespace Library.Model
         static Authors()
         {
             Authors.AuthorsList = new List<Author>();
-            Authors.LastIndex = AuthorsList.Count + 1;
+            Authors.LastIndex = GetLastIndex() + 1;
 
         }
 
-        //TODO id
+        private static int GetLastIndex()
+        {
+            int id = 0;
+            foreach (var item in AuthorsList)
+            {
+                if (item.AuthorId > id) id = item.AuthorId;
+            }
+            return id;
+        }
+
         public static void AddAuthor(Author author)
         {
             author.AuthorId = LastIndex;
@@ -52,7 +62,7 @@ namespace Library.Model
             Author author = new Author();
             foreach (var item in AuthorsList)
             {
-                if (item.LastName.ToLower() == name.ToLower()) author = item;
+                if (item.FullName == name) author = item;
             }
             return author;
         }
@@ -63,6 +73,30 @@ namespace Library.Model
             foreach (var author in AuthorsList)
             {
                 if (author.AuthorId == id)
+                {
+                    AuthorsList.Remove(author);
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static bool RemoveAuthor(Author author)
+        {
+            foreach (var item in AuthorsList)
+            {
+                if (item == author)
+                {
+                    AuthorsList.Remove(item);
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static bool RemoveAuthorByName(string name)
+        {
+            foreach (Author author in AuthorsList)
+            {
+                if (author.FullName == name)
                 {
                     AuthorsList.Remove(author);
                     return true;

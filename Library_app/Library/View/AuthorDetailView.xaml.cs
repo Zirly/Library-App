@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Library.Model;
+using Library.ViewModel;
 
 namespace Library.View
 {
@@ -23,6 +25,26 @@ namespace Library.View
         public AuthorDetailView()
         {
             InitializeComponent();
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            string fullname = txtFullName.Text;
+            Author author = Authors.GetAuthor(fullname);
+            if (author.BooksList.Count > 0) MessageBox.Show("Author cannot be removed. His/her books must be removed first.");
+            else if (MessageBox.Show("Are you sure you want to remove the author?", "Remove author", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Authors.RemoveAuthor(author);
+                var mw = Application.Current.Windows
+                    .Cast<Window>()
+                    .FirstOrDefault(window => window is MainWindow) as MainWindow;
+
+                mw.DataContext = new
+                {
+                    collection = new AuthorsListViewModel(),
+                    detail = new AuthorDetailViewModel(Authors.GetAuthor(Authors.AuthorsList.Count))
+                };
+            }
         }
     }
 }

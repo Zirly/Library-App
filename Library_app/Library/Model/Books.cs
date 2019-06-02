@@ -8,6 +8,7 @@ namespace Library.Model
 {
     public static class Books
     {
+        public static bool AreRemovedItems { get; set; } = false;
         public static List<Book> BooksList { get; set; }
         public static int LastIndex { get; set; }
         public static bool IsChanged { get; set; } = false;
@@ -15,10 +16,20 @@ namespace Library.Model
         static Books()
         {
             Books.BooksList = new List<Book>();
-            Books.LastIndex = BooksList.Count + 1;
+            Books.LastIndex = GetLastIndex() + 1;
 
         }
-        //TODO id
+
+        private static int GetLastIndex()
+        {
+            int id = 0;
+            foreach (var item in BooksList)
+            {
+                if (item.BookId > id) id = item.BookId;
+            }
+            return id;
+        }
+
         public static void AddBook(Book book)
         {
             book.BookId = LastIndex;
@@ -51,6 +62,18 @@ namespace Library.Model
             foreach (var book in BooksList)
             {
                 if (book.BookId == id)
+                {
+                    BooksList.Remove(book);
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static bool RemoveBookByTitle(string name)
+        {
+            foreach (var book in BooksList)
+            {
+                if (book.Title == name)
                 {
                     BooksList.Remove(book);
                     return true;

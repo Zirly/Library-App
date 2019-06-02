@@ -74,7 +74,7 @@ namespace Library
             itemAdd.Show();
         }
 
-        private void Window_Activated(object sender, EventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             switch (comboBox.SelectedIndex)
             {
@@ -82,21 +82,21 @@ namespace Library
                     DataContext = new
                     {
                         collection = new BooksListViewModel(),
-                        detail = new BookDetailViewModel(Books.GetBook(Books.BooksList.Count))
+                        detail = new BookDetailViewModel(Books.GetBook(1))
                     };
                     break;
                 case 1:
                     DataContext = new
                     {
                         collection = new AuthorsListViewModel(),
-                        detail = new AuthorDetailViewModel(Authors.GetAuthor(Authors.AuthorsList.Count))
+                        detail = new AuthorDetailViewModel(Authors.GetAuthor(1))
                     };
                     break;
                 case 2:
                     DataContext = new
                     {
                         collection = new GenresListViewModel(),
-                        detail = new GenreDetailViewModel(Genres.GetGenre(Genres.GenresList.Count))
+                        detail = new GenreDetailViewModel(Genres.GetGenre(1))
                     };
                     break;
                 default:

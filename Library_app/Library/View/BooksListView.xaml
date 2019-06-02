@@ -12,20 +12,16 @@
                 <Border.BorderBrush>
                     <SolidColorBrush Color="#73B2F5" Opacity="0.5"/>
                 </Border.BorderBrush>
-            <Grid Margin="2" x:Name="GridItem">
-                
-                 
-                
-                <Grid.ColumnDefinitions>
+                <Grid Margin="2" x:Name="GridItem">
+                    <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Title}" HorizontalAlignment="Left" TextAlignment="Left"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Title}" HorizontalAlignment="Left" TextAlignment="Left"/>
                 <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding YearPublish}" HorizontalAlignment="Right" TextAlignment="Right"/>
                     <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Author_AtBook.FullName}" HorizontalAlignment="Left" TextAlignment="Left" FontSize="10"/>
                     <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Genre_AtBook.Name}" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right"/>
@@ -33,7 +29,7 @@
             </Border>
         </DataTemplate>
     </UserControl.Resources>
-    <Grid>
+    <Grid x:Name="myGrid">
         <ListBox x:Name="lstBooks" ItemsSource="{Binding MyBookList}" HorizontalContentAlignment="Stretch"  ItemTemplate="{StaticResource bookTemplate}"  SelectionChanged="LstBooks_SelectionChanged" />
     </Grid>
 </UserControl>

@@ -21,7 +21,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="Title:" />
-                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MyBook.Title}"/>
+                <TextBox x:Name="txtBookTitle" Grid.Column="1" Grid.Row="0" Text="{Binding MyBook.Title}"/>
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:" />
                 <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding MyBook.Author_AtBook.FullName, Mode=OneWay}"/>
                 <TextBlock Grid.Column="0" Grid.Row="2" Text="Year of publishing:" />
@@ -41,7 +41,7 @@
                      MaxLength="500"
                      IsReadOnly="False"
                      AcceptsReturn="True" />
-            <Button Width="100" Margin="0,20,0,0" Content="Remove" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Item_Remove_Click"/>
+            <Button Width="100" Margin="0,20,0,0" Content="Remove" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="BookRemove_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -26,14 +26,21 @@ namespace Library.View
             InitializeComponent();
         }
 
-        private void Item_Remove_Click(object sender, RoutedEventArgs e)
+        private void BookRemove_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to remove item?", "Remove Item", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Are you sure you want to remove the book?", "Remove Book", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                BookDetailViewModel sd = (BookDetailViewModel)DataContext;
-                Book book = sd.MyBook;
-                Books.RemoveBook(sd.MyBook.BookId);
-      
+                string title = txtBookTitle.Text;
+                Book book = Books.GetBook(title);
+                foreach (Author author in Authors.AuthorsList)
+                {
+                    if (author.BooksList.Contains(book)) author.BooksList.Remove(book);
+                }
+                foreach (Genre genre in Genres.GenresList)
+                {
+                    if (genre.BooksList.Contains(book)) genre.BooksList.Remove(book);
+                }
+                Books.RemoveBookByTitle(title);
                 var mw = Application.Current.Windows
                     .Cast<Window>()
                     .FirstOrDefault(window => window is MainWindow) as MainWindow;
@@ -43,9 +50,6 @@ namespace Library.View
                     collection = new BooksListViewModel(),
                     detail = new BookDetailViewModel(Books.GetBook(Books.BooksList.Count))
                 };
-            }
-            else
-            {
             }
         }
     }

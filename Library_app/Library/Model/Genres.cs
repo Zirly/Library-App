@@ -81,6 +81,17 @@ namespace Library.Model
             }
             return false;
         }
-
+        public static bool RemoveGenre(Genre genre)
+        {
+            foreach (var item in GenresList)
+            {
+                if (item == genre)
+                {
+                    GenresList.Remove(item);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

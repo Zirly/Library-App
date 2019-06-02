@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Library.Model;
+using Library.ViewModel;
 
 namespace Library.View
 {
@@ -28,6 +30,25 @@ namespace Library.View
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             lstBooks.Items.Refresh();
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            string name = txtName.Text;
+            Genre genre = Genres.GetGenre(name);
+            if (genre.BooksList.Count > 0) MessageBox.Show("Genre cannot be removed. The associated books must be removed first.");
+            else if (MessageBox.Show("Are you sure you want to remove the genre?", "Remove genre", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Genres.RemoveGenre(genre);
+                var mw = Application.Current.Windows
+                    .Cast<Window>()
+                    .FirstOrDefault(window => window is MainWindow) as MainWindow;
+
+                mw.DataContext = new
+                {
+                    collection = new GenresListViewModel(),
+                    detail = new GenreDetailViewModel(Genres.GetGenre(Genres.GenresList.Count))                };
+            }
         }
     }
 }

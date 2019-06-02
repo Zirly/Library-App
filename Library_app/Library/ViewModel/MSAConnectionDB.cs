@@ -137,15 +137,63 @@ namespace Library.ViewModel
                 Genres.IsChanged = false;
                 if (Authors.IsChanged) SaveNewAuthorsToDB();
                 Authors.IsChanged = false;
+                if (Books.IsChanged) SaveNewBooksToDB();
+                Books.IsChanged = false;
                 return true;
             }
             return false;
             
         }
 
+        private static void SaveNewBooksToDB()
+        {
+            foreach (Book book in Books.BooksList)
+            {
+                if (book.IsChanged)
+                {
+                    try
+                    {
+                        OleDbConnection con = new OleDbConnection();
+
+                        string connectionString = Properties.Settings.Default.conn_String;
+                        con.ConnectionString = connectionString;
+
+                        using (con)
+                        {
+                            using (var cmd = new OleDbCommand("insert into [book_table] (book_id, title, yearPublish, description, isbn, genre_id, author_id) VALUES (@book_id,@title,@year,@description,@isbn,@genre_id,@author_id)"))
+                            {
+                                cmd.Connection = con;
+                                cmd.Parameters.AddWithValue("@book_id", book.BookId);
+                                cmd.Parameters.AddWithValue("@title", book.Title);
+                                cmd.Parameters.AddWithValue("@year", ((object)book.YearPublish) ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("@description", ((object)book.Description) ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("@isbn", ((object)book.Isbn) ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("@genre_id", book.Genre_AtBook.GenreId);
+                                cmd.Parameters.AddWithValue("@author_id", book.Author_AtBook.AuthorId);
+                                con.Open();
+                                if (cmd.ExecuteNonQuery() > 0)
+                                {
+                                    MessageBox.Show("Record inserted");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Record failed");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    book.IsChanged = false;
+                }
+            }
+        }
+
         private static void SaveNewAuthorsToDB()
         {
-            foreach (var author in Authors.AuthorsList)
+            foreach (Author author in Authors.AuthorsList)
             {
                 if (author.IsChanged)
                 {
@@ -188,7 +236,7 @@ namespace Library.ViewModel
 
         private static void SaveNewGenresToDB()
         {
-            foreach (var genre in Genres.GenresList)
+            foreach (Genre genre in Genres.GenresList)
             {
                 if (genre.IsChanged)
                 {
