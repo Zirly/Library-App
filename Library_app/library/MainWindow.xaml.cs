@@ -29,12 +29,13 @@ namespace Library
         public MainWindow()
         {
             InitializeComponent();
-            DatabaseConnection.ReadDataFromDB();
+            MSAConnectionDB.MakeConnection();
+            //DatabaseConnection.ReadDataFromDB();
             DataContext = new
             {
                 collection = new BooksListViewModel(),
                 detail = new BookDetailViewModel(Books.GetBook(1))
-            }; 
+            };
             
         }
 
@@ -116,8 +117,9 @@ namespace Library
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseConnection.SaveDataToDB();
-
+            // DatabaseConnection.SaveDataToDB();
+            if (MSAConnectionDB.SaveDataToDB()) MessageBox.Show("Changes saved");
+            else MessageBox.Show("No changes");
         }
     }
 }

@@ -134,6 +134,7 @@ namespace Library.View
                 MessageBox.Show("Genre must be added.");
                 return false;
             }
+            
             Books.AddBook(book);
             Genres.AddBookToGenre(book, book.Genre_AtBook);
             Authors.AddBookToAuthor(book, book.Author_AtBook);
