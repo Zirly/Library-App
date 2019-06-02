@@ -117,9 +117,24 @@ namespace Library
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
-            // DatabaseConnection.SaveDataToDB();
-            if (MSAConnectionDB.SaveDataToDB()) MessageBox.Show("Changes saved");
-            else MessageBox.Show("No changes");
+            if (!CheckEmptyValues())
+            {
+                if (MSAConnectionDB.SaveDataToDB()) MessageBox.Show("Changes saved");
+                else MessageBox.Show("No changes");
+            }           
+        }
+
+        private bool CheckEmptyValues()
+        {           
+            foreach  (Genre genre in Genres.GenresList)
+            {
+                if (genre.Name == "")
+                {
+                    MessageBox.Show("The name of a genre cannot be empty");
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

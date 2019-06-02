@@ -48,8 +48,17 @@ namespace Library.View
                 mw.DataContext = new
                 {
                     collection = new GenresListViewModel(),
-                    detail = new GenreDetailViewModel(Genres.GetGenre(Genres.GenresList.Count))                };
+                    detail = new GenreDetailViewModel(Genres.GetGenre(Genres.GenresList.Count))
+                };
             }
+        }
+
+        private void TxtName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            GenreDetailViewModel viewmodel = (GenreDetailViewModel)DataContext;
+            Genre genre = viewmodel.MyGenre;
+            genre.IsUpdated = true;
+            Genres.IsUpdated = true;
         }
     }
 }

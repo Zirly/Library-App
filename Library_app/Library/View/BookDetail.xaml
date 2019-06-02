@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.View"
         mc:Ignorable="d"
-        d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+        d:DesignHeight="500" d:DesignWidth="300">
+    <Grid >
         <StackPanel x:Name="detailData" Orientation="Vertical">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -21,7 +21,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="Title:" />
-                <TextBox x:Name="txtBookTitle" Grid.Column="1" Grid.Row="0" Text="{Binding MyBook.Title}"/>
+                <TextBox x:Name="txtBookTitle" Grid.Column="1" Grid.Row="0" Text="{Binding MyBook.Title}" />
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:" />
                 <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding MyBook.Author_AtBook.FullName, Mode=OneWay}"/>
                 <TextBlock Grid.Column="0" Grid.Row="2" Text="Year of publishing:" />

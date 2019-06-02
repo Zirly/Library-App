@@ -155,7 +155,68 @@ namespace Library.ViewModel
                 Books.AreRemovedItems = false;
                 changesMade = true;
             }
+            if (LibraryModel.AreItemsUpdated())
+            {
+                if (Genres.IsUpdated) UpdateGenresToDB();
+                Genres.IsUpdated = false;
+                if (Authors.IsUpdated) UpdateAuthorsToDB();
+                Authors.IsUpdated = false;
+                if (Books.IsUpdated) UpdateBooksToDB();
+                Books.IsUpdated = false;
+                changesMade = true;
+            }
             return changesMade;            
+        }
+
+        private static void UpdateGenresToDB()
+        {
+            foreach (Genre genre in Genres.GenresList)
+            {
+                if (genre.IsUpdated && genre.Name != "")
+                {
+                    try
+                    {
+                        OleDbConnection con = new OleDbConnection();
+
+                        string connectionString = Properties.Settings.Default.conn_String;
+                        con.ConnectionString = connectionString;
+
+                        using (con)
+                        {
+                            using (var cmd = new OleDbCommand("update [genre_table] set genreName = @name where genre_id = @id;"))
+                            {
+                                cmd.Connection = con;
+                                cmd.Parameters.AddWithValue("@name", genre.Name);
+                                cmd.Parameters.AddWithValue("@id", genre.GenreId);
+                                con.Open();
+                                if (cmd.ExecuteNonQuery() > 0)
+                                {
+                                    MessageBox.Show("Record updated");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Record failed");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error during insert: " + ex.Message);
+                    }
+                    genre.IsChanged = false;
+                }
+            }
+        }
+
+        private static void UpdateAuthorsToDB()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void UpdateBooksToDB()
+        {
+            throw new NotImplementedException();
         }
 
         private static void RemoveGenresFromDB()
@@ -206,7 +267,6 @@ namespace Library.ViewModel
                     }
                 }
             }
-            Genres.AreRemovedItems = false;
         }
 
         private static void RemoveAuthorsFromDB()
@@ -257,7 +317,6 @@ namespace Library.ViewModel
                     }
                 }
             }
-            Authors.AreRemovedItems = false;
         }
         private static void RemoveBooksFromDB()
         {
@@ -307,7 +366,6 @@ namespace Library.ViewModel
                     }
                 }
             }
-            Books.AreRemovedItems = false;
         }
 
         private static void SaveNewBooksToDB()
@@ -371,10 +429,9 @@ namespace Library.ViewModel
 
                         using (con)
                         {
-                            using (var cmd = new OleDbCommand("insert into [author_table] (author_id, firstName, lastName, yearBirth) VALUES (@author_id,@firstName,@lastName,@yearBirth)"))
+                            using (var cmd = new OleDbCommand("insert into [author_table] (firstName, lastName, yearBirth) VALUES (@firstName,@lastName,@yearBirth)"))
                             {
                                 cmd.Connection = con;
-                                cmd.Parameters.AddWithValue("@author_id", author.AuthorId);
                                 cmd.Parameters.AddWithValue("@firstName", ((object)author.FirstName) ?? DBNull.Value);
                                 cmd.Parameters.AddWithValue("@lastName", author.LastName);
                                 cmd.Parameters.AddWithValue("@yearBirth", ((object)author.YearBirth) ?? DBNull.Value);

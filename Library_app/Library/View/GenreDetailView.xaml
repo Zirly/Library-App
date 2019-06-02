@@ -19,7 +19,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="Name:" />
-                <TextBox x:Name="txtName" Grid.Column="1" Grid.Row="0" Text="{Binding MyGenre.Name, Mode=TwoWay}"/>
+                <TextBox x:Name="txtName" Grid.Column="1" Grid.Row="0" Text="{Binding MyGenre.Name, Mode=TwoWay}" GotFocus="TxtName_GotFocus" />
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="Books:" />
                 <ListBox x:Name="lstBooks" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding MyGenre.BooksList, Mode=TwoWay}">
                     <ListBox.ItemTemplate>
