@@ -64,7 +64,7 @@ namespace Library.ViewModel
 
         public static void SaveDataToDB()
         {
-            if (LibraryModel.AreChangesMade())
+            if (LibraryModel.AreItemsAdded())
             {
                if (Genres.IsChanged) SaveNewGenresToDB();
                if (Authors.IsChanged) SaveNewAuthorsToDB();

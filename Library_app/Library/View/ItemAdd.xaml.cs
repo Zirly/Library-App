@@ -96,6 +96,7 @@ namespace Library.View
             genre.IsChanged = true;
             Genres.AddGenre(genre);
             Genres.IsChanged = true;
+            ActivateMainWindow();
             return true;
         }
 
@@ -111,6 +112,7 @@ namespace Library.View
             author.IsChanged = true;
             Authors.AddAuthor(author);
             Authors.IsChanged = true;
+            ActivateMainWindow();
             return true;
         }
 
@@ -134,10 +136,47 @@ namespace Library.View
                 MessageBox.Show("Genre must be added.");
                 return false;
             }
+            book.IsChanged = true;
             Books.AddBook(book);
+            Books.IsChanged = true;
             Genres.AddBookToGenre(book, book.Genre_AtBook);
             Authors.AddBookToAuthor(book, book.Author_AtBook);
+            ActivateMainWindow();
             return true;
+        }
+
+        private void ActivateMainWindow()
+        {
+            var mw = Application.Current.Windows
+                    .Cast<Window>()
+                    .FirstOrDefault(window => window is MainWindow) as MainWindow;
+
+            switch (mw.comboBox.SelectedIndex)
+            {
+                case 0:
+                    mw.DataContext = new
+                    {
+                        collection = new BooksListViewModel(),
+                        detail = new BookDetailViewModel(Books.GetBook(1))
+                    };
+                    break;
+                case 1:
+                    mw.DataContext = new
+                    {
+                        collection = new AuthorsListViewModel(),
+                        detail = new AuthorDetailViewModel(Authors.GetAuthor(1))
+                    };
+                    break;
+                case 2:
+                    mw.DataContext = new
+                    {
+                        collection = new GenresListViewModel(),
+                        detail = new GenreDetailViewModel(Genres.GetGenre(1))
+                    };
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

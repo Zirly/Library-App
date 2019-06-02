@@ -29,12 +29,13 @@ namespace Library
         public MainWindow()
         {
             InitializeComponent();
-            DatabaseConnection.ReadDataFromDB();
+            MSAConnectionDB.LoadData();
+            //DatabaseConnection.ReadDataFromDB();
             DataContext = new
             {
                 collection = new BooksListViewModel(),
                 detail = new BookDetailViewModel(Books.GetBook(1))
-            }; 
+            };
             
         }
 
@@ -73,7 +74,7 @@ namespace Library
             itemAdd.Show();
         }
 
-        private void Window_Activated(object sender, EventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             switch (comboBox.SelectedIndex)
             {
@@ -81,21 +82,21 @@ namespace Library
                     DataContext = new
                     {
                         collection = new BooksListViewModel(),
-                        detail = new BookDetailViewModel(Books.GetBook(Books.BooksList.Count))
+                        detail = new BookDetailViewModel(Books.GetBook(1))
                     };
                     break;
                 case 1:
                     DataContext = new
                     {
                         collection = new AuthorsListViewModel(),
-                        detail = new AuthorDetailViewModel(Authors.GetAuthor(Authors.AuthorsList.Count))
+                        detail = new AuthorDetailViewModel(Authors.GetAuthor(1))
                     };
                     break;
                 case 2:
                     DataContext = new
                     {
                         collection = new GenresListViewModel(),
-                        detail = new GenreDetailViewModel(Genres.GetGenre(Genres.GenresList.Count))
+                        detail = new GenreDetailViewModel(Genres.GetGenre(1))
                     };
                     break;
                 default:
@@ -116,8 +117,9 @@ namespace Library
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseConnection.SaveDataToDB();
-
+            // DatabaseConnection.SaveDataToDB();
+            if (MSAConnectionDB.SaveDataToDB()) MessageBox.Show("Changes saved");
+            else MessageBox.Show("No changes");
         }
     }
 }

@@ -33,9 +33,7 @@ namespace Library.Model
                 OnPropertyChanged("BookId");
             }
         }
-        //
-        //public int BookId { get; set; }
-        //public string Title { get; set; }
+        public bool IsChanged { get; set; } = false;
         public object Description { get; set; }
         public int? YearPublish { get; set; }
         public string Isbn { get; set; }

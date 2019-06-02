@@ -8,18 +8,30 @@ namespace Library.Model
 {
     public static class Genres
     {
+        public static bool AreRemovedItems { get; set; } = false;
         public static bool IsChanged { get; set; } = false; 
         public static List<Genre> GenresList { get; set; }
         public static int LastIndex { get; set; }
 
-        // tämä pois?
+     
         static Genres()
         {
             Genres.GenresList = new List<Genre>();
-            Genres.LastIndex = GenresList.Count + 1;
-
+            Genres.LastIndex = GetLastIndex() + 1;
+            
         }
-        //TODO id
+
+        private static int GetLastIndex()
+        {
+            int id = 0;
+            foreach (var item in GenresList)
+            {
+                if (item.GenreId > id) id = item.GenreId;
+            }
+            return id;
+        }
+
+     
         public static void AddGenre(Genre genre)
         {
             genre.GenreId = LastIndex;
@@ -70,6 +82,17 @@ namespace Library.Model
             }
             return false;
         }
-
+        public static bool RemoveGenre(Genre genre)
+        {
+            foreach (var item in GenresList)
+            {
+                if (item == genre)
+                {
+                    GenresList.Remove(item);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

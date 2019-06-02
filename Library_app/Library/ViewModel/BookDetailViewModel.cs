@@ -16,5 +16,6 @@ namespace Library.ViewModel
             MyBook = book;
 
         }
+        public BookDetailViewModel() { }
     }
 }
