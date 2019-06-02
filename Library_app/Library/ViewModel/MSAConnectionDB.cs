@@ -11,17 +11,17 @@ namespace Library.ViewModel
 {
     public static class MSAConnectionDB
     {
-        public static void MakeConnection()
+        public static void LoadData()
         {
-            ReadGenresFromDatabase();
-            ReadAuthorsFromDatabase();
-            ReadBooksFromDatabase();
+            Genres.GenresList = ReadGenresFromDatabase();
+            Authors.AuthorsList = ReadAuthorsFromDatabase();
+            Books.BooksList = ReadBooksFromDatabase();
             ModelRelations.GetBookLists();
         }
 
-        public static void ReadGenresFromDatabase()
+        public static List<Genre> ReadGenresFromDatabase()
         {
-
+            List<Genre> genres = new List<Genre>();
             try
             {
                 OleDbConnection con = new OleDbConnection();
@@ -41,7 +41,7 @@ namespace Library.ViewModel
                         int genreId = rd.GetInt32(0);
                         string name = rd.GetString(1);
                         Genre genre = new Genre(genreId, name);
-                        Genres.AddGenre(genre);
+                        genres.Add(genre);
                     }
                 }
                 rd.Close();
@@ -51,11 +51,12 @@ namespace Library.ViewModel
             {
                 MessageBox.Show(ex.Message);
             }
+            return genres;
         }
 
-        public static void ReadAuthorsFromDatabase()
+        public static List<Author> ReadAuthorsFromDatabase()
         {
-
+            List<Author> authors = new List<Author>();
             try
             {
                 OleDbConnection con = new OleDbConnection();
@@ -77,7 +78,7 @@ namespace Library.ViewModel
                         string lName = rd.GetString(2);
                         int year = rd[3] as int? ?? default(int);
                         Author author = new Author(authorId, fName, lName, year);
-                        Authors.AddAuthor(author);
+                        authors.Add(author);
                     }
                 }
                 rd.Close();
@@ -87,11 +88,12 @@ namespace Library.ViewModel
             {
                 MessageBox.Show(ex.Message);
             }
+            return authors;
         }
 
-        public static void ReadBooksFromDatabase()
+        public static List<Book> ReadBooksFromDatabase()
         {
-
+            List<Book> books = new List<Book>();
             try
             {
                 OleDbConnection con = new OleDbConnection();
@@ -117,7 +119,7 @@ namespace Library.ViewModel
                         int authorId = rd.GetInt32(6);
 
                         Book book = new Book(bookId, bookTitle, description, year, isbn, genreId, authorId);
-                        Books.AddBook(book);
+                        books.Add(book);
                     }
                 }
                 rd.Close();
@@ -127,11 +129,13 @@ namespace Library.ViewModel
             {
                 MessageBox.Show(ex.Message);
             }
+            return books;
         }
 
         public static bool SaveDataToDB()
         {
-            if (LibraryModel.AreChangesMade())
+            bool changesMade = false;
+            if (LibraryModel.AreItemsAdded())
             {
                 if (Genres.IsChanged) SaveNewGenresToDB();
                 Genres.IsChanged = false;
@@ -139,10 +143,171 @@ namespace Library.ViewModel
                 Authors.IsChanged = false;
                 if (Books.IsChanged) SaveNewBooksToDB();
                 Books.IsChanged = false;
-                return true;
+                changesMade = true;
             }
-            return false;
-            
+            if (LibraryModel.AreItemsRemoved())
+            {
+                if (Genres.AreRemovedItems) RemoveGenresFromDB();
+                Genres.AreRemovedItems = false;
+                if (Authors.AreRemovedItems) RemoveAuthorsFromDB();
+                Authors.AreRemovedItems = false;
+                if (Books.AreRemovedItems) RemoveBooksFromDB();
+                Books.AreRemovedItems = false;
+                changesMade = true;
+            }
+            return changesMade;            
+        }
+
+        private static void RemoveGenresFromDB()
+        { 
+            List<Genre> oldGenres = ReadGenresFromDatabase();
+            List<int> oldIds = new List<int>();
+            foreach (Genre oldGenre in oldGenres)
+            {
+                oldIds.Add(oldGenre.GenreId);
+            }
+            List<int> newIds = new List<int>();
+            foreach (Genre newGenre in Genres.GenresList)
+            {
+                newIds.Add(newGenre.GenreId);
+            }
+            foreach (var oldId in oldIds)
+            {
+                if (!newIds.Contains(oldId))
+                {
+                    try
+                    {
+                        OleDbConnection con = new OleDbConnection();
+
+                        string connectionString = Properties.Settings.Default.conn_String;
+                        con.ConnectionString = connectionString;
+
+                        using (con)
+                        {
+                            using (var cmd = new OleDbCommand("delete from [genre_table] where genre_id = @id;"))
+                            {
+                                cmd.Connection = con;
+                                cmd.Parameters.AddWithValue("@id", oldId);
+                                con.Open();
+                                if (cmd.ExecuteNonQuery() > 0)
+                                {
+                                    MessageBox.Show("Record deleted");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Record failed");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            Genres.AreRemovedItems = false;
+        }
+
+        private static void RemoveAuthorsFromDB()
+        {
+            List<Author> oldAuthors = ReadAuthorsFromDatabase();
+            List<int> oldIds = new List<int>();
+            foreach (Author oldAuthor in oldAuthors)
+            {
+                oldIds.Add(oldAuthor.AuthorId);
+            }
+            List<int> newIds = new List<int>();
+            foreach (Author newAuthor in Authors.AuthorsList)
+            {
+                newIds.Add(newAuthor.AuthorId);
+            }
+            foreach (var oldId in oldIds)
+            {
+                if (!newIds.Contains(oldId))
+                {
+                    try
+                    {
+                        OleDbConnection con = new OleDbConnection();
+
+                        string connectionString = Properties.Settings.Default.conn_String;
+                        con.ConnectionString = connectionString;
+
+                        using (con)
+                        {
+                            using (var cmd = new OleDbCommand("delete from [author_table] where author_id = @id;"))
+                            {
+                                cmd.Connection = con;
+                                cmd.Parameters.AddWithValue("@id", oldId);
+                                con.Open();
+                                if (cmd.ExecuteNonQuery() > 0)
+                                {
+                                    MessageBox.Show("Record deleted");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Record failed");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            Authors.AreRemovedItems = false;
+        }
+        private static void RemoveBooksFromDB()
+        {
+            List<Book> oldBooks = ReadBooksFromDatabase();
+            List<int> oldIds = new List<int>();
+            foreach (Book oldBook in oldBooks)
+            {
+                oldIds.Add(oldBook.BookId);
+            }
+            List<int> newIds = new List<int>();
+            foreach (Book newBook in Books.BooksList)
+            {
+                newIds.Add(newBook.BookId);
+            }
+            foreach (int oldId in oldIds)
+            {
+                if (!newIds.Contains(oldId))
+                {
+                    try
+                    {
+                        OleDbConnection con = new OleDbConnection();
+
+                        string connectionString = Properties.Settings.Default.conn_String;
+                        con.ConnectionString = connectionString;
+
+                        using (con)
+                        {
+                            using (var cmd = new OleDbCommand("delete from [book_table] where book_id = @id;"))
+                            {
+                                cmd.Connection = con;
+                                cmd.Parameters.AddWithValue("@id", oldId);
+                                con.Open();
+                                if (cmd.ExecuteNonQuery() > 0)
+                                {
+                                    MessageBox.Show("Record deleted");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Record failed");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            Books.AreRemovedItems = false;
         }
 
         private static void SaveNewBooksToDB()

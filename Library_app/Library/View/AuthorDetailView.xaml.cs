@@ -35,6 +35,7 @@ namespace Library.View
             else if (MessageBox.Show("Are you sure you want to remove the author?", "Remove author", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 Authors.RemoveAuthor(author);
+                Authors.AreRemovedItems = true;
                 var mw = Application.Current.Windows
                     .Cast<Window>()
                     .FirstOrDefault(window => window is MainWindow) as MainWindow;

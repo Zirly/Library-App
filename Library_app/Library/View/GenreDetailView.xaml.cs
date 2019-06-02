@@ -26,7 +26,7 @@ namespace Library.View
         {
             InitializeComponent();
         }
-
+        // ?
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             lstBooks.Items.Refresh();
@@ -40,6 +40,7 @@ namespace Library.View
             else if (MessageBox.Show("Are you sure you want to remove the genre?", "Remove genre", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 Genres.RemoveGenre(genre);
+                Genres.AreRemovedItems = true;
                 var mw = Application.Current.Windows
                     .Cast<Window>()
                     .FirstOrDefault(window => window is MainWindow) as MainWindow;

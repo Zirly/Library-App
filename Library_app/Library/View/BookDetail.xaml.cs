@@ -41,6 +41,7 @@ namespace Library.View
                     if (genre.BooksList.Contains(book)) genre.BooksList.Remove(book);
                 }
                 Books.RemoveBookByTitle(title);
+                Books.AreRemovedItems = true;
                 var mw = Application.Current.Windows
                     .Cast<Window>()
                     .FirstOrDefault(window => window is MainWindow) as MainWindow;

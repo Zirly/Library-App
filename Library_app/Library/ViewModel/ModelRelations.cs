@@ -7,29 +7,7 @@ using System.Threading.Tasks;
 namespace Library.ViewModel
 {
     public static class ModelRelations
-    {/*
-        public static void GetAuthors()
-        {
-            foreach (var relation in Model.Relations.RelationsList)
-            {
-                
-                foreach (var book in Model.Books.BooksList)
-                {   
-                    if (relation.BookId == book.BookId)
-                    {
-                        foreach (var author in Model.Authors.AuthorsList)
-                        {
-                            if (relation.AuthorId == author.AuthorId)
-                            {
-                                book.AddAuthor(author);
-                                author.AddBook(book);
-                            }
-                        }
-                    }
-                    
-                }
-            }
-        }*/
+    {
         public static void GetBookLists()
         {
             // adding books to its genre
@@ -37,7 +15,8 @@ namespace Library.ViewModel
             {
                 foreach (var book in Model.Books.BooksList)
                 {
-                    if (genre.GenreId == book.Genre_AtBook.GenreId)
+                    // book should never be without genre, but it could happen if loading data from db fails
+                    if ((book.Genre_AtBook != null) && (genre.GenreId == book.Genre_AtBook.GenreId))
                     {
                         genre.AddBook(book);
                     }
@@ -48,7 +27,7 @@ namespace Library.ViewModel
             {
                 foreach (var book in Model.Books.BooksList)
                 {
-                    if (author.AuthorId == book.Author_AtBook.AuthorId)
+                    if ((book.Author_AtBook != null) && (author.AuthorId == book.Author_AtBook.AuthorId))
                     {
                         author.AddBook(book);
                     }

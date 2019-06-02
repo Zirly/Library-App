@@ -29,7 +29,7 @@ namespace Library
         public MainWindow()
         {
             InitializeComponent();
-            MSAConnectionDB.MakeConnection();
+            MSAConnectionDB.LoadData();
             //DatabaseConnection.ReadDataFromDB();
             DataContext = new
             {
