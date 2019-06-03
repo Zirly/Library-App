@@ -62,13 +62,13 @@ Pura lataamasi zip-paketti mihin tahansa kansioon ja avaa .exe -päätteinen tie
 
 ### Selitykset
 
-* 1. Valikko
-* 2. Halutun kokoelman listaus
-* 3. Alkio
-* 4. Painike lisäysikkunaan
-* 5. Alkion sisältämä tieto
-* 6. Alkion poistopainike
-* 7. Tietokannan tallennuspainike
-* 8. Ohjelman sulkemispainike
+1. Valikko
+2. Halutun kokoelman listaus
+3. Alkio
+4. Painike lisäysikkunaan
+5. Alkion sisältämä tieto
+6. Alkion poistopainike
+7. Tietokannan tallennuspainike
+8. Ohjelman sulkemispainike
 
 ## Lisäysikkuna
