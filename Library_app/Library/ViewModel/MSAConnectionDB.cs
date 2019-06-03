@@ -211,12 +211,91 @@ namespace Library.ViewModel
 
         private static void UpdateAuthorsToDB()
         {
-            throw new NotImplementedException();
+            foreach (Author author in Authors.AuthorsList)
+            {
+                if (author.IsUpdated && author.LastName != "")
+                {
+                    try
+                    {
+                        OleDbConnection con = new OleDbConnection();
+
+                        string connectionString = Properties.Settings.Default.conn_String;
+                        con.ConnectionString = connectionString;
+
+                        using (con)
+                        {
+                            using (var cmd = new OleDbCommand("update [author_table] set firstName = @firstName, lastName = @lastName, yearBirth = @yearBirth where author_id = @id;"))
+                            {
+                                cmd.Connection = con;
+                                cmd.Parameters.AddWithValue("@firstName", author.FirstName);
+                                cmd.Parameters.AddWithValue("@lastName", author.LastName);
+                                cmd.Parameters.AddWithValue("@yearBirth", author.YearBirth);
+                                cmd.Parameters.AddWithValue("@id", author.AuthorId);
+                                con.Open();
+                                if (cmd.ExecuteNonQuery() > 0)
+                                {
+                                    MessageBox.Show("Record updated");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Record failed");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error during insert: " + ex.Message);
+                    }
+                    author.IsChanged = false;
+                }
+            }
         }
 
         private static void UpdateBooksToDB()
         {
-            throw new NotImplementedException();
+            foreach (Book book in Books.BooksList)
+            {
+                if (book.IsUpdated && book.Title != "")
+                {
+                    try
+                    {
+                        OleDbConnection con = new OleDbConnection();
+
+                        string connectionString = Properties.Settings.Default.conn_String;
+                        con.ConnectionString = connectionString;
+
+                        using (con)
+                        {
+                            using (var cmd = new OleDbCommand("update [book_table] set title = @title, yearPublish = @year, description = @description, isbn = @isbn, genre_id = @genre_id, author_id = @author_id where book_id = @book_id;"))
+                            {
+                                cmd.Connection = con;
+                                cmd.Parameters.AddWithValue("@title", book.Title);
+                                cmd.Parameters.AddWithValue("@year", book.YearPublish);
+                                cmd.Parameters.AddWithValue("@description", book.Description);
+                                cmd.Parameters.AddWithValue("@isbn", book.Isbn);
+                                cmd.Parameters.AddWithValue("@genre_id", book.Genre_AtBook.GenreId);
+                                cmd.Parameters.AddWithValue("@author_id", book.Author_AtBook.AuthorId);
+                                cmd.Parameters.AddWithValue("@book_id", book.BookId);
+                                con.Open();
+                                if (cmd.ExecuteNonQuery() > 0)
+                                {
+                                    MessageBox.Show("Record updated");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Record failed");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error during insert: " + ex.Message);
+                    }
+                    book.IsChanged = false;
+                }
+            }
         }
 
         private static void RemoveGenresFromDB()

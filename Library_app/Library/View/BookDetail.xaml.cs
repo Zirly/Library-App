@@ -53,5 +53,21 @@ namespace Library.View
                 };
             }
         }
+
+        private void txtBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            BookDetailViewModel viewmodel = (BookDetailViewModel)DataContext;
+            Book book = viewmodel.MyBook;
+            book.IsUpdated = true;
+            Books.IsUpdated = true;
+        }
+
+        private void TxtBookTitle_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBookTitle.Text)) MessageBox.Show("Field cannot be empty!");
+            BookDetailViewModel viewmodel = (BookDetailViewModel)DataContext;
+            Book book = viewmodel.MyBook;
+            txtBookTitle.Text = book.Title;
+        }
     }
 }

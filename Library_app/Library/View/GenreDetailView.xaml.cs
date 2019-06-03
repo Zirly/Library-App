@@ -60,5 +60,13 @@ namespace Library.View
             genre.IsUpdated = true;
             Genres.IsUpdated = true;
         }
+
+        private void TxtName_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtName.Text)) MessageBox.Show("Field cannot be empty!");
+            GenreDetailViewModel viewmodel = (GenreDetailViewModel)DataContext;
+            Genre genre = viewmodel.MyGenre;
+            txtName.Text = genre.Name;
+        }
     }
 }

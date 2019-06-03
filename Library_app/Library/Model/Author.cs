@@ -29,7 +29,7 @@ namespace Library.Model
         {
             get
             {
-                if (FirstName == null) return LastName;
+                if (string.IsNullOrEmpty(FirstName)) return LastName;
                 return LastName + ", " + FirstName;
             }
         }

@@ -19,7 +19,7 @@
                     <RowDefinition Height="Auto" MinHeight="20"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="Name:" Margin="10,0,0,0" FontFamily="Arial"/>
-                <TextBox x:Name="txtName" Grid.Column="1" Grid.Row="0" Margin="0,0,10,0" Text="{Binding MyGenre.Name, Mode=TwoWay}" FontFamily="Arial"/>
+                <TextBox x:Name="txtName" Grid.Column="1" Grid.Row="0" Margin="0,0,10,0" Text="{Binding MyGenre.Name, Mode=TwoWay}" LostFocus="TxtName_LostFocus" GotFocus="TxtName_GotFocus" FontFamily="Arial"/>
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="Books:" Margin="10,0,0,0" FontFamily="Arial"/>
                 <ListBox x:Name="lstBooks" Grid.Column="1" Grid.Row="1" Margin="0,0,10,0" ItemsSource="{Binding MyGenre.BooksList, Mode=TwoWay}" FontFamily="Arial">
                     <ListBox.ItemTemplate>

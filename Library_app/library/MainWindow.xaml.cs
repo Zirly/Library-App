@@ -106,7 +106,7 @@ namespace Library
         
         private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (LibraryModel.AreItemsAdded() || LibraryModel.AreItemsRemoved())
+            if (LibraryModel.AreItemsAdded() || LibraryModel.AreItemsRemoved() || LibraryModel.AreItemsUpdated())
             {
                 if (MessageBox.Show("All unsaved changes will be lost. Are you sure you want to exit?", "Exit Program", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
@@ -128,17 +128,46 @@ namespace Library
             }           
         }
 
+        // this is probably not necessary, as there are other mechanisms to check for empty values
         private bool CheckEmptyValues()
-        {           
+        {
+            bool isEmptyField = false;
             foreach  (Genre genre in Genres.GenresList)
             {
-                if (genre.Name == "")
+                if (string.IsNullOrEmpty(genre.Name))
                 {
                     MessageBox.Show("The name of a genre cannot be empty");
-                    return true;
+                    isEmptyField = true;
                 }
             }
-            return false;
+            foreach (Author author in Authors.AuthorsList)
+            {
+                if (string.IsNullOrEmpty(author.LastName))
+                {
+                    MessageBox.Show("The author's last name cannot be empty");
+                    isEmptyField = true;
+                }
+            }
+            foreach (Book book in Books.BooksList)
+            {
+                if (string.IsNullOrEmpty(book.Title))
+                {
+                    MessageBox.Show("The book's title cannot be empty");
+                    isEmptyField = true;
+                }
+            }
+            return isEmptyField;
+        }   
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (LibraryModel.AreItemsAdded() || LibraryModel.AreItemsRemoved() || LibraryModel.AreItemsUpdated())
+            {
+                if (MessageBox.Show("All unsaved changes will be lost. Are you sure you want to exit?", "Exit Program", MessageBoxButton.YesNo) == MessageBoxResult.No)
+                {
+                    e.Cancel = true;
+                }          
+            }
         }
     }
 }

@@ -8,7 +8,7 @@
         xmlns:viewmodel="clr-namespace:Library.ViewModel"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Library.MainWindow"
         mc:Ignorable="d"
-        Title="Library Application" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Library Application" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing" >
     <Window.Resources>
         <DataTemplate x:Name="booksListTemplate" DataType="{x:Type viewmodel:BooksListViewModel}">
             <view:BooksListView DataContext="{Binding}"/>
@@ -89,7 +89,7 @@
     <Grid x:Name="myGrid" Background="#f1eded">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition  Height="Auto"/>
             <!-- MENU -->
             <RowDefinition Height="40" />
             <RowDefinition Height="Auto"/>
@@ -100,13 +100,13 @@
             <RowDefinition Height="Auto"/>
             <!-- BUTTONS -->
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0">
-            <MenuItem Header="_File" FontFamily="Arial">
+        <Menu Grid.Row="0" Margin="8,0,0,0">
+            <MenuItem Padding="5" Header="_File" FontFamily="Arial">
                 <MenuItem Header="_Save" Click="Save_Button_Click"/>
                 <Separator/>
                 <MenuItem Header="_Exit" Click="Exit_Button_Click"/>
             </MenuItem>
-            <MenuItem Header="_Options" FontFamily="Arial">
+            <MenuItem Padding="5" Header="_Options" FontFamily="Arial">
                 <MenuItem Header="_Add Item" FontFamily="Arial" Click="Item_Add_Button_Click"/>
             </MenuItem>
         </Menu>
