@@ -94,7 +94,7 @@ Tietokannan voi avata myös Accessin avulla, mutta ohjelmamme ei vaadi sitä ase
 
 ## Bugit
 
-Bugien korjaaminen onnistui hyvin jatkuvan monipuolisen testauksen johdosta.
+Bugien korjaaminen onnistui hyvin jatkuvan monipuolisen testauksen johdosta, eikä tiedossamme ole yhtäkään jäljellä.
 
 ## Jatkokehitysideat
 
@@ -102,5 +102,5 @@ Bugien korjaaminen onnistui hyvin jatkuvan monipuolisen testauksen johdosta.
 * Useampi kirjailija per kirja
 * Hakutoiminnon tekeminen
 * QoL-parannuksia käyttöliittymän käyttämisen nopeuttamiseksi
-* * Kirjailijakokoelman kirjat klikattavissa
-* * Avattua kokoelmaa vastaava tietuelomake aukenee suoraan lisäysikkunassa
+  * Kirjailijakokoelman kirjat klikattavissa
+  * Avattua kokoelmaa vastaava tietuelomake aukenee suoraan lisäysikkunassa
