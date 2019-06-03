@@ -7,12 +7,21 @@ using System.Threading.Tasks;
 
 namespace Library.Model
 {
+    /// <summary>
+    /// Book object and its properties and methods.
+    /// </summary>
     public class Book : INotifyPropertyChanged
     {
+        // properties
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public bool IsUpdated { get; set; } = false;
+        public object Description { get; set; }
+        public int? YearPublish { get; set; }
+        public string Isbn { get; set; }
+        public Genre Genre_AtBook { get; set; }
+        public Author Author_AtBook { get; set; }
 
-        //
         private string title;
         public string Title
         {
@@ -33,14 +42,8 @@ namespace Library.Model
                 OnPropertyChanged("BookId");
             }
         }
-        public bool IsUpdated { get; set; } = false;
-        public object Description { get; set; }
-        public int? YearPublish { get; set; }
-        public string Isbn { get; set; }
-        public Genre Genre_AtBook { get; set; }
-        public Author Author_AtBook { get; set; }
         
-
+        // constructors
         public Book() { }
 
         public Book(int id, string title, string description, int year, string isbn, int genreId, int authorId)
@@ -63,6 +66,10 @@ namespace Library.Model
             AttachAuthor(authorId);
         }
 
+        /// <summary>
+        /// Attaching genre to the book, based on genre's id
+        /// </summary>
+        /// <param name="id">Genre's id, that is attached to the book</param>
         public void AttachGenre(int id)
         {
             foreach (var item in Genres.GenresList)
@@ -73,6 +80,10 @@ namespace Library.Model
                 }
             }
         }
+        /// <summary>
+        /// Attaching author to the book, based on author's id
+        /// </summary>
+        /// <param name="id">Author's id, that is attached to the book</param>
         public void AttachAuthor(int id)
         {
             foreach (var item in Authors.AuthorsList)
@@ -83,6 +94,10 @@ namespace Library.Model
                 }
             }
         }
+        /// <summary>
+        /// Raises an event, when property is changed
+        /// </summary>
+        /// <param name="name">changed property</param>
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

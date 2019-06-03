@@ -8,9 +8,15 @@ using System.Threading.Tasks;
 
 namespace Library.Model
 {
+    /// <summary>
+    /// Genre object and its properties and methods.
+    /// </summary>
     public class Genre : INotifyPropertyChanged
     {
+        // properties
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public bool IsUpdated { get; set; } = false;
         public int GenreId { get; set; }
 
         private string name;
@@ -23,7 +29,7 @@ namespace Library.Model
                 OnPropertyChanged("Name");
             }
         }
-
+        // books that are associated with the genre
         private ObservableCollection<Book> _booksList = new ObservableCollection<Book>();
         public ObservableCollection<Book> BooksList
         {
@@ -35,8 +41,7 @@ namespace Library.Model
             }
         }
 
-        public bool IsUpdated { get; set; } = false;
-
+        //constructors
         public Genre() { }
         public Genre(int id, string name)
         {
@@ -45,15 +50,19 @@ namespace Library.Model
             BooksList = new ObservableCollection<Book>();
         }
 
+        /// <summary>
+        /// Adding book to genre's books' list
+        /// </summary>
+        /// <param name="book">book to add</param>
         public void AddBook(Book book)
         {
-            /* tarvitseeko tarkastaa että kirja on jo listalla?
-            foreach (var item in BooksList)
-            {
-                if (item == book) return;
-            } */
             BooksList.Add(book);
         }
+
+        /// <summary>
+        /// Raises an event, when property is changed
+        /// </summary>
+        /// <param name="name">changed property</param>
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
