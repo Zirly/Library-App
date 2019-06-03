@@ -140,11 +140,11 @@ Arttu kirjoitti dokumentoinnin, testasi, teki käyttöliittymän ulkoasun, ja h�
 
 ## Työmäärä
 
-Markéta: 80 tuntia
+**Markéta: 80 tuntia**
 
-Arttu: 60 tuntia
+**Arttu: 60 tuntia**
 
-Yhteensä projektiin kului: 140 tuntia työtä
+Yhteensä projektiin kului: **140 tuntia** työtä
 
 # Arvosanaehdotus
 
