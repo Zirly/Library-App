@@ -10,6 +10,7 @@
 * [Johdanto](#johdanto)
 * [Asennus](#asennus)
 * [Tietoa ohjelmasta](#tietoa-ohjelmasta)
+* [Ruutukaappaukset ohjelmaikkunoista](#ruutukaappaukset-ohjelmaikkunoista)
 
 # Johdanto
 
@@ -81,3 +82,5 @@ Pura lataamasi zip-paketti mihin tahansa kansioon ja avaa .exe -päätteinen tie
 2. Uuden tietueen tietojen täyttö
 3. Tietueen tallennus
 4. Lisäyksen peruutus ja ikkunan sulkeminen
+
+# Ohjelman mukana tuleva tietokanta
