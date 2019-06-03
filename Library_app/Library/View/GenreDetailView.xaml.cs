@@ -70,7 +70,7 @@ namespace Library.View
                 Genre genre = viewmodel.MyGenre;
                 txtName.Text = genre.Name;
             }
-            /*
+            
             foreach (var genre in Genres.GenresList)
             {
                 if (genre.Name == txtName.Text)
@@ -80,7 +80,7 @@ namespace Library.View
                     Genre oldGenre = viewmodel.MyGenre;
                     txtName.Text = oldGenre.Name;
                 }
-            } */
+            }
         }
     }
 }

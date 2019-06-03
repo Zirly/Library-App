@@ -90,7 +90,6 @@
     <Compile Include="ViewModel\BookDetailViewModel.cs" />
     <Compile Include="ViewModel\BooksListViewModel.cs" />
     <Compile Include="ViewModel\ModelRelations.cs" />
-    <Compile Include="ViewModel\DatabaseConnection.cs" />
     <Compile Include="ViewModel\ItemAddViewModel\AuthorAddViewModel.cs" />
     <Compile Include="ViewModel\ItemAddViewModel\BookAddViewModel.cs" />
     <Compile Include="ViewModel\GenreDetailViewModel.cs" />
