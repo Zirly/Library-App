@@ -54,6 +54,15 @@ namespace Library.Model
             AttachGenre(genreId);
             AttachAuthor(authorId);
         }
+        public Book(int id, string title, string description, string isbn, int genreId, int authorId)
+        {
+            BookId = id;
+            Title = title;
+            Description = description;
+            Isbn = isbn;
+            AttachGenre(genreId);
+            AttachAuthor(authorId);
+        }
 
         public void AttachGenre(int id)
         {

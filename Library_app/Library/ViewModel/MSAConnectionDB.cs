@@ -49,7 +49,7 @@ namespace Library.ViewModel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error during reading from DB: " + ex.Message);
             }
             return genres;
         }
@@ -77,7 +77,16 @@ namespace Library.ViewModel
                         string fName = rd[1] as string;
                         string lName = rd.GetString(2);
                         int year = rd[3] as int? ?? default(int);
-                        Author author = new Author(authorId, fName, lName, year);
+
+                        Author author = new Author();
+                        if (year == 0)
+                        {
+                            author = new Author(authorId, fName, lName);
+                        }
+                        else
+                        {
+                            author = new Author(authorId, fName, lName, year);
+                        }
                         authors.Add(author);
                     }
                 }
@@ -86,7 +95,7 @@ namespace Library.ViewModel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error during reading from DB: " + ex.Message);
             }
             return authors;
         }
@@ -118,7 +127,12 @@ namespace Library.ViewModel
                         int genreId = rd.GetInt32(5);
                         int authorId = rd.GetInt32(6);
 
-                        Book book = new Book(bookId, bookTitle, description, year, isbn, genreId, authorId);
+                        Book book = new Book();
+                        if (year == 0)
+                        {
+                            book = new Book(bookId, bookTitle, description, isbn, genreId, authorId);
+                        }
+                        else book = new Book(bookId, bookTitle, description, year, isbn, genreId, authorId);
                         books.Add(book);
                     }
                 }
@@ -127,7 +141,7 @@ namespace Library.ViewModel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error during reading from DB: " + ex.Message);
             }
             return books;
         }
@@ -202,7 +216,7 @@ namespace Library.ViewModel
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error during insert: " + ex.Message);
+                        MessageBox.Show("Error during update: " + ex.Message);
                     }
                     genre.IsChanged = false;
                 }
@@ -227,9 +241,9 @@ namespace Library.ViewModel
                             using (var cmd = new OleDbCommand("update [author_table] set firstName = @firstName, lastName = @lastName, yearBirth = @yearBirth where author_id = @id;"))
                             {
                                 cmd.Connection = con;
-                                cmd.Parameters.AddWithValue("@firstName", author.FirstName);
+                                cmd.Parameters.AddWithValue("@firstName", ((object)author.FirstName) ?? DBNull.Value);
                                 cmd.Parameters.AddWithValue("@lastName", author.LastName);
-                                cmd.Parameters.AddWithValue("@yearBirth", author.YearBirth);
+                                cmd.Parameters.AddWithValue("@yearBirth", ((object)author.YearBirth) ?? DBNull.Value);
                                 cmd.Parameters.AddWithValue("@id", author.AuthorId);
                                 con.Open();
                                 if (cmd.ExecuteNonQuery() > 0)
@@ -245,7 +259,7 @@ namespace Library.ViewModel
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error during insert: " + ex.Message);
+                        MessageBox.Show("Error during update: " + ex.Message);
                     }
                     author.IsChanged = false;
                 }
@@ -271,9 +285,9 @@ namespace Library.ViewModel
                             {
                                 cmd.Connection = con;
                                 cmd.Parameters.AddWithValue("@title", book.Title);
-                                cmd.Parameters.AddWithValue("@year", book.YearPublish);
-                                cmd.Parameters.AddWithValue("@description", book.Description);
-                                cmd.Parameters.AddWithValue("@isbn", book.Isbn);
+                                cmd.Parameters.AddWithValue("@year", ((object)book.YearPublish) ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("@description", ((object)book.Description) ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("@isbn", ((object)book.Isbn) ?? DBNull.Value);
                                 cmd.Parameters.AddWithValue("@genre_id", book.Genre_AtBook.GenreId);
                                 cmd.Parameters.AddWithValue("@author_id", book.Author_AtBook.AuthorId);
                                 cmd.Parameters.AddWithValue("@book_id", book.BookId);
@@ -291,7 +305,7 @@ namespace Library.ViewModel
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error during insert: " + ex.Message);
+                        MessageBox.Show("Error during update: " + ex.Message);
                     }
                     book.IsChanged = false;
                 }
@@ -342,7 +356,7 @@ namespace Library.ViewModel
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("Error during delete: " + ex.Message);
                     }
                 }
             }
@@ -392,7 +406,7 @@ namespace Library.ViewModel
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("Error during delete: " + ex.Message);
                     }
                 }
             }
@@ -441,7 +455,7 @@ namespace Library.ViewModel
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("Error during delete: " + ex.Message);
                     }
                 }
             }
@@ -462,10 +476,9 @@ namespace Library.ViewModel
 
                         using (con)
                         {
-                            using (var cmd = new OleDbCommand("insert into [book_table] (book_id, title, yearPublish, description, isbn, genre_id, author_id) VALUES (@book_id,@title,@year,@description,@isbn,@genre_id,@author_id)"))
+                            using (var cmd = new OleDbCommand("insert into [book_table] (title, yearPublish, description, isbn, genre_id, author_id) VALUES (@title,@year,@description,@isbn,@genre_id,@author_id)"))
                             {
                                 cmd.Connection = con;
-                                cmd.Parameters.AddWithValue("@book_id", book.BookId);
                                 cmd.Parameters.AddWithValue("@title", book.Title);
                                 cmd.Parameters.AddWithValue("@year", ((object)book.YearPublish) ?? DBNull.Value);
                                 cmd.Parameters.AddWithValue("@description", ((object)book.Description) ?? DBNull.Value);

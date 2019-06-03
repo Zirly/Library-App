@@ -29,7 +29,7 @@
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:" Margin="10,0,0,0" FontFamily="Arial"/>
             <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding MyBook.Author_AtBook.FullName, Mode=OneWay}" Margin="0,0,10,0" FontFamily="Arial"/>
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Year of publishing:" Margin="10,0,0,0" FontFamily="Arial"/>
-            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding MyBook.YearPublish, TargetNullValue=''}" GotFocus="txtBox_GotFocus" Margin="0,0,10,0" FontFamily="Arial"/>
+            <TextBox x:Name="txtYear" Grid.Column="1" Grid.Row="2" Text="{Binding MyBook.YearPublish, TargetNullValue=''}" LostFocus="TxtYear_LostFocus" GotFocus="txtBox_GotFocus" Margin="0,0,10,0" FontFamily="Arial"/>
             <TextBlock Grid.Column="0" Grid.Row="3" Text="Genre:" Margin="10,0,0,0" FontFamily="Arial"/>
             <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding MyBook.Genre_AtBook.Name, Mode=OneWay}" Margin="0,0,10,0" FontFamily="Arial"/>
             <TextBlock Grid.Column="0" Grid.Row="4" Text="Isbn:" Margin="10,0,0,0" FontFamily="Arial"/>

@@ -58,10 +58,27 @@ namespace Library.View
 
         private void TxtLastName_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtLastName.Text)) MessageBox.Show("Field cannot be empty!");
-            AuthorDetailViewModel viewmodel = (AuthorDetailViewModel)DataContext;
-            Author author = viewmodel.MyAuthor;
-            txtLastName.Text = author.LastName;
+            if (string.IsNullOrEmpty(txtLastName.Text))
+            {
+                MessageBox.Show("Field cannot be empty!");
+                AuthorDetailViewModel viewmodel = (AuthorDetailViewModel)DataContext;
+                Author author = viewmodel.MyAuthor;
+                txtLastName.Text = author.LastName;
+            }
+        }
+
+        private void TxtYear_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(txtYear.Text, out int year))
+            {
+                if (year < 1 || year > 2050)
+                {
+                    MessageBox.Show("Year field not valid.");
+                    AuthorDetailViewModel viewmodel = (AuthorDetailViewModel)DataContext;
+                    Author author = viewmodel.MyAuthor;
+                    txtYear.Text = author.YearBirth.ToString();
+                }
+            } 
         }
     }
 }
