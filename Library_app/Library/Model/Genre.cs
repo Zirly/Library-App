@@ -36,7 +36,6 @@ namespace Library.Model
         }
 
         public bool IsUpdated { get; set; } = false;
-        public bool IsChanged { get; set; } = false;
 
         public Genre() { }
         public Genre(int id, string name)

@@ -86,46 +86,55 @@ namespace Library.View
 
         private bool AddItemGenre()
         {
-            GenreAddViewModel ga = (GenreAddViewModel)DataContext;
-            Genre genre = ga.MyGenre;
+            GenreAddViewModel viewmodel = (GenreAddViewModel)DataContext;
+            Genre genre = viewmodel.MyGenre;
             if (string.IsNullOrEmpty(genre.Name))
             {
                 MessageBox.Show("Name cannnot be empty.");
                 return false;
             }
-            genre.IsChanged = true;
+            foreach (var g in Genres.GenresList)
+            {
+                if (g.Name == genre.Name)
+                {
+                    MessageBox.Show("Genre already exists!");
+                    return false;
+                }
+            }
+            int id = MSAConnectionDB.SaveGenreToDB(genre);
+            genre.GenreId = id;
             Genres.AddGenre(genre);
-            Genres.IsChanged = true;
             ActivateMainWindow();
             return true;
         }
 
         private bool AddItemAuthor()
         {
-            AuthorAddViewModel aa = (AuthorAddViewModel)DataContext;
-            Author author = aa.MyAuthor;
+            AuthorAddViewModel viewmodel = (AuthorAddViewModel)DataContext;
+            Author author = viewmodel.MyAuthor;
             if (string.IsNullOrEmpty(author.LastName))
             {
                 MessageBox.Show("Last name cannnot be empty.");
                 return false;
             }
-            author.IsChanged = true;
-            Authors.AddAuthor(author);
-            Authors.IsChanged = true;
+            int id = MSAConnectionDB.SaveAuthorToDB(author);
+            author.AuthorId = id;
+            Authors.AddAuthor(author);       
             ActivateMainWindow();
             return true;
         }
 
         private bool AddItemBook()
         {
-            BookAddViewModel ba = (BookAddViewModel)DataContext;
-            Book book = ba.MyBook;
+            BookAddViewModel viewmodel = (BookAddViewModel)DataContext;
+            Book book = viewmodel.MyBook;
 
             if (string.IsNullOrEmpty(book.Title))
             {
                 MessageBox.Show("Title cannnot be empty.");
                 return false;
             }
+            
             if (book.Author_AtBook == null)
             {
                 MessageBox.Show("Author must be added.");
@@ -136,9 +145,10 @@ namespace Library.View
                 MessageBox.Show("Genre must be added.");
                 return false;
             }
-            book.IsChanged = true;
+
+            int id = MSAConnectionDB.SaveBookToDB(book);
+            book.BookId = id;
             Books.AddBook(book);
-            Books.IsChanged = true;
             Genres.AddBookToGenre(book, book.Genre_AtBook);
             Authors.AddBookToAuthor(book, book.Author_AtBook);
             ActivateMainWindow();

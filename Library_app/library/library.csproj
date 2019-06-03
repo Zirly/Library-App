@@ -85,14 +85,11 @@
     <Compile Include="Model\Genre.cs" />
     <Compile Include="Model\Genres.cs" />
     <Compile Include="Model\LibraryModel.cs" />
-    <Compile Include="Model\Relation.cs" />
-    <Compile Include="Model\Relations.cs" />
     <Compile Include="ViewModel\AuthorDetailViewModel.cs" />
     <Compile Include="ViewModel\AuthorsListViewModel.cs" />
     <Compile Include="ViewModel\BookDetailViewModel.cs" />
     <Compile Include="ViewModel\BooksListViewModel.cs" />
     <Compile Include="ViewModel\ModelRelations.cs" />
-    <Compile Include="ViewModel\DatabaseConnection.cs" />
     <Compile Include="ViewModel\ItemAddViewModel\AuthorAddViewModel.cs" />
     <Compile Include="ViewModel\ItemAddViewModel\BookAddViewModel.cs" />
     <Compile Include="ViewModel\GenreDetailViewModel.cs" />

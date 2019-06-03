@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Library.ViewModel.ItemAddViewModel;
+using Library.Model;
 
 namespace Library.View.ItemAddView
 {
@@ -23,6 +25,26 @@ namespace Library.View.ItemAddView
         public AuthorAddView()
         {
             InitializeComponent();
+        }
+
+        private void AuthorYearBirth_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(authorYearBirth.Text)) return;
+            if (int.TryParse(authorYearBirth.Text, out int year))
+            {
+                if (year < 1 || year > 2050)
+                {
+                    MessageBox.Show("Year field not valid.");
+                   // AuthorAddViewModel viewmodel = (AuthorAddViewModel)DataContext;
+                   // Author author = viewmodel.MyAuthor;
+                    authorYearBirth.Text = null;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Year field not valid.");
+                authorYearBirth.Text = null;
+            }
         }
     }
 }

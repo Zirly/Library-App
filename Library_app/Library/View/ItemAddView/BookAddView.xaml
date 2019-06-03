@@ -30,11 +30,11 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBlock Grid.Column="0" Grid.Row="2" Text="Year:"/>
-        <TextBox Text="{Binding MyBook.YearPublish, Mode=TwoWay}" x:Name="bookYear" x:FieldModifier="public" Grid.Column="1" Grid.Row="2"/>
+        <TextBox Text="{Binding MyBook.YearPublish, Mode=TwoWay}" x:Name="bookYear" LostFocus="BookYear_LostFocus" Grid.Column="1" Grid.Row="2"/>
         <TextBlock Grid.Column="0" Grid.Row="3" Text="Description:"/>
-        <TextBox Text="{Binding MyBook.Description, Mode=TwoWay}" x:Name="bookDesc" x:FieldModifier="public" Grid.Column="1" Grid.Row="3"/>
+        <TextBox Text="{Binding MyBook.Description, Mode=TwoWay}" x:Name="bookDesc" Grid.Column="1" Grid.Row="3"/>
         <TextBlock Grid.Column="0" Grid.Row="4" Text="ISBN:"/>
-        <TextBox Text="{Binding MyBook.Isbn, Mode=TwoWay}" x:Name="bookIsbn" x:FieldModifier="public" Grid.Column="1" Grid.Row="4"/>
+        <TextBox Text="{Binding MyBook.Isbn, Mode=TwoWay}" x:Name="bookIsbn" Grid.Column="1" Grid.Row="4"/>
         <TextBlock Grid.Column="0" Grid.Row="5" Text="Genre:"/>
         <ComboBox x:Name="cbGenres" SelectedItem="{Binding MyBook.Genre_AtBook, Mode=TwoWay}"  Grid.Column="1" Grid.Row="5">
             <ComboBox.ItemTemplate>

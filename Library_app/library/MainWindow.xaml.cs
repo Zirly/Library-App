@@ -106,7 +106,7 @@ namespace Library
         
         private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (LibraryModel.AreItemsAdded() || LibraryModel.AreItemsRemoved() || LibraryModel.AreItemsUpdated())
+            if (LibraryModel.AreItemsRemoved() || LibraryModel.AreItemsUpdated())
             {
                 if (MessageBox.Show("All unsaved changes will be lost. Are you sure you want to exit?", "Exit Program", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
@@ -161,7 +161,7 @@ namespace Library
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (LibraryModel.AreItemsAdded() || LibraryModel.AreItemsRemoved() || LibraryModel.AreItemsUpdated())
+            if (LibraryModel.AreItemsRemoved() || LibraryModel.AreItemsUpdated())
             {
                 if (MessageBox.Show("All unsaved changes will be lost. Are you sure you want to exit?", "Exit Program", MessageBoxButton.YesNo) == MessageBoxResult.No)
                 {

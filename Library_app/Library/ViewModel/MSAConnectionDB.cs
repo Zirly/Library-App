@@ -100,6 +100,134 @@ namespace Library.ViewModel
             return authors;
         }
 
+        public static int SaveGenreToDB(Genre genre)
+        {
+            int id = 0;
+            try
+            {
+                OleDbConnection con = new OleDbConnection();
+
+                string connectionString = Properties.Settings.Default.conn_String;
+                con.ConnectionString = connectionString;
+
+                string query_insert = "insert into [genre_table] (genreName) values (@name)";
+                string query_identity = "select @@Identity";
+
+                using (con)
+                {
+                    using (var cmd = new OleDbCommand(query_insert, con))
+                    {
+                        cmd.Connection = con;
+                        cmd.Parameters.AddWithValue("@name", genre.Name);
+                        con.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            MessageBox.Show("Record inserted");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Record failed");
+                        }
+                        cmd.CommandText = query_identity;
+                        id = (int)cmd.ExecuteScalar();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error during retrieving scope identity: " + ex.Message);
+            }
+            return id;
+        }
+
+
+        public static int SaveBookToDB(Book book)
+        {
+            int id = 0;
+            try
+            {
+                OleDbConnection con = new OleDbConnection();
+
+                string connectionString = Properties.Settings.Default.conn_String;
+                con.ConnectionString = connectionString;
+
+                string query_insert = "insert into [book_table] (title, yearPublish, description, isbn, genre_id, author_id) VALUES (@title,@year,@description,@isbn,@genre_id,@author_id)";
+                string query_identity = "select @@Identity";
+
+                using (con)
+                {
+                    using (var cmd = new OleDbCommand(query_insert, con))
+                    {
+                        cmd.Connection = con;
+                        cmd.Parameters.AddWithValue("@title", book.Title);
+                        cmd.Parameters.AddWithValue("@year", ((object)book.YearPublish) ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@description", ((object)book.Description) ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@isbn", ((object)book.Isbn) ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@genre_id", book.Genre_AtBook.GenreId);
+                        cmd.Parameters.AddWithValue("@author_id", book.Author_AtBook.AuthorId);
+                        con.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            MessageBox.Show("Record inserted");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Record failed");
+                        }
+                        cmd.CommandText = query_identity;
+                        id = (int)cmd.ExecuteScalar();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error during retrieving scope identity: " + ex.Message);
+            }
+            return id;
+        }
+
+        public static int SaveAuthorToDB(Author author)
+        {
+            int id = 0;
+            try
+            {
+                OleDbConnection con = new OleDbConnection();
+
+                string connectionString = Properties.Settings.Default.conn_String;
+                con.ConnectionString = connectionString;
+
+                string query_insert = "insert into [author_table] (firstName, lastName, yearBirth) values (@firstName,@lastName,@yearBirth)";
+                string query_identity = "select @@Identity";
+
+                using (con)
+                {
+                    using (var cmd = new OleDbCommand(query_insert, con))
+                    {
+                        cmd.Connection = con;
+                        cmd.Parameters.AddWithValue("@firstName", ((object)author.FirstName) ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@lastName", author.LastName);
+                        cmd.Parameters.AddWithValue("@yearBirth", ((object)author.YearBirth) ?? DBNull.Value);
+                        con.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            MessageBox.Show("Record inserted");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Record failed");
+                        }
+                        cmd.CommandText = query_identity;
+                        id = (int)cmd.ExecuteScalar();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error during retrieving scope identity: " + ex.Message);
+            }
+            return id;
+        }
+
         public static List<Book> ReadBooksFromDatabase()
         {
             List<Book> books = new List<Book>();
@@ -149,16 +277,6 @@ namespace Library.ViewModel
         public static bool SaveDataToDB()
         {
             bool changesMade = false;
-            if (LibraryModel.AreItemsAdded())
-            {
-                if (Genres.IsChanged) SaveNewGenresToDB();
-                Genres.IsChanged = false;
-                if (Authors.IsChanged) SaveNewAuthorsToDB();
-                Authors.IsChanged = false;
-                if (Books.IsChanged) SaveNewBooksToDB();
-                Books.IsChanged = false;
-                changesMade = true;
-            }
             if (LibraryModel.AreItemsRemoved())
             {
                 if (Genres.AreRemovedItems) RemoveGenresFromDB();
@@ -179,7 +297,7 @@ namespace Library.ViewModel
                 Books.IsUpdated = false;
                 changesMade = true;
             }
-            return changesMade;            
+            return changesMade;
         }
 
         private static void UpdateGenresToDB()
@@ -218,7 +336,7 @@ namespace Library.ViewModel
                     {
                         MessageBox.Show("Error during update: " + ex.Message);
                     }
-                    genre.IsChanged = false;
+                    genre.IsUpdated = false;
                 }
             }
         }
@@ -261,7 +379,7 @@ namespace Library.ViewModel
                     {
                         MessageBox.Show("Error during update: " + ex.Message);
                     }
-                    author.IsChanged = false;
+                    author.IsUpdated = false;
                 }
             }
         }
@@ -307,13 +425,13 @@ namespace Library.ViewModel
                     {
                         MessageBox.Show("Error during update: " + ex.Message);
                     }
-                    book.IsChanged = false;
+                    book.IsUpdated = false;
                 }
             }
         }
 
         private static void RemoveGenresFromDB()
-        { 
+        {
             List<Genre> oldGenres = ReadGenresFromDatabase();
             List<int> oldIds = new List<int>();
             foreach (Genre oldGenre in oldGenres)
@@ -457,133 +575,6 @@ namespace Library.ViewModel
                     {
                         MessageBox.Show("Error during delete: " + ex.Message);
                     }
-                }
-            }
-        }
-
-        private static void SaveNewBooksToDB()
-        {
-            foreach (Book book in Books.BooksList)
-            {
-                if (book.IsChanged)
-                {
-                    try
-                    {
-                        OleDbConnection con = new OleDbConnection();
-
-                        string connectionString = Properties.Settings.Default.conn_String;
-                        con.ConnectionString = connectionString;
-
-                        using (con)
-                        {
-                            using (var cmd = new OleDbCommand("insert into [book_table] (title, yearPublish, description, isbn, genre_id, author_id) VALUES (@title,@year,@description,@isbn,@genre_id,@author_id)"))
-                            {
-                                cmd.Connection = con;
-                                cmd.Parameters.AddWithValue("@title", book.Title);
-                                cmd.Parameters.AddWithValue("@year", ((object)book.YearPublish) ?? DBNull.Value);
-                                cmd.Parameters.AddWithValue("@description", ((object)book.Description) ?? DBNull.Value);
-                                cmd.Parameters.AddWithValue("@isbn", ((object)book.Isbn) ?? DBNull.Value);
-                                cmd.Parameters.AddWithValue("@genre_id", book.Genre_AtBook.GenreId);
-                                cmd.Parameters.AddWithValue("@author_id", book.Author_AtBook.AuthorId);
-                                con.Open();
-                                if (cmd.ExecuteNonQuery() > 0)
-                                {
-                                    MessageBox.Show("Record inserted");
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Record failed");
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    book.IsChanged = false;
-                }
-            }
-        }
-
-        private static void SaveNewAuthorsToDB()
-        {
-            foreach (Author author in Authors.AuthorsList)
-            {
-                if (author.IsChanged)
-                {
-                    try
-                    {
-                        OleDbConnection con = new OleDbConnection();
-
-                        string connectionString = Properties.Settings.Default.conn_String;
-                        con.ConnectionString = connectionString;
-
-                        using (con)
-                        {
-                            using (var cmd = new OleDbCommand("insert into [author_table] (firstName, lastName, yearBirth) VALUES (@firstName,@lastName,@yearBirth)"))
-                            {
-                                cmd.Connection = con;
-                                cmd.Parameters.AddWithValue("@firstName", ((object)author.FirstName) ?? DBNull.Value);
-                                cmd.Parameters.AddWithValue("@lastName", author.LastName);
-                                cmd.Parameters.AddWithValue("@yearBirth", ((object)author.YearBirth) ?? DBNull.Value);
-                                con.Open();
-                                if (cmd.ExecuteNonQuery() > 0)
-                                {
-                                    MessageBox.Show("Record inserted");
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Record failed");
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error during insert: " + ex.Message);
-                    }
-                    author.IsChanged = false;
-                }
-            }
-        }
-
-        private static void SaveNewGenresToDB()
-        {
-            foreach (Genre genre in Genres.GenresList)
-            {
-                if (genre.IsChanged)
-                {
-                    try
-                    {
-                        OleDbConnection con = new OleDbConnection();
-
-                        string connectionString = Properties.Settings.Default.conn_String;
-                        con.ConnectionString = connectionString;
-
-                        using (con)
-                        {
-                            using (var cmd = new OleDbCommand("insert into [genre_table] (genreName) VALUES (@name)"))
-                            {
-                                cmd.Connection = con;
-                                cmd.Parameters.AddWithValue("@name", genre.Name);
-                                con.Open();
-                                if (cmd.ExecuteNonQuery() > 0)
-                                {
-                                    MessageBox.Show("Record inserted");
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Record failed");
-                                }
-                            }
-                        }              
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error during insert: " + ex.Message);
-                    }
-                    genre.IsChanged = false;
                 }
             }
         }

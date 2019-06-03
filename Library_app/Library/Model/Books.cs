@@ -10,7 +10,6 @@ namespace Library.Model
     {
         public static bool AreRemovedItems { get; set; } = false;
         public static List<Book> BooksList { get; set; }
-        public static bool IsChanged { get; set; } = false;
         public static bool IsUpdated { get; set; } = false;
 
         static Books()

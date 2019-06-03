@@ -9,7 +9,6 @@ namespace Library.Model
     public static class Genres
     {
         public static bool AreRemovedItems { get; set; } = false;
-        public static bool IsChanged { get; set; } = false;
         public static bool IsUpdated { get; set; } = false;
         public static List<Genre> GenresList { get; set; }
  
@@ -44,7 +43,6 @@ namespace Library.Model
             return genre;
         }
 
-        //TODO poista myös relation
         public static bool RemoveGenre(int id)
         {
             foreach (var genre in GenresList)
