@@ -134,9 +134,9 @@ Harjoitustyön tekivät ohjelmistotekniikan ensimmäisen vuoden opiskelijat Artt
 
 ## Vastuut
 
-**Markéta** kirjoitti tietokantayhteydet, ylläpiti MVVM-rakennetta ja hänen vastuullaan oli sovelluksen backend.
+**Markéta** kirjoitti tietokantayhteydet, ylläpiti MVVM-rakennetta ja hänen vastuullaan oli pääasiassa sovelluksen backend.
 
-**Arttu** kirjoitti dokumentoinnin, testasi, teki käyttöliittymän ulkoasun, ja hänen vastuullaan oli sovelluksen frontend.
+**Arttu** kirjoitti dokumentoinnin, testasi, teki käyttöliittymän ulkoasun, ja hänen vastuullaan oli pääasiassa sovelluksen frontend.
 
 ## Työmäärä
 
