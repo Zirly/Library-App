@@ -85,8 +85,6 @@
     <Compile Include="Model\Genre.cs" />
     <Compile Include="Model\Genres.cs" />
     <Compile Include="Model\LibraryModel.cs" />
-    <Compile Include="Model\Relation.cs" />
-    <Compile Include="Model\Relations.cs" />
     <Compile Include="ViewModel\AuthorDetailViewModel.cs" />
     <Compile Include="ViewModel\AuthorsListViewModel.cs" />
     <Compile Include="ViewModel\BookDetailViewModel.cs" />
@@ -98,9 +96,6 @@
     <Compile Include="ViewModel\GenresListViewModel.cs" />
     <Compile Include="ViewModel\ItemAddViewModel\GenreAddViewModel.cs" />
     <Compile Include="ViewModel\MSAConnectionDB.cs" />
-    <Compile Include="View\DetailView.xaml.cs">
-      <DependentUpon>DetailView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\AuthorDetailView.xaml.cs">
       <DependentUpon>AuthorDetailView.xaml</DependentUpon>
     </Compile>
@@ -143,10 +138,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\DetailView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\AuthorDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -229,13 +220,6 @@
   <ItemGroup />
   <ItemGroup>
     <Resource Include="books-64.ico" />
-    <Content Include="ViewModel\libraryDB.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ViewModel\libraryDB_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DependentUpon>libraryDB.mdf</DependentUpon>
-    </Content>
     <Content Include="ViewModel\LibraryMA.mdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
