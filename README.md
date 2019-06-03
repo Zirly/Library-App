@@ -99,7 +99,7 @@ Bugien korjaaminen onnistui hyvin jatkuvan monipuolisen testauksen johdosta, eik
 ## Jatkokehitysideat
 
 * MVVM-mallin täysi soveltaminen
-* Useampi kirjailija per kirja
+* Useamman kirjailijan lisääminen yhteen kirjaan
 * Hakutoiminnon tekeminen
 * QoL-parannuksia käyttöliittymän käyttämisen nopeuttamiseksi
   * Kirjailijakokoelman kirjat klikattavissa
