@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.View"
         mc:Ignorable="d"
-        d:DesignHeight="300" d:DesignWidth="300">
+        d:DesignHeight="300" d:DesignWidth="300" FontFamily="Arial">
     <UserControl.Resources>
         <DataTemplate x:Key="authorTemplate" >
             <Border BorderThickness="2" CornerRadius="4" Background="White">
@@ -26,7 +26,7 @@
                     <ItemsControl Grid.Column="0" Grid.Row="1" BorderThickness="0" FontSize="10" ItemsSource="{Binding BooksList}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="5,3,0,3" Text="{Binding Title}" FontFamily="Arial"/>
+                                <TextBlock Margin="5,3,0,3" Text="{Binding Title}" />
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

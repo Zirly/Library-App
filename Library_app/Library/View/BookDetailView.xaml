@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.View"
         mc:Ignorable="d"
-        d:DesignHeight="300" d:DesignWidth="300">
+        d:DesignHeight="300" d:DesignWidth="300" FontFamily="Arial">
     
 
     <DockPanel x:Name="detailData"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="True" Margin="5">
@@ -24,18 +24,18 @@
                 <RowDefinition Height="4*"/>
                 <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Title:" Margin="10,0,0,0" FontFamily="Arial"/>
-            <TextBox x:Name="txtBookTitle" Grid.Column="1" Grid.Row="0" Text="{Binding MyBook.Title}" LostFocus="TxtBookTitle_LostFocus"  GotFocus="txtBox_GotFocus" Margin="0,0,10,0" FontFamily="Arial"/>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:" Margin="10,0,0,0" FontFamily="Arial"/>
-            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding MyBook.Author_AtBook.FullName, Mode=OneWay}" Margin="0,0,10,0" FontFamily="Arial"/>
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="Year of publishing:" Margin="10,0,0,0" FontFamily="Arial"/>
-            <TextBox x:Name="txtYear" Grid.Column="1" Grid.Row="2" Text="{Binding MyBook.YearPublish, TargetNullValue=''}" LostFocus="TxtYear_LostFocus" GotFocus="txtBox_GotFocus" Margin="0,0,10,0" FontFamily="Arial"/>
-            <TextBlock Grid.Column="0" Grid.Row="3" Text="Genre:" Margin="10,0,0,0" FontFamily="Arial"/>
-            <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding MyBook.Genre_AtBook.Name, Mode=OneWay}" Margin="0,0,10,0" FontFamily="Arial"/>
-            <TextBlock Grid.Column="0" Grid.Row="4" Text="Isbn:" Margin="10,0,0,0" FontFamily="Arial"/>
-            <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding MyBook.Isbn}" GotFocus="txtBox_GotFocus" Margin="0,0,10,0" FontFamily="Arial" />
-            <TextBlock Grid.Row="5" Text="Description:" Margin="10,0,0,0" FontFamily="Arial"/>
-            <TextBox Grid.Row="6" Grid.ColumnSpan="2" Text="{Binding MyBook.Description}" GotFocus="txtBox_GotFocus" Margin="10,0,10,0" FontFamily="Arial" 
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Title:" Margin="10,0,0,0" />
+            <TextBox x:Name="txtBookTitle" Grid.Column="1" Grid.Row="0" Text="{Binding MyBook.Title}" LostFocus="TxtBookTitle_LostFocus"  GotFocus="txtBox_GotFocus" Margin="0,0,10,0" />
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:" Margin="10,0,0,0" />
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding MyBook.Author_AtBook.FullName, Mode=OneWay}" Margin="0,0,10,0" />
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Year of publishing:" Margin="10,0,0,0" />
+            <TextBox x:Name="txtYear" Grid.Column="1" Grid.Row="2" Text="{Binding MyBook.YearPublish, TargetNullValue=''}" LostFocus="TxtYear_LostFocus" GotFocus="txtBox_GotFocus" Margin="0,0,10,0" />
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Genre:" Margin="10,0,0,0" />
+            <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding MyBook.Genre_AtBook.Name, Mode=OneWay}" Margin="0,0,10,0" />
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Isbn:" Margin="10,0,0,0" />
+            <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding MyBook.Isbn}" GotFocus="txtBox_GotFocus" Margin="0,0,10,0" />
+            <TextBlock Grid.Row="5" Text="Description:" Margin="10,0,0,0" />
+            <TextBox Grid.Row="6" Grid.ColumnSpan="2" Text="{Binding MyBook.Description}" GotFocus="txtBox_GotFocus" Margin="10,0,10,0" 
                      Width="Auto" Height="Auto"
                      HorizontalScrollBarVisibility="Visible"
                      TextWrapping="Wrap"
@@ -43,7 +43,7 @@
                      MaxLength="500"
                      IsReadOnly="False"
                      AcceptsReturn="True" />
-                <Button Grid.Row="7" Grid.Column="2" Width="100" Margin="10,10,10,10" Content="Remove" Click="BookRemove_Click" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Arial" Height="20"/>
+                <Button Grid.Row="7" Grid.Column="2" Width="100" Margin="10,10,10,10" Content="Remove" Click="BookRemove_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Height="20"/>
             </Grid>
         </DockPanel>
     
