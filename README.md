@@ -25,7 +25,7 @@ Tarkoituksenamme oli tehdä mahdollisimman siirrettävissä oleva sovellus, jote
 
 ## Asennusohjeet
 
-Pura lataamasi zip-paketti mihin tahansa kansioon ja avaa .exe -päätteinen tiedosto.
+Pura lataamasi zip-paketti mihin tahansa hakemistoon ja avaa .exe -päätteinen tiedosto.
 
 # Tietoa ohjelmasta
 
@@ -85,3 +85,22 @@ Pura lataamasi zip-paketti mihin tahansa kansioon ja avaa .exe -päätteinen tie
 4. Lisäyksen peruutus ja ikkunan sulkeminen
 
 # Ohjelman mukana tuleva tietokanta
+
+Ohjelman lisäksi hakemistossa sijaitsee tämän käyttämä tietokanta .mdb-formaatissa. 
+MDB on Microsoft Access -tietokantasovelluksen käyttämä formaatti, joka sopi siirrettävyytensä ansiosta hyvin ohjelmaamme.
+Tietokannan voi avata myös Accessin avulla, mutta ohjelmamme ei vaadi sitä asennetuksi koneelle.
+
+# Tiedossa olevat ongelmat ja bugit sekä jatkokehitysideat
+
+## Bugit
+
+Bugien korjaaminen onnistui hyvin jatkuvan monipuolisen testauksen johdosta.
+
+## Jatkokehitysideat
+
+* MVVM-mallin täysi soveltaminen
+* Useampi kirjailija per kirja
+* Hakutoiminnon tekeminen
+* QoL-parannuksia käyttöliittymän käyttämisen nopeuttamiseksi
+* * Kirjailijakokoelman kirjat klikattavissa
+* * Avattua kokoelmaa vastaava tietuelomake aukenee suoraan lisäysikkunassa
