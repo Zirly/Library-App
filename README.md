@@ -8,6 +8,7 @@
 
 * [Johdanto](#johdanto)
 * [Asennus](#asennus)
+* [Tietoa ohjelmasta](#tietoa-ohjelmasta)
 
 # Johdanto
 
@@ -19,4 +20,18 @@ Kurssinvetäjänä toimi Esa Salmikangas ja harjoitustyön ovat tehneet Arttu Ro
 
 Tarkoituksenamme oli tehdä mahdollisimman siirrettävissä oleva sovellus, joten ohjelma ei vaadi kuin Windows-käyttöjärjestelmän.
 
-Pura
+## Asennusohjeet
+
+Pura lataamasi zip-paketti mihin tahansa kansioon ja avaa .exe -päätteinen tiedosto.
+
+# Tietoa ohjelmasta
+
+## Toteutetut toiminnalliset vaatimukset
+
+
+
+## Ei-toteutetut toiminnalliset vaatimukset
+
+## Alkuperäiset vaatimukset ohittaneet toteutukset
+
+## Ei-toiminnalliset vaatimukset ja reunaehdot
