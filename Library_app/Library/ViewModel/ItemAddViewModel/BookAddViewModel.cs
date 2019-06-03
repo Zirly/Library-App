@@ -8,6 +8,9 @@ using System.ComponentModel;
 
 namespace Library.ViewModel.ItemAddViewModel
 {
+    /// <summary>
+    /// Interaction logic for BookAddView.xaml
+    /// </summary>
     public class BookAddViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -22,7 +25,10 @@ namespace Library.ViewModel.ItemAddViewModel
                 OnPropertyChanged("MyBook");
             }
         }
-
+        /// <summary>
+        /// Raises an event, when property is changed
+        /// </summary>
+        /// <param name="name">changed property</param>
         protected void OnPropertyChanged(string text)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

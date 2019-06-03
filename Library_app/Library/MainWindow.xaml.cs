@@ -29,8 +29,6 @@ namespace Library
     * associated authors and genres. Application enables data addition, removal and update.
     */
 
-
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -40,26 +38,40 @@ namespace Library
         public MainWindow()
         {
             InitializeComponent();
-            MSAConnectionDB.LoadData();
-            //DatabaseConnection.ReadDataFromDB();
-            DataContext = new
+            try
             {
-                collection = new BooksListViewModel(),
-                detail = new BookDetailViewModel()
-            };
+                MSAConnectionDB.LoadData();
+                DataContext = new
+                {
+                    collection = new BooksListViewModel(),
+                    detail = new BookDetailViewModel()
+                };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             
         }
 
+        /// <summary>
+        /// Showing book's views - collection and detail
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void BooksSelection_Selected(object sender, RoutedEventArgs e)
         {
-            
             DataContext = new
             {
                 collection = new BooksListViewModel(),      
                 detail = new BookDetailViewModel()       
             }; 
         }
-
+        /// <summary>
+        /// Showing autho's views - collection and detail
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void AuthorsSelection_Selected(object sender, RoutedEventArgs e)
         {
             DataContext = new
@@ -69,7 +81,11 @@ namespace Library
             };
 
         }
-
+        /// <summary>
+        /// Showing genre's views - collection and detail
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void GenresSelection_Selected(object sender, RoutedEventArgs e)
         {
             DataContext = new
@@ -79,12 +95,22 @@ namespace Library
             };
         }
 
+        /// <summary>
+        /// Opening window for adding item
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void Item_Add_Button_Click(object sender, RoutedEventArgs e)
         {
             ItemAdd itemAdd = new ItemAdd();
             itemAdd.Show();
         }
 
+        /// <summary>
+        /// Main window loaded
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             switch (comboBox.SelectedIndex)
@@ -114,7 +140,12 @@ namespace Library
                     break;
             }
         }
-        
+
+        /// <summary>
+        /// Exit button logic
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {
             if (LibraryModel.AreItemsRemoved() || LibraryModel.AreItemsUpdated())
@@ -131,46 +162,22 @@ namespace Library
             }
         }
 
+        /// <summary>
+        /// Save button - sending data to be save to DB
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!CheckEmptyValues())
-            {
-                if (MSAConnectionDB.SaveDataToDB()) MessageBox.Show("Changes saved");
-                else MessageBox.Show("No changes");
-            }           
+            if (MSAConnectionDB.SaveDataToDB()) MessageBox.Show("Changes saved");
+            else MessageBox.Show("No changes");                    
         }
 
-        // this is probably not necessary, as there are other mechanisms to check for empty values
-        private bool CheckEmptyValues()
-        {
-            bool isEmptyField = false;
-            foreach  (Genre genre in Genres.GenresList)
-            {
-                if (string.IsNullOrEmpty(genre.Name))
-                {
-                    MessageBox.Show("The name of a genre cannot be empty");
-                    isEmptyField = true;
-                }
-            }
-            foreach (Author author in Authors.AuthorsList)
-            {
-                if (string.IsNullOrEmpty(author.LastName))
-                {
-                    MessageBox.Show("The author's last name cannot be empty");
-                    isEmptyField = true;
-                }
-            }
-            foreach (Book book in Books.BooksList)
-            {
-                if (string.IsNullOrEmpty(book.Title))
-                {
-                    MessageBox.Show("The book's title cannot be empty");
-                    isEmptyField = true;
-                }
-            }
-            return isEmptyField;
-        }   
-
+        /// <summary>
+        /// Closing window logic
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (LibraryModel.AreItemsRemoved() || LibraryModel.AreItemsUpdated())

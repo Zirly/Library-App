@@ -125,10 +125,17 @@ namespace Library.View
                     return false;
                 }
             }
-            int id = MSAConnectionDB.SaveGenreToDB(genre);
-            genre.GenreId = id;
-            Genres.AddGenre(genre);
-            ActivateMainWindow();
+            try
+            {
+                int id = MSAConnectionDB.SaveGenreToDB(genre);
+                genre.GenreId = id;
+                Genres.AddGenre(genre);
+                ActivateMainWindow();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
             return true;
         }
 
@@ -145,10 +152,17 @@ namespace Library.View
                 MessageBox.Show("Last name cannnot be empty.");
                 return false;
             }
-            int id = MSAConnectionDB.SaveAuthorToDB(author);
-            author.AuthorId = id;
-            Authors.AddAuthor(author);       
-            ActivateMainWindow();
+            try
+            {
+                int id = MSAConnectionDB.SaveAuthorToDB(author);
+                author.AuthorId = id;
+                Authors.AddAuthor(author);
+                ActivateMainWindow();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
             return true;
         }
 
@@ -178,12 +192,19 @@ namespace Library.View
                 return false;
             }
 
-            int id = MSAConnectionDB.SaveBookToDB(book);
-            book.BookId = id;
-            Books.AddBook(book);
-            Genres.AddBookToGenre(book, book.Genre_AtBook);
-            Authors.AddBookToAuthor(book, book.Author_AtBook);
-            ActivateMainWindow();
+            try
+            {
+                int id = MSAConnectionDB.SaveBookToDB(book);
+                book.BookId = id;
+                Books.AddBook(book);
+                Genres.AddBookToGenre(book, book.Genre_AtBook);
+                Authors.AddBookToAuthor(book, book.Author_AtBook);
+                ActivateMainWindow();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
             return true;
         }
 

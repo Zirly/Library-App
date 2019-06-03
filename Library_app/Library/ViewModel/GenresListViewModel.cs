@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Library.Model;
 
+/// <summary>
+/// Interaction logic for GenresListView.xaml
+/// </summary>
 namespace Library.ViewModel
 {
     public class GenresListViewModel : INotifyPropertyChanged
@@ -25,7 +28,6 @@ namespace Library.ViewModel
             }
         }
 
-
         public GenresListViewModel()
         {
             foreach (var item in Genres.GenresList)
@@ -33,7 +35,10 @@ namespace Library.ViewModel
                 MyGenreList.Add(item);
             }
         }
-        // 
+        /// <summary>
+        /// Raises an event, when property is changed
+        /// </summary>
+        /// <param name="name">changed property</param>
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

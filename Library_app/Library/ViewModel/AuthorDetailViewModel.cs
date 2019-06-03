@@ -7,6 +7,9 @@ using Library.Model;
 
 namespace Library.ViewModel
 {
+    /// <summary>
+    /// Interaction logic for AuthorDetailView.xaml
+    /// </summary>
     public class AuthorDetailViewModel
     {
        public Author MyAuthor { get; set; }

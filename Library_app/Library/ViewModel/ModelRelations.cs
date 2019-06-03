@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace Library.ViewModel
 {
+    /// <summary>
+    /// Static class that handles the connections between book-genre-author when reading from the DB
+    /// </summary>
     public static class ModelRelations
     {
+        /// <summary>
+        /// Assigning each genre and author all associated books
+        /// </summary>
         public static void GetBookLists()
         {
             // adding books to its genre

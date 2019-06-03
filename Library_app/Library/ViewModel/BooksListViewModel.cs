@@ -9,6 +9,9 @@ using Library.Model;
 
 namespace Library.ViewModel
 {
+    /// <summary>
+    /// Interaction logic for BooksListView.xaml
+    /// </summary>
     public class BooksListViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -32,7 +35,10 @@ namespace Library.ViewModel
                 MyBookList.Add(item);
             }
         }
-
+        /// <summary>
+        /// Raises an event, when property is changed
+        /// </summary>
+        /// <param name="name">changed property</param>
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

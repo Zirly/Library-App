@@ -93,7 +93,6 @@
             <!-- MENU -->
             <RowDefinition Height="40" />
             <RowDefinition Height="Auto"/>
-
             <!-- SEARCH -->
             <RowDefinition Height="4*"/>
             <!-- VIEW -->
@@ -143,7 +142,6 @@
 
             <Border Grid.Column="0" BorderThickness="1,1,1,1" BorderBrush="#abadb3" Background="AliceBlue">
                 <ContentControl Content="{Binding collection}"/>
-                <!--<view:BooksListView x:Name="BooksListControl"/> -->
             </Border>
             <Border Grid.Column="1" BorderThickness="0,1,1,1" BorderBrush="#abadb3">
                 <ContentControl Grid.Column="1" x:Name="cc" Content="{Binding detail}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="AliceBlue" />

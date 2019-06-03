@@ -8,6 +8,9 @@ using System.ComponentModel;
 
 namespace Library.ViewModel.ItemAddViewModel
 {
+    /// <summary>
+    /// Interaction logic for GenreAddView.xaml
+    /// </summary>
     public class GenreAddViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -22,7 +25,10 @@ namespace Library.ViewModel.ItemAddViewModel
                 OnPropertyChanged("MyGenre");
             }
         }
-
+        /// <summary>
+        /// Raises an event, when property is changed
+        /// </summary>
+        /// <param name="name">changed property</param>
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

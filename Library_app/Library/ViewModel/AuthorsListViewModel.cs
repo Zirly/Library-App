@@ -9,6 +9,9 @@ using System.Collections.ObjectModel;
 
 namespace Library.ViewModel
 {
+    /// <summary>
+    /// Interaction logic for AuthorListView.xaml
+    /// </summary>
     public class AuthorsListViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -33,9 +36,9 @@ namespace Library.ViewModel
             }
         }
         /// <summary>
-        /// 
+        /// Raises an event, when property is changed
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name">changed property</param>
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

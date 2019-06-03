@@ -105,8 +105,8 @@
     <Compile Include="View\ItemAdd.xaml.cs">
       <DependentUpon>ItemAdd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\BookDetail.xaml.cs">
-      <DependentUpon>BookDetail.xaml</DependentUpon>
+    <Compile Include="View\BookDetailView.xaml.cs">
+      <DependentUpon>BookDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\BooksListView.xaml.cs">
       <DependentUpon>BooksListView.xaml</DependentUpon>
@@ -150,7 +150,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\BookDetail.xaml">
+    <Page Include="View\BookDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
