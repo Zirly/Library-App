@@ -8,7 +8,7 @@
         xmlns:viewmodel="clr-namespace:Library.ViewModel"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Library.MainWindow"
         mc:Ignorable="d"
-        Title="Library Application" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing" >
+        Title="Library Application" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing" FontFamily="Arial">
     <Window.Resources>
         <DataTemplate x:Name="booksListTemplate" DataType="{x:Type viewmodel:BooksListViewModel}">
             <view:BooksListView DataContext="{Binding}"/>
@@ -101,12 +101,12 @@
             <!-- BUTTONS -->
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" Margin="8,0,0,0">
-            <MenuItem Padding="5" Header="_File" FontFamily="Arial">
-                <MenuItem Header="_Save" Click="Save_Button_Click"/>
+            <MenuItem Padding="5" Header="_File" >
+                <MenuItem Header="_Save" FontFamily="Arial" Click="Save_Button_Click"/>
                 <Separator/>
-                <MenuItem Header="_Exit" Click="Exit_Button_Click"/>
+                <MenuItem Header="_Exit" FontFamily="Arial" Click="Exit_Button_Click"/>
             </MenuItem>
-            <MenuItem Padding="5" Header="_Options" FontFamily="Arial">
+            <MenuItem Padding="5" Header="_Options" >
                 <MenuItem Header="_Add Item" FontFamily="Arial" Click="Item_Add_Button_Click"/>
             </MenuItem>
         </Menu>
@@ -127,10 +127,10 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Border BorderThickness="1,1,1,0" BorderBrush="#abadb3" Background="AliceBlue" CornerRadius="4,4,0,0" Width="120" Padding="0,2,0,2" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center">
-                    <TextBlock Text="COLLECTION" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontWeight="Bold" FontFamily="Arial" />
+                    <TextBlock Text="COLLECTION" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontWeight="Bold" />
                 </Border>
                 <Border Grid.Column="1" BorderThickness="1,1,1,0" BorderBrush="#abadb3" Background="AliceBlue" CornerRadius="4,4,0,0" Width="80" Padding="0,2,0,2" HorizontalAlignment="Left" Margin="20,0,0,0">
-                    <TextBlock Text="DETAILS" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial"/>
+                    <TextBlock Text="DETAILS" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
                 </Border>
 
             </Grid>
