@@ -25,21 +25,8 @@ namespace Library.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\ViewModel\\lib" +
-            "raryDB.mdf;Integrated Security=True")]
-        public string cn_String {
-            get {
-                return ((string)(this["cn_String"]));
-            }
-            set {
-                this["cn_String"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\\ViewModel\\LibraryMA." +
-            "mdb;Persist Security Info=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\\Database\\LibraryMA.m" +
+            "db;Persist Security Info=True")]
         public string conn_String {
             get {
                 return ((string)(this["conn_String"]));
@@ -52,8 +39,8 @@ namespace Library.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\\ViewModel\\LibraryMA." +
-            "mdb;Persist Security Info=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\\Database\\LibraryMA.m" +
+            "db;Persist Security Info=True")]
         public string LibraryMAConnectionString {
             get {
                 return ((string)(this["LibraryMAConnectionString"]));

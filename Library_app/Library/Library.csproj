@@ -42,12 +42,13 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>books-64.ico</ApplicationIcon>
@@ -74,11 +75,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="LibraryMADataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LibraryMADataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Model\Author.cs" />
     <Compile Include="Model\Authors.cs" />
     <Compile Include="Model\Books.cs" />
@@ -198,17 +194,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="LibraryMADataSet.xsc">
-      <DependentUpon>LibraryMADataSet.xsd</DependentUpon>
-    </None>
-    <None Include="LibraryMADataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>LibraryMADataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="LibraryMADataSet.xss">
-      <DependentUpon>LibraryMADataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -220,7 +205,7 @@
   <ItemGroup />
   <ItemGroup>
     <Resource Include="books-64.ico" />
-    <Content Include="ViewModel\LibraryMA.mdb">
+    <Content Include="Database\LibraryMA.mdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

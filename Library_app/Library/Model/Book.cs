@@ -43,7 +43,7 @@ namespace Library.Model
             }
         }
         
-        // constructors
+        // constructors 
         public Book() { }
 
         public Book(int id, string title, string description, int year, string isbn, int genreId, int authorId)
