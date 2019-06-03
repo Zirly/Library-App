@@ -12,6 +12,8 @@ namespace Library.Model
         public static List<Book> BooksList { get; set; }
         public static int LastIndex { get; set; }
         public static bool IsChanged { get; set; } = false;
+        public static bool IsUpdated { get; set; } = false;
+
         // tämä pois?
         static Books()
         {

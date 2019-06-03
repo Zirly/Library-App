@@ -25,17 +25,17 @@
                 <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
             <TextBlock Grid.Column="0" Grid.Row="0" Text="Title:" Margin="10,0,0,0" FontFamily="Arial"/>
-            <TextBox x:Name="txtBookTitle" Grid.Column="1" Grid.Row="0" Text="{Binding MyBook.Title}" Margin="0,0,10,0" FontFamily="Arial"/>
+            <TextBox x:Name="txtBookTitle" Grid.Column="1" Grid.Row="0" Text="{Binding MyBook.Title}" LostFocus="TxtBookTitle_LostFocus"  GotFocus="txtBox_GotFocus" Margin="0,0,10,0" FontFamily="Arial"/>
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Author:" Margin="10,0,0,0" FontFamily="Arial"/>
             <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding MyBook.Author_AtBook.FullName, Mode=OneWay}" Margin="0,0,10,0" FontFamily="Arial"/>
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Year of publishing:" Margin="10,0,0,0" FontFamily="Arial"/>
-            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding MyBook.YearPublish}" Margin="0,0,10,0" FontFamily="Arial"/>
+            <TextBox x:Name="txtYear" Grid.Column="1" Grid.Row="2" Text="{Binding MyBook.YearPublish, TargetNullValue=''}" LostFocus="TxtYear_LostFocus" GotFocus="txtBox_GotFocus" Margin="0,0,10,0" FontFamily="Arial"/>
             <TextBlock Grid.Column="0" Grid.Row="3" Text="Genre:" Margin="10,0,0,0" FontFamily="Arial"/>
-            <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding MyBook.Genre_AtBook.Name}" Margin="0,0,10,0" FontFamily="Arial"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding MyBook.Genre_AtBook.Name, Mode=OneWay}" Margin="0,0,10,0" FontFamily="Arial"/>
             <TextBlock Grid.Column="0" Grid.Row="4" Text="Isbn:" Margin="10,0,0,0" FontFamily="Arial"/>
-            <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding MyBook.Isbn}" Margin="0,0,10,0" FontFamily="Arial" />
+            <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding MyBook.Isbn}" GotFocus="txtBox_GotFocus" Margin="0,0,10,0" FontFamily="Arial" />
             <TextBlock Grid.Row="5" Text="Description:" Margin="10,0,0,0" FontFamily="Arial"/>
-            <TextBox Grid.Row="6" Grid.ColumnSpan="2" Text="{Binding MyBook.Description}" Margin="10,0,10,0" FontFamily="Arial" 
+            <TextBox Grid.Row="6" Grid.ColumnSpan="2" Text="{Binding MyBook.Description}" GotFocus="txtBox_GotFocus" Margin="10,0,10,0" FontFamily="Arial" 
                      Width="Auto" Height="Auto"
                      HorizontalScrollBarVisibility="Visible"
                      TextWrapping="Wrap"

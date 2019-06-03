@@ -53,5 +53,38 @@ namespace Library.View
                 };
             }
         }
+
+        private void txtBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            BookDetailViewModel viewmodel = (BookDetailViewModel)DataContext;
+            Book book = viewmodel.MyBook;
+            book.IsUpdated = true;
+            Books.IsUpdated = true;
+        }
+
+        private void TxtBookTitle_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBookTitle.Text))
+            {
+                MessageBox.Show("Field cannot be empty!");
+                BookDetailViewModel viewmodel = (BookDetailViewModel)DataContext;
+                Book book = viewmodel.MyBook;
+                txtBookTitle.Text = book.Title;
+            }
+        }
+
+        private void TxtYear_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(txtYear.Text, out int year))
+            {
+                if (year < 1 || year > 2050)
+                {
+                    MessageBox.Show("Year field not valid.");
+                    BookDetailViewModel viewmodel = (BookDetailViewModel)DataContext;
+                    Book book = viewmodel.MyBook;
+                    txtYear.Text = book.YearPublish.ToString();
+                }
+            }
+        }
     }
 }

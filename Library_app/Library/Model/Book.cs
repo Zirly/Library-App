@@ -33,6 +33,7 @@ namespace Library.Model
                 OnPropertyChanged("BookId");
             }
         }
+        public bool IsUpdated { get; set; } = false;
         public bool IsChanged { get; set; } = false;
         public object Description { get; set; }
         public int? YearPublish { get; set; }
@@ -49,6 +50,15 @@ namespace Library.Model
             Title = title;
             Description = description;
             YearPublish = year;
+            Isbn = isbn;
+            AttachGenre(genreId);
+            AttachAuthor(authorId);
+        }
+        public Book(int id, string title, string description, string isbn, int genreId, int authorId)
+        {
+            BookId = id;
+            Title = title;
+            Description = description;
             Isbn = isbn;
             AttachGenre(genreId);
             AttachAuthor(authorId);

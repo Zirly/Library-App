@@ -29,7 +29,7 @@ namespace Library.View
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            string fullname = txtFullName.Text;
+            string fullname = txtLastName.Text + ((txtFirstName.Text == "") ? "" :  (", " + txtFirstName.Text));
             Author author = Authors.GetAuthor(fullname);
             if (author.BooksList.Count > 0) MessageBox.Show("Author cannot be removed. Associated books must be removed first.");
             else if (MessageBox.Show("Are you sure you want to remove the author?", "Remove author", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -46,6 +46,39 @@ namespace Library.View
                     detail = new AuthorDetailViewModel(Authors.GetAuthor(Authors.AuthorsList.Count))
                 };
             }
+        }
+
+        private void txtBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            AuthorDetailViewModel viewmodel = (AuthorDetailViewModel)DataContext;
+            Author author = viewmodel.MyAuthor;
+            author.IsUpdated = true;
+            Authors.IsUpdated = true;
+        }
+
+        private void TxtLastName_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtLastName.Text))
+            {
+                MessageBox.Show("Field cannot be empty!");
+                AuthorDetailViewModel viewmodel = (AuthorDetailViewModel)DataContext;
+                Author author = viewmodel.MyAuthor;
+                txtLastName.Text = author.LastName;
+            }
+        }
+
+        private void TxtYear_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(txtYear.Text, out int year))
+            {
+                if (year < 1 || year > 2050)
+                {
+                    MessageBox.Show("Year field not valid.");
+                    AuthorDetailViewModel viewmodel = (AuthorDetailViewModel)DataContext;
+                    Author author = viewmodel.MyAuthor;
+                    txtYear.Text = author.YearBirth.ToString();
+                }
+            } 
         }
     }
 }

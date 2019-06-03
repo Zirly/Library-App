@@ -9,7 +9,8 @@ namespace Library.Model
     public static class Genres
     {
         public static bool AreRemovedItems { get; set; } = false;
-        public static bool IsChanged { get; set; } = false; 
+        public static bool IsChanged { get; set; } = false;
+        public static bool IsUpdated { get; set; } = false;
         public static List<Genre> GenresList { get; set; }
         public static int LastIndex { get; set; }
 

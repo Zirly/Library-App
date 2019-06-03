@@ -23,10 +23,7 @@ namespace Library.View
     {
         public BooksListView()
         {
-            InitializeComponent();
-            //lstBooks.Items.Refresh();
-            //lstBooks.ItemsSource = Books.BooksList;
-            
+            InitializeComponent();       
         }
 
         private void LstBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -41,7 +38,6 @@ namespace Library.View
                 collection = new BooksListViewModel(),
                 detail = new BookDetailViewModel(selected)
             };
-           // lstBooks.Items.Refresh();
         }
 
     }

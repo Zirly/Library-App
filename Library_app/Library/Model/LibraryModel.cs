@@ -8,7 +8,7 @@ namespace Library.Model
 {
     public static class LibraryModel
     {
-        
+
         public static bool AreItemsAdded()
         {
             if (Genres.IsChanged || Authors.IsChanged || Books.IsChanged) return true;
@@ -17,6 +17,11 @@ namespace Library.Model
         public static bool AreItemsRemoved()
         {
             if (Genres.AreRemovedItems || Authors.AreRemovedItems || Books.AreRemovedItems) return true;
+            return false;
+        }
+        public static bool AreItemsUpdated()
+        {
+            if (Genres.IsUpdated || Authors.IsUpdated || Books.IsUpdated) return true;
             return false;
         }
     }

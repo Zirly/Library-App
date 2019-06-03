@@ -10,6 +10,7 @@ namespace Library.Model
     {
         public static bool AreRemovedItems { get; set; } = false;
         public static bool IsChanged { get; set; } = false;
+        public static bool IsUpdated { get; set; } = false;
         public static List<Author> AuthorsList { get; set; }
         public static int LastIndex { get; set; }
 
