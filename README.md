@@ -101,7 +101,7 @@ Bugien korjaaminen onnistui hyvin jatkuvan monipuolisen testauksen johdosta, eik
 * MVVM-mallin täysi soveltaminen
 * Useamman kirjailijan lisääminen yhteen kirjaan
 * Hakutoiminnon tekeminen
-* QoL-parannuksia käyttöliittymän käyttämisen nopeuttamiseksi
+* Quality of Life -parannuksia käyttöliittymän käyttämisen nopeuttamiseksi
   * Kirjailijakokoelman kirjat klikattavissa
   * Avattua kokoelmaa vastaava tietuelomake aukenee suoraan lisäysikkunassa
 
@@ -116,14 +116,13 @@ Bugien korjaaminen onnistui hyvin jatkuvan monipuolisen testauksen johdosta, eik
 ## Haasteet
 
 * Tietokanta aiheutti meille aluksi paljon päänvaivaa, sillä emme saaneet yhdistettyä tietokantaa projektiimme. Myöhemmin, kun olimme saaneet ohjelman toimimaan Visual Studion SQL Service Databasella, huomasimme, että kyseinen toteutustapa ei toiminut koneilla, joissa tätä ei ollut asennettuna. Siirryimme siis pitkällisen tiedonhankinnan jälkeen käyttämään Microsoft Access -tietokantatiedostoa, jonka käyttöönotto sujui valmiita tietokantayhteyksiä muokkaamalla yllättävän vaivattomasti.
-MVVM
-Viewien vaihtelu
-Listauksen päivitys
+* MVVM-mallin implementointi täydellisesti kävi lopulta mahdottomaksi, ja totesimme aikarajoitusten vuoksi jättää tämän kesken.
+* Kokoelman ja näkymän päivittäminen heti muokkauksen tapahduttua kävi hankalaksi.
 
 ## Lisätutkimus
 
-MVVM
-Paremman toteutusmallin tutkiminen
+* Jatkossa projektit aloitettava välittömästi MVVM-mallin mukaan, joten pitää selvittää sen toimintaperiaatetta tulevaisuutta ajatellen.
+* Paremman toteutusmallin tutkiminen sovellukselle. Vaikka mielestämme sovellus onnistui hyvin, on mahdollista, että monet asiat olisi voinut tehdä tehokkaammin ja paremmin.
 
 # Tekijät
 
