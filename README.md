@@ -1,6 +1,7 @@
 # TTOS0300-harjoitustyö
 
-* Arttu Rousku/@M1484 & Markéta Sovová/@M1482
+* Arttu Rousku / @M1484 
+* Markéta Sovová / @M1482
 * 2019 
 * Versionumero 0.1
 
@@ -9,6 +10,8 @@
 * [Johdanto](#johdanto)
 * [Asennus](#asennus)
 * [Tietoa ohjelmasta](#tietoa-ohjelmasta)
+* [Ruutukaappaukset ohjelmaikkunoista](#ruutukaappaukset-ohjelmaikkunoista)
+* [Ohjelman mukana tuleva tietokanta](#ohjelman-mukana-tuleva-tietokanta)
 
 # Johdanto
 
@@ -22,7 +25,7 @@ Tarkoituksenamme oli tehdä mahdollisimman siirrettävissä oleva sovellus, jote
 
 ## Asennusohjeet
 
-Pura lataamasi zip-paketti mihin tahansa kansioon ja avaa .exe -päätteinen tiedosto.
+Pura lataamasi zip-paketti mihin tahansa hakemistoon ja avaa .exe -päätteinen tiedosto.
 
 # Tietoa ohjelmasta
 
@@ -57,4 +60,47 @@ Pura lataamasi zip-paketti mihin tahansa kansioon ja avaa .exe -päätteinen tie
 
 ## Pääikkuna
 
+![](img/mainwindow.png)
+
+### Selitykset
+
+1. Valikko
+2. Halutun kokoelman listaus
+3. Tietue
+4. Painike lisäysikkunaan
+5. Tietueen sisältämän tiedon tarkastelu ja muokkaus
+6. Tietueen poistopainike
+7. Tietokannan tallennuspainike
+8. Ohjelman sulkemispainike
+
 ## Lisäysikkuna
+
+![](img/addwindow.png)
+
+### Selitykset
+
+1. Halutun tietuetyypin valinta
+2. Uuden tietueen tietojen täyttö
+3. Tietueen tallennus
+4. Lisäyksen peruutus ja ikkunan sulkeminen
+
+# Ohjelman mukana tuleva tietokanta
+
+Ohjelman lisäksi hakemistossa sijaitsee tämän käyttämä tietokanta .mdb-formaatissa. 
+MDB on Microsoft Access -tietokantasovelluksen käyttämä formaatti, joka sopi siirrettävyytensä ansiosta hyvin ohjelmaamme.
+Tietokannan voi avata myös Accessin avulla, mutta ohjelmamme ei vaadi sitä asennetuksi koneelle.
+
+# Tiedossa olevat ongelmat ja bugit sekä jatkokehitysideat
+
+## Bugit
+
+Bugien korjaaminen onnistui hyvin jatkuvan monipuolisen testauksen johdosta, eikä tiedossamme ole yhtäkään jäljellä.
+
+## Jatkokehitysideat
+
+* MVVM-mallin täysi soveltaminen
+* Useamman kirjailijan lisääminen yhteen kirjaan
+* Hakutoiminnon tekeminen
+* QoL-parannuksia käyttöliittymän käyttämisen nopeuttamiseksi
+  * Kirjailijakokoelman kirjat klikattavissa
+  * Avattua kokoelmaa vastaava tietuelomake aukenee suoraan lisäysikkunassa
