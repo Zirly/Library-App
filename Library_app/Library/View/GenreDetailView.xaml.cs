@@ -34,6 +34,11 @@ namespace Library.View
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (Genres.GenresList.Count < 1)
+            {
+                MessageBox.Show("No genres to remove.");
+                return;
+            }
             GenreDetailViewModel viewmodel = (GenreDetailViewModel)DataContext;
             Genre genre = Genres.GetGenre(viewmodel.MyGenre.GenreId); 
             if (genre.BooksList.Count > 0) MessageBox.Show("Genre cannot be removed. The associated books must be removed first.");
@@ -63,22 +68,22 @@ namespace Library.View
 
         private void TxtName_LostFocus(object sender, RoutedEventArgs e)
         {
+            GenreDetailViewModel viewmodel = (GenreDetailViewModel)DataContext;
+            Genre oldGenre = viewmodel.MyGenre;
             if (string.IsNullOrEmpty(txtName.Text))
             {
                 MessageBox.Show("Field cannot be empty!");
-                GenreDetailViewModel viewmodel = (GenreDetailViewModel)DataContext;
-                Genre genre = viewmodel.MyGenre;
-                txtName.Text = genre.Name;
+                txtName.Text = oldGenre.Name;
             }
-            
+
             foreach (var genre in Genres.GenresList)
             {
-                if (genre.Name == txtName.Text)
+                if (genre.Name == txtName.Text && (oldGenre.GenreId != genre.GenreId))
                 {
                     MessageBox.Show("Genre already exists!");
-                    GenreDetailViewModel viewmodel = (GenreDetailViewModel)DataContext;
-                    Genre oldGenre = viewmodel.MyGenre;
+                    
                     txtName.Text = oldGenre.Name;
+                    break;
                 }
             }
         }

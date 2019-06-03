@@ -16,5 +16,6 @@ namespace Library.ViewModel
             MyGenre = genre;
 
         }
+        public GenreDetailViewModel() { }
     }
 }

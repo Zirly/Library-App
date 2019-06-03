@@ -29,6 +29,11 @@ namespace Library.View
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (Authors.AuthorsList.Count < 1)
+            {
+                MessageBox.Show("No authors to remove.");
+                return;
+            }
             AuthorDetailViewModel viewmodel = (AuthorDetailViewModel)DataContext;
             Author author = Authors.GetAuthor(viewmodel.MyAuthor.AuthorId);
             if (author.BooksList.Count > 0) MessageBox.Show("Author cannot be removed. Associated books must be removed first.");

@@ -34,7 +34,7 @@ namespace Library
             DataContext = new
             {
                 collection = new BooksListViewModel(),
-                detail = new BookDetailViewModel(Books.GetBook(1))
+                detail = new BookDetailViewModel()
             };
             
         }
@@ -45,7 +45,7 @@ namespace Library
             DataContext = new
             {
                 collection = new BooksListViewModel(),      
-                detail = new BookDetailViewModel(Books.GetBook(1))       
+                detail = new BookDetailViewModel()       
             }; 
         }
 
@@ -54,7 +54,7 @@ namespace Library
             DataContext = new
             {
                 collection = new AuthorsListViewModel(),
-                detail = new AuthorDetailViewModel(Authors.GetAuthor(1))
+                detail = new AuthorDetailViewModel()
             };
 
         }
@@ -64,7 +64,7 @@ namespace Library
             DataContext = new
             {
                 collection = new GenresListViewModel(),
-                detail = new GenreDetailViewModel(Genres.GetGenre(1))
+                detail = new GenreDetailViewModel()
             };
         }
 
@@ -82,21 +82,21 @@ namespace Library
                     DataContext = new
                     {
                         collection = new BooksListViewModel(),
-                        detail = new BookDetailViewModel(Books.GetBook(1))
+                        detail = new BookDetailViewModel(Books.BooksList[0])
                     };
                     break;
                 case 1:
                     DataContext = new
                     {
                         collection = new AuthorsListViewModel(),
-                        detail = new AuthorDetailViewModel(Authors.GetAuthor(1))
+                        detail = new AuthorDetailViewModel(Authors.AuthorsList[0])
                     };
                     break;
                 case 2:
                     DataContext = new
                     {
                         collection = new GenresListViewModel(),
-                        detail = new GenreDetailViewModel(Genres.GetGenre(1))
+                        detail = new GenreDetailViewModel(Genres.GenresList[0])
                     };
                     break;
                 default:
@@ -110,6 +110,7 @@ namespace Library
             {
                 if (MessageBox.Show("All unsaved changes will be lost. Are you sure you want to exit?", "Exit Program", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
+                    LibraryModel.ChangesSaved();
                     Close();
                 }
             }

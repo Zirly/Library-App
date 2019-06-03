@@ -28,6 +28,11 @@ namespace Library.View
 
         private void BookRemove_Click(object sender, RoutedEventArgs e)
         {
+            if (Books.BooksList.Count < 1)
+            {
+                MessageBox.Show("No books to remove.");
+                return;
+            }
             if (MessageBox.Show("Are you sure you want to remove the book?", "Remove Book", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 BookDetailViewModel viewmodel = (BookDetailViewModel)DataContext;
