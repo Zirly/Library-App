@@ -8,11 +8,11 @@
         d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <DataTemplate x:Key="authorTemplate" >
-            <Border BorderThickness="2" CornerRadius="4">
+            <Border BorderThickness="2" CornerRadius="4" Background="White">
                 <Border.BorderBrush>
                     <SolidColorBrush Color="#73B2F5" Opacity="0.5"/>
                 </Border.BorderBrush>
-                <Grid x:Name="GridItem">
+                <Grid Margin="2" x:Name="GridItem">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -27,7 +27,7 @@
                     <ListBox Grid.Column="0" Grid.Row="1" BorderThickness="0" FontSize="10" ItemsSource="{Binding BooksList}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Title}"/>
+                                <TextBlock Text="{Binding Title}" FontFamily="Arial"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -35,7 +35,7 @@
             </Border>
         </DataTemplate>
     </UserControl.Resources>
-    <Grid>
-        <ListBox  Name="lstAuthors" ItemsSource="{Binding MyAuthorList}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource authorTemplate}" SelectionChanged="LstAuthors_SelectionChanged"/>
+    <Grid Margin="5">
+        <ListBox  Name="lstAuthors" ItemsSource="{Binding MyAuthorList}" HorizontalContentAlignment="Stretch" Background="AliceBlue" BorderThickness="0" ItemTemplate="{StaticResource authorTemplate}" SelectionChanged="LstAuthors_SelectionChanged"/>
     </Grid>
 </UserControl>

@@ -47,7 +47,7 @@
             </Grid>
 
         </StackPanel>
-        <Button Width="55" Height="20" Margin="0,180,280,0" HorizontalAlignment="Center" Click="ItemAdd_Click">Add</Button>
-        <Button Width="55" Height="20" Margin="280,180,0,0" HorizontalAlignment="Center" Click="Cancel_Button_Click">Cancel</Button>
+        <Button Width="55" Height="20" Margin="0,180,280,0" HorizontalAlignment="Center" Click="ItemAdd_Click" FontFamily="Arial">Add</Button>
+        <Button Width="55" Height="20" Margin="280,180,0,0" HorizontalAlignment="Center" Click="Cancel_Button_Click" FontFamily="Arial">Cancel</Button>
     </Grid>
 </Window>

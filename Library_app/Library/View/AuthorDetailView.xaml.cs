@@ -31,7 +31,7 @@ namespace Library.View
         {
             string fullname = txtFullName.Text;
             Author author = Authors.GetAuthor(fullname);
-            if (author.BooksList.Count > 0) MessageBox.Show("Author cannot be removed. His/her books must be removed first.");
+            if (author.BooksList.Count > 0) MessageBox.Show("Author cannot be removed. Associated books must be removed first.");
             else if (MessageBox.Show("Are you sure you want to remove the author?", "Remove author", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 Authors.RemoveAuthor(author);
