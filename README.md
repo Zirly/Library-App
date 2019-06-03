@@ -1,5 +1,16 @@
-# Library Application
+# TTOS0300-harjoitustyö
 
-## TTOS0300-harjoitustyö
+* Arttu Rousku/M1484 & Markéta Sovová/1482
+* 2019 
+* Versionumero 0.1
 
-Tämä sovellus on käyttöliittymien ohjelmointi -kurssin harjoitustyö. Kurssinvetäjänä toimi Esa Salmikangas ja harjoitustyön ovat tehneet Arttu Rousku (@M1482) ja Markéta Sovová (@M1484).
+## Sisällysluettelo
+
+
+
+## Johdanto
+
+Tämä sovellus on käyttöliittymien ohjelmointi -kurssia varten toteutettu harjoitustyö. 
+Toteutimme työnämme kirjastosovelluksen, jonka tietokantaa on mahdollista muokata lisäämällä, päivittämällä sekä poistamalla käyttämällä sovelluksen toimintoja.
+Kurssinvetäjänä toimi Esa Salmikangas ja harjoitustyön ovat tehneet Arttu Rousku (@M1484) ja Markéta Sovová (@M1482).
+
