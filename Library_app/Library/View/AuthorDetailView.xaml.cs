@@ -29,12 +29,12 @@ namespace Library.View
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            string fullname = txtLastName.Text + ((txtFirstName.Text == "") ? "" :  (", " + txtFirstName.Text));
-            Author author = Authors.GetAuthor(fullname);
+            AuthorDetailViewModel viewmodel = (AuthorDetailViewModel)DataContext;
+            Author author = Authors.GetAuthor(viewmodel.MyAuthor.AuthorId);
             if (author.BooksList.Count > 0) MessageBox.Show("Author cannot be removed. Associated books must be removed first.");
             else if (MessageBox.Show("Are you sure you want to remove the author?", "Remove author", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                Authors.RemoveAuthor(author);
+                Authors.RemoveAuthor(author.AuthorId);
                 Authors.AreRemovedItems = true;
                 var mw = Application.Current.Windows
                     .Cast<Window>()

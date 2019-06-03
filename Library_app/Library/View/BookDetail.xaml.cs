@@ -30,8 +30,8 @@ namespace Library.View
         {
             if (MessageBox.Show("Are you sure you want to remove the book?", "Remove Book", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                string title = txtBookTitle.Text;
-                Book book = Books.GetBook(title);
+                BookDetailViewModel viewmodel = (BookDetailViewModel)DataContext;
+                Book book = Books.GetBook(viewmodel.MyBook.BookId);
                 foreach (Author author in Authors.AuthorsList)
                 {
                     if (author.BooksList.Contains(book)) author.BooksList.Remove(book);
@@ -40,7 +40,7 @@ namespace Library.View
                 {
                     if (genre.BooksList.Contains(book)) genre.BooksList.Remove(book);
                 }
-                Books.RemoveBookByTitle(title);
+                Books.RemoveBook(book.BookId);
                 Books.AreRemovedItems = true;
                 var mw = Application.Current.Windows
                     .Cast<Window>()

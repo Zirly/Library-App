@@ -34,12 +34,12 @@ namespace Library.View
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            string name = txtName.Text;
-            Genre genre = Genres.GetGenre(name);
+            GenreDetailViewModel viewmodel = (GenreDetailViewModel)DataContext;
+            Genre genre = Genres.GetGenre(viewmodel.MyGenre.GenreId); 
             if (genre.BooksList.Count > 0) MessageBox.Show("Genre cannot be removed. The associated books must be removed first.");
             else if (MessageBox.Show("Are you sure you want to remove the genre?", "Remove genre", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                Genres.RemoveGenre(genre);
+                Genres.RemoveGenre(genre.GenreId);
                 Genres.AreRemovedItems = true;
                 var mw = Application.Current.Windows
                     .Cast<Window>()
@@ -70,7 +70,7 @@ namespace Library.View
                 Genre genre = viewmodel.MyGenre;
                 txtName.Text = genre.Name;
             }
-
+            /*
             foreach (var genre in Genres.GenresList)
             {
                 if (genre.Name == txtName.Text)
@@ -80,7 +80,7 @@ namespace Library.View
                     Genre oldGenre = viewmodel.MyGenre;
                     txtName.Text = oldGenre.Name;
                 }
-            }
+            } */
         }
     }
 }

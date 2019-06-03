@@ -12,31 +12,14 @@ namespace Library.Model
         public static bool IsChanged { get; set; } = false;
         public static bool IsUpdated { get; set; } = false;
         public static List<Genre> GenresList { get; set; }
-        public static int LastIndex { get; set; }
-
-     
+ 
         static Genres()
         {
-            Genres.GenresList = new List<Genre>();
-            Genres.LastIndex = GetLastIndex() + 1;
-            
+            Genres.GenresList = new List<Genre>();         
         }
-
-        private static int GetLastIndex()
-        {
-            int id = 0;
-            foreach (var item in GenresList)
-            {
-                if (item.GenreId > id) id = item.GenreId;
-            }
-            return id;
-        }
-
-     
+   
         public static void AddGenre(Genre genre)
         {
-            genre.GenreId = LastIndex;
-            LastIndex++;
             GenresList.Add(genre);
         }
 
@@ -44,7 +27,7 @@ namespace Library.Model
         {
             foreach (var g in GenresList)
             {
-                if ( g == genre)
+                if ( g.GenreId == genre.GenreId)
                 {
                     g.AddBook(book);
                 }
@@ -60,15 +43,6 @@ namespace Library.Model
             }
             return genre;
         }
-        public static Genre GetGenre(string name)
-        {
-            Genre genre = new Genre();
-            foreach (var item in GenresList)
-            {
-                if (item.Name.ToLower() == name.ToLower()) genre = item;
-            }
-            return genre;
-        }
 
         //TODO poista myös relation
         public static bool RemoveGenre(int id)
@@ -78,18 +52,6 @@ namespace Library.Model
                 if (genre.GenreId == id)
                 {
                     GenresList.Remove(genre);
-                    return true;
-                }
-            }
-            return false;
-        }
-        public static bool RemoveGenre(Genre genre)
-        {
-            foreach (var item in GenresList)
-            {
-                if (item == genre)
-                {
-                    GenresList.Remove(item);
                     return true;
                 }
             }
