@@ -18,5 +18,15 @@ namespace Library.Model
             if (Genres.IsUpdated || Authors.IsUpdated || Books.IsUpdated) return true;
             return false;
         }
+
+        internal static void ChangesSaved()
+        {
+            Genres.AreRemovedItems = false;
+            Authors.AreRemovedItems = false;
+            Books.AreRemovedItems = false;
+            Genres.IsUpdated = false;
+            Authors.IsUpdated = false;
+            Books.IsUpdated = false;
+        }
     }
 }
