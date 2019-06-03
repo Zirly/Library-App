@@ -66,9 +66,18 @@ Pura lataamasi zip-paketti mihin tahansa kansioon ja avaa .exe -päätteinen tie
 2. Halutun kokoelman listaus
 3. Tietue
 4. Painike lisäysikkunaan
-5. Tietueen sisältämä tieto
+5. Tietueen sisältämän tiedon tarkastelu ja muokkaus
 6. Tietueen poistopainike
 7. Tietokannan tallennuspainike
 8. Ohjelman sulkemispainike
 
 ## Lisäysikkuna
+
+![](img/addwindow.png)
+
+### Selitykset
+
+1. Halutun tietuetyypin valinta
+2. Uuden tietueen tietojen täyttö
+3. Tietueen tallennus
+4. Lisäyksen peruutus ja ikkunan sulkeminen
