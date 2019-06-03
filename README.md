@@ -39,7 +39,7 @@ Pura lataamasi zip-paketti mihin tahansa kansioon ja avaa .exe -päätteinen tie
 
 | VaatimusID | Tyyppi | Kuvaus |								
 |:-:|:-:|:-:|
-| FUNCTION-REQ-0005 | Functional Requirement | Ohjelmassa on voitava hakea kirja, kirjailija tai genre hakusanalla ||
+| FUNCTION-REQ-0005 | Functional Requirement | Ohjelmassa on voitava hakea kirja-, kirjailija- tai genretietue hakusanalla ||
 
 ## Ei-toiminnalliset vaatimukset ja reunaehdot
 
@@ -48,4 +48,13 @@ Pura lataamasi zip-paketti mihin tahansa kansioon ja avaa .exe -päätteinen tie
 | NONFUNCTION-REQ-0001 | Non-Functional Requirement | Ohjelmaa on voitava käyttää ilman ylimääräistä asentamista |					
 | NONFUNCTION-REQ-0002 | Non-Functional Requirement | Ohjelman on tarkistettava lomakkeista relaatioiden kannalta tärkeimpien tietojen olemassaolo ja validiteetti ennen tallentamista tietokantaan |
 | NONFUNCTION-REQ-0003 | Non-Functional Requirement | Ohjelman on tarkistettava genren olemassaolo duplikaattien estämiseksi |
-| NONFUNCTION-REQ-0004 | Non-Functional Requirement | Ohjelman on tarkistettava genren olemassaolo duplikaattien estämiseksi |
+| NONFUNCTION-REQ-0004 | Non-Functional Requirement | Ohjelman on tarkistettava relaatioiden puuttuminen ennen kirjailijan / genren poistamista |
+| NONFUNCTION-REQ-0005 | Non-Functional Requirement | Tietokannan on oltava lokaali |
+| SECURITY-REQ-0001 | Non-Functional Security | SQL-injektointi on estettävä |
+| SECURITY-REQ-0002 | Non-Functional Security | Ohjelmassa on käytettävä turvallisia SQL-komentoja |
+
+# Ruutukaappaukset ohjelmaikkunoista
+
+## Pääikkuna
+
+## Lisäysikkuna
