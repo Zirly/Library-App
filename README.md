@@ -25,7 +25,7 @@ Kurssin ohjaajana toimi Esa Salmikangas ja harjoitustyön tekivät Arttu Rousku 
 
 # Asennus
 
-Tarkoituksenamme oli tehdä mahdollisimman siirrettävissä oleva sovellus, joten ohjelma ei vaadi kuin Windows-käyttöjärjestelmän.
+Tarkoituksenamme oli tehdä mahdollisimman siirrettävissä oleva sovellus, joten ohjelma vaatii vain Windows-käyttöjärjestelmän.
 
 ## Asennusohjeet
 
