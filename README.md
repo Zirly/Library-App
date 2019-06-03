@@ -11,6 +11,7 @@
 * [Asennus](#asennus)
 * [Tietoa ohjelmasta](#tietoa-ohjelmasta)
 * [Ruutukaappaukset ohjelmaikkunoista](#ruutukaappaukset-ohjelmaikkunoista)
+* [Ohjelman mukana tuleva tietokanta](#ohjelman-mukana-tuleva-tietokanta)
 
 # Johdanto
 
