@@ -1,6 +1,7 @@
 # TTOS0300-harjoitustyö
 
-* Arttu Rousku/@M1484 & Markéta Sovová/@M1482
+* Arttu Rousku / @M1484 
+* Markéta Sovová / @M1482
 * 2019 
 * Versionumero 0.1
 
@@ -56,5 +57,7 @@ Pura lataamasi zip-paketti mihin tahansa kansioon ja avaa .exe -päätteinen tie
 # Ruutukaappaukset ohjelmaikkunoista
 
 ## Pääikkuna
+
+![](img/mainwindow.png)
 
 ## Lisäysikkuna
