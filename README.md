@@ -104,3 +104,43 @@ Bugien korjaaminen onnistui hyvin jatkuvan monipuolisen testauksen johdosta, eik
 * QoL-parannuksia käyttöliittymän käyttämisen nopeuttamiseksi
   * Kirjailijakokoelman kirjat klikattavissa
   * Avattua kokoelmaa vastaava tietuelomake aukenee suoraan lisäysikkunassa
+
+# Mitä opimme?
+
+* MVVM-mallin käyttö ohjelmistoprojektissa
+* Miten ObservableCollection-lista toimii yhteydessä käyttöliittymän kanssa
+* Tietokantayhteyksien luonti sekä tietokantojen muokkaaminen
+* Dynaamisen käyttöliittymän tekeminen
+* Läpikotaisen testauksen tekemisen tärkeys
+
+## Haasteet
+
+* Tietokanta aiheutti meille aluksi paljon päänvaivaa, sillä emme saaneet yhdistettyä tietokantaa projektiimme. Myöhemmin, kun olimme saaneet ohjelman toimimaan Visual Studion SQL Service Databasella, huomasimme, että kyseinen toteutustapa ei toiminut koneilla, joissa tätä ei ollut asennettuna. Siirryimme siis pitkällisen tiedonhankinnan jälkeen käyttämään Microsoft Access -tietokantatiedostoa, jonka käyttöönotto sujui valmiita tietokantayhteyksiä muokkaamalla yllättävän vaivattomasti.
+MVVM
+Viewien vaihtelu
+Listauksen päivitys
+
+## Lisätutkimus
+
+MVVM
+Paremman toteutusmallin tutkiminen
+
+# Tekijät
+
+Harjoitustyön tekivät ohjelmistotekniikan ensimmäisen vuoden opiskelijat Arttu Rousku ja Markéta Sovová.
+
+## Vastuut
+
+Markéta kirjoitti tietokantayhteydet, ylläpiti MVVM-rakennetta ja hänen vastuullaan oli sovelluksen backend.
+
+Arttu kirjoitti dokumentoinnin, testasi, teki käyttöliittymän ulkoasun, ja hänen vastuullaan oli sovelluksen frontend.
+
+## Työmäärä
+
+Markéta: 80 tuntia
+Arttu: 60 tuntia
+Yhteensä projektiin kului: 140 tuntia työtä
+
+# Arvosanaehdotus
+
+Antaisimme itsellemme arvosanaksi 4-5. Mielestämme harjoitustyö täyttää vaatimukset ja sovelluksemme toimii mainiosti, mutta palautus on myöhässä.
