@@ -13,7 +13,7 @@
 * [Ruutukaappaukset ohjelmaikkunoista](#ruutukaappaukset-ohjelmaikkunoista)
 * [Ohjelman mukana tuleva tietokanta](#ohjelman-mukana-tuleva-tietokanta)
 * [Tiedossa olevat ongelmat ja bugit sekä jatkokehitysideat](tiedossa-olevat-ongelmat-ja-bugit-sekä-jatkokehitysideat)
-* [Mitä opimme?](mitä-opimme-)
+* [Mitä opimme?](#mitä-opimme)
 
 # Johdanto
 
