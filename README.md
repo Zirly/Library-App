@@ -64,10 +64,10 @@ Pura lataamasi zip-paketti mihin tahansa kansioon ja avaa .exe -päätteinen tie
 
 1. Valikko
 2. Halutun kokoelman listaus
-3. Alkio
+3. Tietue
 4. Painike lisäysikkunaan
-5. Alkion sisältämä tieto
-6. Alkion poistopainike
+5. Tietueen sisältämä tieto
+6. Tietueen poistopainike
 7. Tietokannan tallennuspainike
 8. Ohjelman sulkemispainike
 
