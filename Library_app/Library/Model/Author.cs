@@ -8,18 +8,22 @@ using System.Threading.Tasks;
 
 namespace Library.Model
 {
+    /// <summary>
+    /// Author object and its properties and methods.
+    /// </summary>
     public class Author : INotifyPropertyChanged
     {
+        // properties
         public bool IsUpdated { get; set; } = false;
         public int AuthorId { get; set; }
         public int? YearBirth { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        //public int? YearBirth { get; set; }
-        private ObservableCollection<Book> _booksList = new ObservableCollection<Book>();
-
+ 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        // books that are associated with the author
+        private ObservableCollection<Book> _booksList = new ObservableCollection<Book>();
         public ObservableCollection<Book> BooksList
         {
             get { return _booksList; }
@@ -57,11 +61,20 @@ namespace Library.Model
             BooksList = new ObservableCollection<Book>();
         }
         //methods
+
+        /// <summary>
+        /// Adding book to author's books' list
+        /// </summary>
+        /// <param name="book">book to add</param>
         public void AddBook(Book book)
         {
             BooksList.Add(book);
         }
 
+        /// <summary>
+        /// Raises an event, when property is changed
+        /// </summary>
+        /// <param name="name">changed property</param>
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

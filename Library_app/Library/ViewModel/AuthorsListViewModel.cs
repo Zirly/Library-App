@@ -32,6 +32,10 @@ namespace Library.ViewModel
                 MyAuthorList.Add(item);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
