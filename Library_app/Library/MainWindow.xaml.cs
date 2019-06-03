@@ -102,8 +102,11 @@ namespace Library
         /// <param name="e">The instance containing the event data</param>
         private void Item_Add_Button_Click(object sender, RoutedEventArgs e)
         {
-            ItemAdd itemAdd = new ItemAdd();
-            itemAdd.Show();
+            if (!Application.Current.Windows.OfType<ItemAdd>().Any())
+            {
+                ItemAdd itemAdd = new ItemAdd();
+                itemAdd.Show();
+            }
         }
 
         /// <summary>
