@@ -111,7 +111,8 @@ Bugien korjaaminen onnistui hyvin jatkuvan monipuolisen testauksen johdosta, eik
 
 # Mitä opimme?
 
-* MVVM-mallin käyttö ohjelmistoprojektissa
+* WPF-kirjaston käyttö
+* MVVM-mallin soveltaminen ohjelmistoprojektissa
 * Miten ObservableCollection-lista toimii yhteydessä käyttöliittymän kanssa
 * Tietokantayhteyksien luonti sekä tietokantojen muokkaaminen
 * Dynaamisen käyttöliittymän tekeminen
@@ -148,4 +149,4 @@ Yhteensä projektiin kului: **140 tuntia** työtä
 
 # Arvosanaehdotus
 
-Antaisimme itsellemme arvosanaksi **4-5**. Mielestämme harjoitustyö täyttää vaatimukset ja sovelluksemme toimii mainiosti, mutta palautus on myöhässä.
+Antaisimme itsellemme arvosanaksi **4-5**. Mielestämme harjoitustyö täyttää vaatimukset ja sovelluksemme toimii kunnolla, mutta palautus on pari päivää myöhässä.
