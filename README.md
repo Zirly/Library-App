@@ -14,6 +14,8 @@
 * [Ohjelman mukana tuleva tietokanta](#ohjelman-mukana-tuleva-tietokanta)
 * [Tiedossa olevat ongelmat ja bugit sekä jatkokehitysideat](#tiedossa-olevat-ongelmat-ja-bugit-sekä-jatkokehitysideat)
 * [Mitä opimme?](#mitä-opimme)
+* [Tekijät](#tekijät)
+* [Arvosanaehdotus](#arvosanaehdotus)
 
 # Johdanto
 
