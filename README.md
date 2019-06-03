@@ -134,9 +134,9 @@ Harjoitustyön tekivät ohjelmistotekniikan ensimmäisen vuoden opiskelijat Artt
 
 ## Vastuut
 
-Markéta kirjoitti tietokantayhteydet, ylläpiti MVVM-rakennetta ja hänen vastuullaan oli sovelluksen backend.
+**Markéta** kirjoitti tietokantayhteydet, ylläpiti MVVM-rakennetta ja hänen vastuullaan oli sovelluksen backend.
 
-Arttu kirjoitti dokumentoinnin, testasi, teki käyttöliittymän ulkoasun, ja hänen vastuullaan oli sovelluksen frontend.
+**Arttu** kirjoitti dokumentoinnin, testasi, teki käyttöliittymän ulkoasun, ja hänen vastuullaan oli sovelluksen frontend.
 
 ## Työmäärä
 
@@ -148,4 +148,4 @@ Yhteensä projektiin kului: **140 tuntia** työtä
 
 # Arvosanaehdotus
 
-Antaisimme itsellemme arvosanaksi 4-5. Mielestämme harjoitustyö täyttää vaatimukset ja sovelluksemme toimii mainiosti, mutta palautus on myöhässä.
+Antaisimme itsellemme arvosanaksi **4-5**. Mielestämme harjoitustyö täyttää vaatimukset ja sovelluksemme toimii mainiosti, mutta palautus on myöhässä.
