@@ -21,7 +21,7 @@
 
 Tämä sovellus on käyttöliittymien ohjelmointi -kurssia varten toteutettu harjoitustyö. 
 Toteutimme työnämme kirjastosovelluksen, jonka tietokantaa on mahdollista muokata lisäämällä, päivittämällä sekä poistamalla tietoja sovelluksen eri toiminnoilla.
-Kurssinvetäjänä toimi Esa Salmikangas ja harjoitustyön ovat tehneet Arttu Rousku ja Markéta Sovová.
+Kurssin ohjaajana toimi Esa Salmikangas ja harjoitustyön tekivät Arttu Rousku ja Markéta Sovová.
 
 # Asennus
 
