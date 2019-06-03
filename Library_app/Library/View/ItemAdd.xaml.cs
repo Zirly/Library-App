@@ -134,6 +134,7 @@ namespace Library.View
                 MessageBox.Show("Title cannnot be empty.");
                 return false;
             }
+            
             if (book.Author_AtBook == null)
             {
                 MessageBox.Show("Author must be added.");
