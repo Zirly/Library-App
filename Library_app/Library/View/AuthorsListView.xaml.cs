@@ -24,9 +24,12 @@ namespace Library.View
         public AuthorsListView()
         {
             InitializeComponent();
-            
         }
-
+        /// <summary>
+        /// Reacting to the change of selection and showing the selected author in the adjacent view
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void LstAuthors_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Author selected = (Author)lstAuthors.SelectedItem;

@@ -47,7 +47,11 @@ namespace Library.Model
             return book;
         }
 
-        //TODO poista myös relation
+        /// <summary>
+        /// Removing book from the list
+        /// </summary>
+        /// <param name="id">book's id</param>
+        /// <returns>true if book is removed, otherwise false</returns>
         public static bool RemoveBook(int id)
         {
             foreach (var book in BooksList)

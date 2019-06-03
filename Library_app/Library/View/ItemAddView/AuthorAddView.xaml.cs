@@ -27,6 +27,11 @@ namespace Library.View.ItemAddView
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Checking if the input in author's year's field is valid
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void AuthorYearBirth_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(authorYearBirth.Text)) return;
@@ -35,8 +40,6 @@ namespace Library.View.ItemAddView
                 if (year < 1 || year > 2050)
                 {
                     MessageBox.Show("Year field not valid.");
-                   // AuthorAddViewModel viewmodel = (AuthorAddViewModel)DataContext;
-                   // Author author = viewmodel.MyAuthor;
                     authorYearBirth.Text = null;
                 }
             }

@@ -26,7 +26,7 @@
             <view:AuthorDetailView DataContext="{Binding}"/>
         </DataTemplate>
         <DataTemplate x:Name="bookDetailTemplate" DataType="{x:Type viewmodel:BookDetailViewModel}">
-            <view:BookDetail DataContext="{Binding}"/>
+            <view:BookDetailView DataContext="{Binding}"/>
         </DataTemplate>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

@@ -42,10 +42,8 @@
                     <ComboBoxItem Content="Author" Selected="AuthorAddView_Selected"/>
                     <ComboBoxItem Content="Genre" Selected="GenreAddView_Selected"/>
                 </ComboBox>
-
                 <ContentControl x:Name="contentAdd" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="4" Content="{Binding}" Margin="0,10,0,0"/>
             </Grid>
-
         </StackPanel>
         <Button Width="55" Height="20" Margin="0,180,280,0" HorizontalAlignment="Center" Click="ItemAdd_Click" FontFamily="Arial">Save</Button>
         <Button Width="55" Height="20" Margin="280,180,0,0" HorizontalAlignment="Center" Click="Cancel_Button_Click" FontFamily="Arial">Cancel</Button>

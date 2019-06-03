@@ -21,7 +21,6 @@
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-
                     <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding FullName}" HorizontalAlignment="Left" TextAlignment="Left"/>
                     <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding YearBirth}" HorizontalAlignment="Right" TextAlignment="Right"/>
                     <ItemsControl Grid.Column="0" Grid.Row="1" BorderThickness="0" FontSize="10" ItemsSource="{Binding BooksList}">

@@ -20,6 +20,17 @@ using Library.ViewModel;
 
 namespace Library
 {
+    /*
+    * author: Markéta Sovová, M1482@student.jamk.fi
+    * author: Arttu Rousku, M1484@student.jamk.fi
+    * time: 31/5/2019 18:22 PM
+    * 
+    * Library program provides a tool to store library data, which include books and their
+    * associated authors and genres. Application enables data addition, removal and update.
+    */
+
+
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>

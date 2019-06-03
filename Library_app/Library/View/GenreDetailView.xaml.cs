@@ -26,12 +26,12 @@ namespace Library.View
         {
             InitializeComponent();
         }
-        // ?
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            lstBooks.Items.Refresh();
-        }
 
+        /// <summary>
+        /// Removing genre from the static list on button click
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
             if (Genres.GenresList.Count < 1)
@@ -58,6 +58,11 @@ namespace Library.View
             }
         }
 
+        /// <summary>
+        /// Setting genre to be updated, if user has clicked the input field
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void TxtName_GotFocus(object sender, RoutedEventArgs e)
         {
             GenreDetailViewModel viewmodel = (GenreDetailViewModel)DataContext;
@@ -66,6 +71,11 @@ namespace Library.View
             Genres.IsUpdated = true;
         }
 
+        /// <summary>
+        /// Checking that the genre's name is not empty and that it doesn't already exist
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void TxtName_LostFocus(object sender, RoutedEventArgs e)
         {
             GenreDetailViewModel viewmodel = (GenreDetailViewModel)DataContext;

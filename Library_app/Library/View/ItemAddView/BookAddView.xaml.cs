@@ -25,10 +25,14 @@ namespace Library.View.ItemAddView
         {
             InitializeComponent();
             cbGenres.ItemsSource = Genres.GenresList;
-            cbAuthors.ItemsSource = Authors.AuthorsList;
-            
+            cbAuthors.ItemsSource = Authors.AuthorsList;         
         }
 
+        /// <summary>
+        /// Checking if the input in book's year's field is valid
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void BookYear_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(bookYear.Text)) return;

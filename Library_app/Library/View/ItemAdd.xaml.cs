@@ -29,31 +29,51 @@ namespace Library.View
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Cancel button
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
+        /// <summary>
+        /// Showing book's adding view
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void BookAddView_Selected(object sender, RoutedEventArgs e)
         {
             DataContext = new BookAddViewModel();
         }
-
+        /// <summary>
+        /// Showing author's adding view
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void AuthorAddView_Selected(object sender, RoutedEventArgs e)
         {
             DataContext = new AuthorAddViewModel();
         }
-
+        /// <summary>
+        /// Showing genre's adding view
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void GenreAddView_Selected(object sender, RoutedEventArgs e)
         {
             DataContext = new GenreAddViewModel();
         }
-
+        /// <summary>
+        /// Add- button's click
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void ItemAdd_Click(object sender, RoutedEventArgs e)
         {
             bool isAdded = false;
 
-        
                 switch (cbAddItem.SelectedIndex)
                 {
                     case 0:
@@ -84,6 +104,10 @@ namespace Library.View
             if (isAdded) Close();
         }
 
+        /// <summary>
+        /// Checking genre's input and sending it to the database
+        /// </summary>
+        /// <returns>True if genre sent to DB, otherwise false</returns>
         private bool AddItemGenre()
         {
             GenreAddViewModel viewmodel = (GenreAddViewModel)DataContext;
@@ -108,6 +132,10 @@ namespace Library.View
             return true;
         }
 
+        /// <summary>
+        /// Checking author's input and sending it to the database
+        /// </summary>
+        /// <returns>True if author sent to DB, otherwise false</returns>
         private bool AddItemAuthor()
         {
             AuthorAddViewModel viewmodel = (AuthorAddViewModel)DataContext;
@@ -124,6 +152,10 @@ namespace Library.View
             return true;
         }
 
+        /// <summary>
+        /// Checking books's input and sending it to the database
+        /// </summary>
+        /// <returns>True if book sent to DB, otherwise false</returns>
         private bool AddItemBook()
         {
             BookAddViewModel viewmodel = (BookAddViewModel)DataContext;
@@ -155,6 +187,9 @@ namespace Library.View
             return true;
         }
 
+        /// <summary>
+        /// Loading right context to the main window
+        /// </summary>
         private void ActivateMainWindow()
         {
             var mw = Application.Current.Windows

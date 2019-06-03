@@ -27,6 +27,11 @@ namespace Library.View
             InitializeComponent();            
         }
 
+        /// <summary>
+        /// Reacting to the change of selection and showing the selected genre in the adjacent view
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void LstGenres_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Genre selected = (Genre)lstGenres.SelectedItem;

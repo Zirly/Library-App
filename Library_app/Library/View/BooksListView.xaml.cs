@@ -26,6 +26,11 @@ namespace Library.View
             InitializeComponent();       
         }
 
+        /// <summary>
+        /// Reacting to the change of selection and showing the selected book in the adjacent view
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void LstBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Book selected = (Book)lstBooks.SelectedItem;

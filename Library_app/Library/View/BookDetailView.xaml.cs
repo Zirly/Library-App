@@ -17,15 +17,20 @@ using Library.ViewModel;
 namespace Library.View
 {
     /// <summary>
-    /// Interaction logic for BookDetail.xaml
+    /// Interaction logic for BookDetailView.xaml
     /// </summary>
-    public partial class BookDetail : UserControl
+    public partial class BookDetailView : UserControl
     {
-        public BookDetail()
+        public BookDetailView()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Removing book from the local list on click
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void BookRemove_Click(object sender, RoutedEventArgs e)
         {
             if (Books.BooksList.Count < 1)
@@ -59,6 +64,11 @@ namespace Library.View
             }
         }
 
+        /// <summary>
+        /// Setting book to be updated, if user has clicked the input field
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void txtBox_GotFocus(object sender, RoutedEventArgs e)
         {
             BookDetailViewModel viewmodel = (BookDetailViewModel)DataContext;
@@ -67,6 +77,11 @@ namespace Library.View
             Books.IsUpdated = true;
         }
 
+        /// <summary>
+        /// Checking that the book's title is not empty
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void TxtBookTitle_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(txtBookTitle.Text))
@@ -77,7 +92,11 @@ namespace Library.View
                 txtBookTitle.Text = book.Title;
             }
         }
-
+        /// <summary>
+        /// Checking if the input in book's year's field is valid
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">The instance containing the event data</param>
         private void TxtYear_LostFocus(object sender, RoutedEventArgs e)
         {
             if (int.TryParse(txtYear.Text, out int year))
