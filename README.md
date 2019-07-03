@@ -13,7 +13,6 @@
 * [Ruutukaappaukset ohjelmaikkunoista](#ruutukaappaukset-ohjelmaikkunoista)
 * [Ohjelman mukana tuleva tietokanta](#ohjelman-mukana-tuleva-tietokanta)
 * [Jatkokehitysideat](#jatkokehitysideat)
-* [Mitä opimme?](#mitä-opimme)
 * [Tekijät](#tekijät)
 
 # Johdanto
@@ -101,15 +100,6 @@ Tietokannan voi avata myös Accessin avulla, mutta ohjelmamme ei vaadi sitä ase
 * Quality of Life -parannuksia käyttöliittymän käyttämisen nopeuttamiseksi
   * Kirjailijakokoelman kirjat klikattavissa
   * Avattua kokoelmaa vastaava tietuelomake aukenee suoraan lisäysikkunassa
-
-# Mitä opimme?
-
-* WPF-kirjaston käyttö
-* MVVM-mallin soveltaminen ohjelmistoprojektissa
-* Miten ObservableCollection-lista toimii yhteydessä käyttöliittymän kanssa
-* Tietokantayhteyksien luonti sekä tietokantojen muokkaaminen
-* Dynaamisen käyttöliittymän tekeminen
-* Läpikotaisen testauksen tekemisen tärkeys
 
 ## Lisätutkimus
 
